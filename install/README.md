@@ -1,2 +1,0 @@
-# Provider Installation and Use
-

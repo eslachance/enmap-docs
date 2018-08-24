@@ -10,7 +10,6 @@ In terms of Enmap, "writing", "adding" and "editing" data is essentially the sam
 
 Enmap supports most _native_ JavaScript data types, with a few small exceptions. 
 
-* `null` and `undefined` values are not supported.
 * Complex objects like `Set()`, `Map()`, etc, are not supported.
 * Class instances and Functions are not supported.
 
