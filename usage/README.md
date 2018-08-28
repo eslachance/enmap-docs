@@ -11,6 +11,10 @@ const myEnmap = new Enmap();
 // you can now use your enmap directly
 ```
 
+### Persistent Enmaps
+
+Using persistent enmaps require the additional install of the `better-sqlite-pool` module. 
+
 If using a persistent enmap, you need to add options: 
 
 ```javascript

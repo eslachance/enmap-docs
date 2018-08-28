@@ -1,10 +1,26 @@
 # Enmap Installation
 
+## Installing enmap
+
+{% hint style="warning" %}
+In order to install Enmap, you'll need a few things installed on your machine. First off, you need NodeJS \(version 8 or higher required\). For Windows and MacOS, simply[ download and install from the website](https://nodejs.org/en/download/). For Linux, see [this page for installation](https://nodejs.org/en/download/package-manager/).
+{% endhint %}
+
+To install Enmap in your project, all you need to to is run the following command: 
+
+```javascript
+npm i enmap@latest
+```
+
+This may take a few minutes, then you're ready to use it. 
+
+### Peer Dependencies
+
+For persistence you need to also install `better-sqlite-pool`, which is necessary for the sqlite database interaction.
+
 ### Pre-Requisites
 
-In order to install Enmap, you'll need a few things installed on your machine. First off, you need NodeJS \(version 8 or higher required\). For Windows and MacOS, simply[ download and install from the website](https://nodejs.org/en/download/). For Linux, see [this page for installation](https://nodejs.org/en/download/package-manager/).
-
-Next, enmap has a specific pre-requisite which is needed for the sqlite dependency. How to install these depends on your operating system, so see below for instructions:
+`better-sqlite-pool` has a specific pre-requisite which is needed to build it. How to install these depends on your operating system, so see below for instructions:
 
 {% tabs %}
 {% tab title="Windows" %}
@@ -39,13 +55,11 @@ Once installed, you're ready to continue.
 {% endtab %}
 {% endtabs %}
 
-## Installing enmap
+Once those pre-requisites are installed, simply run the following command: 
 
-To install Enmap in your project, all you need to to is run the following command: 
-
-```javascript
-npm i enmap@latest
+```text
+npm i better-sqlite-pool
 ```
 
-This may take a few minutes, then you're ready to use it. 
+This will take a few minutes also, as it needs to build the module from source code.
 
