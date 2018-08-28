@@ -2,7 +2,7 @@
 
 Now that we have a functional Enmap structure \(which we'll always refer to as `myEnmap`\), we're ready to start writing data to it, and getting data from it. 
 
-> The code samples on this page assume that you have correctly initialized `myEnmap`, and [awaited its initialization]() if it's persistent.
+> The code samples on this page assume that you have correctly initialized `myEnmap`, and [awaited its initialization](init.md) if it's persistent.
 
 ## Writing Data
 
@@ -10,6 +10,7 @@ In terms of Enmap, "writing", "adding" and "editing" data is essentially the sam
 
 Enmap supports most _native_ JavaScript data types, with a few small exceptions. 
 
+* `null` and `undefined` values are not supported.
 * Complex objects like `Set()`, `Map()`, etc, are not supported.
 * Class instances and Functions are not supported.
 

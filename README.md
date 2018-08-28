@@ -12,7 +12,7 @@ While there are other better-known systems that offer some features of Enmap, es
 
 Here are some advantages of using Enmap: 
 
-* **Simple to Install**: Enmap itself only requires a simple `npm install` command to install and use, and a single line to initialize. When using persistent providers, some additional pre-requisites are necessary. [See Installation for details](install.md). 
+* **Simple to Install**: Enmap itself only requires a simple `npm install` command to install and use, and a single line to initialize. When using persistent providers, some additional pre-requisites are necessary. [See Installation for details](install/). 
 * **Simple to Use**: Basic enmap usage can be completely done with 1-2 lines of initalization, and 3 commands, set\(\), get\(\) and delete\(\). 
 * **Very Fast**: Since Enmap resides in memory, accessing its data is blazing fast \(as fast as Map\(\) is\). Even with persistence, Enmap still only accesses data from memory so you get it almost instantly. 
 

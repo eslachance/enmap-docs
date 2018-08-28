@@ -1,4 +1,8 @@
-# API Documentation
+---
+description: 'The full, boring, unadultered enmap docs.'
+---
+
+# API Reference
 
 ## Enmap ⇐ `Map`
 
@@ -7,118 +11,78 @@ A enhanced Map structure with additional utility methods. Can be made persistent
 **Kind**: global class  
 **Extends**: `Map`
 
-* [Enmap](api-documentation.md#Enmap) ⇐ `Map`
+* [Enmap](api.md#Enmap) ⇐ `Map`
   * _instance_
-    * [.fetchEverything\(\)](api-documentation.md#Enmap+fetchEverything) ⇒ `Promise.`
-    * [.fetch\(keyOrKeys\)](api-documentation.md#Enmap+fetch) ⇒ `Promise.`
-    * [.evict\(keyOrArrayOfKeys\)](api-documentation.md#Enmap+evict)
-    * [.autonum\(\)](api-documentation.md#Enmap+autonum) ⇒ `number`
-    * [.changed\(cb\)](api-documentation.md#Enmap+changed)
-    * [.set\(key, val, path\)](api-documentation.md#Enmap+set) ⇒ `Map`
-    * [.setProp\(key, path, val\)](api-documentation.md#Enmap+setProp) ⇒ `Map`
-    * [.push\(key, val, path, allowDupes\)](api-documentation.md#Enmap+push) ⇒ `Map`
-    * [.pushIn\(key, path, val, allowDupes\)](api-documentation.md#Enmap+pushIn) ⇒ `Map`
-    * [.math\(key, operation, operand, path\)](api-documentation.md#Enmap+math) ⇒ `Map`
-    * [.inc\(key, path\)](api-documentation.md#Enmap+inc) ⇒ `Map`
-    * [.dec\(key, path\)](api-documentation.md#Enmap+dec) ⇒ `Map`
-    * [.get\(key, path\)](api-documentation.md#Enmap+get) ⇒ `*`
-    * [.getProp\(key, path\)](api-documentation.md#Enmap+getProp) ⇒ `*`
-    * [.has\(key, path\)](api-documentation.md#Enmap+has) ⇒ `boolean`
-    * [.hasProp\(key, path\)](api-documentation.md#Enmap+hasProp) ⇒ `boolean`
-    * [.delete\(key, path\)](api-documentation.md#Enmap+delete)
-    * [.deleteProp\(key, path\)](api-documentation.md#Enmap+deleteProp)
-    * [.deleteAll\(bulk\)](api-documentation.md#Enmap+deleteAll)
-    * [.remove\(key, val, path\)](api-documentation.md#Enmap+remove) ⇒ `Map`
-    * [.removeFrom\(key, path, val\)](api-documentation.md#Enmap+removeFrom) ⇒ `Map`
-    * [.array\(\)](api-documentation.md#Enmap+array) ⇒ `Array`
-    * [.keyArray\(\)](api-documentation.md#Enmap+keyArray) ⇒ `Array`
-    * [.random\(\[count\]\)](api-documentation.md#Enmap+random) ⇒ `*` \| `Array.`
-    * [.randomKey\(\[count\]\)](api-documentation.md#Enmap+randomKey) ⇒ `*` \| `Array.`
-    * [.findAll\(prop, value\)](api-documentation.md#Enmap+findAll) ⇒ `Array`
-    * [.find\(propOrFn, \[value\]\)](api-documentation.md#Enmap+find) ⇒ `*`
-    * [.exists\(prop, value\)](api-documentation.md#Enmap+exists) ⇒ `boolean`
-    * [.filter\(fn, \[thisArg\]\)](api-documentation.md#Enmap+filter) ⇒ [`Enmap`](api-documentation.md#Enmap)
-    * [.filterArray\(fn, \[thisArg\]\)](api-documentation.md#Enmap+filterArray) ⇒ `Array`
-    * [.map\(fn, \[thisArg\]\)](api-documentation.md#Enmap+map) ⇒ `Array`
-    * [.some\(fn, \[thisArg\]\)](api-documentation.md#Enmap+some) ⇒ `boolean`
-    * [.every\(fn, \[thisArg\]\)](api-documentation.md#Enmap+every) ⇒ `boolean`
-    * [.reduce\(fn, \[initialValue\]\)](api-documentation.md#Enmap+reduce) ⇒ `*`
-    * [.clone\(\)](api-documentation.md#Enmap+clone) ⇒ [`Enmap`](api-documentation.md#Enmap)
-    * [.concat\(...enmaps\)](api-documentation.md#Enmap+concat) ⇒ [`Enmap`](api-documentation.md#Enmap)
-    * [.equals\(enmap\)](api-documentation.md#Enmap+equals) ⇒ `boolean`
+    * [.count](api.md#Enmap+count) ⇒ `integer`
+    * [.indexes](api.md#Enmap+indexes) ⇒ `array.`
+    * [.set\(key, val, path\)](api.md#Enmap+set) ⇒ [`Enmap`](api.md#Enmap)
+    * [.get\(key, path\)](api.md#Enmap+get) ⇒ `*`
+    * [.fetchEverything\(\)](api.md#Enmap+fetchEverything) ⇒ [`Enmap`](api.md#Enmap)
+    * [.fetch\(keyOrKeys\)](api.md#Enmap+fetch) ⇒ [`Enmap`](api.md#Enmap)
+    * [.evict\(keyOrArrayOfKeys\)](api.md#Enmap+evict) ⇒ [`Enmap`](api.md#Enmap)
+    * [.autonum\(\)](api.md#Enmap+autonum) ⇒ `number`
+    * [.changed\(cb\)](api.md#Enmap+changed)
+    * [.close\(\)](api.md#Enmap+close) ⇒ `Promise.`
+    * [.setProp\(key, path, val\)](api.md#Enmap+setProp) ⇒ [`Enmap`](api.md#Enmap)
+    * [.push\(key, val, path, allowDupes\)](api.md#Enmap+push) ⇒ [`Enmap`](api.md#Enmap)
+    * [.pushIn\(key, path, val, allowDupes\)](api.md#Enmap+pushIn) ⇒ [`Enmap`](api.md#Enmap)
+    * [.math\(key, operation, operand, path\)](api.md#Enmap+math) ⇒ `Map`
+    * [.inc\(key, path\)](api.md#Enmap+inc) ⇒ `Map`
+    * [.dec\(key, path\)](api.md#Enmap+dec) ⇒ `Map`
+    * [.getProp\(key, path\)](api.md#Enmap+getProp) ⇒ `*`
+    * [.ensure\(key, defaultvalue\)](api.md#Enmap+ensure) ⇒ `*`
+    * [.has\(key, path\)](api.md#Enmap+has) ⇒ `boolean`
+    * [.hasProp\(key, path\)](api.md#Enmap+hasProp) ⇒ `boolean`
+    * [.delete\(key, path\)](api.md#Enmap+delete) ⇒ [`Enmap`](api.md#Enmap)
+    * [.deleteProp\(key, path\)](api.md#Enmap+deleteProp)
+    * [.deleteAll\(\)](api.md#Enmap+deleteAll)
+    * [.remove\(key, val, path\)](api.md#Enmap+remove) ⇒ `Map`
+    * [.removeFrom\(key, path, val\)](api.md#Enmap+removeFrom) ⇒ `Map`
+    * [.array\(\)](api.md#Enmap+array) ⇒ `Array`
+    * [.keyArray\(\)](api.md#Enmap+keyArray) ⇒ `Array`
+    * [.random\(\[count\]\)](api.md#Enmap+random) ⇒ `*` \| `Array.`
+    * [.randomKey\(\[count\]\)](api.md#Enmap+randomKey) ⇒ `*` \| `Array.`
+    * [.findAll\(prop, value\)](api.md#Enmap+findAll) ⇒ `Array`
+    * [.find\(propOrFn, \[value\]\)](api.md#Enmap+find) ⇒ `*`
+    * [.exists\(prop, value\)](api.md#Enmap+exists) ⇒ `boolean`
+    * [.filter\(fn, \[thisArg\]\)](api.md#Enmap+filter) ⇒ [`Enmap`](api.md#Enmap)
+    * [.filterArray\(fn, \[thisArg\]\)](api.md#Enmap+filterArray) ⇒ `Array`
+    * [.map\(fn, \[thisArg\]\)](api.md#Enmap+map) ⇒ `Array`
+    * [.some\(fn, \[thisArg\]\)](api.md#Enmap+some) ⇒ `boolean`
+    * [.every\(fn, \[thisArg\]\)](api.md#Enmap+every) ⇒ `boolean`
+    * [.reduce\(fn, \[initialValue\]\)](api.md#Enmap+reduce) ⇒ `*`
+    * [.clone\(\)](api.md#Enmap+clone) ⇒ [`Enmap`](api.md#Enmap)
+    * [.concat\(...enmaps\)](api.md#Enmap+concat) ⇒ [`Enmap`](api.md#Enmap)
+    * [.equals\(enmap\)](api.md#Enmap+equals) ⇒ `boolean`
   * _static_
-    * [.multi\(names, Provider, options\)](api-documentation.md#Enmap.multi) ⇒ `Array.`
-    * [.migrate\(source, target\)](api-documentation.md#Enmap.migrate)
+    * [.multi\(names, options\)](api.md#Enmap.multi) ⇒ `Array.`
 
-### enmap.fetchEverything\(\) ⇒ `Promise.`
+### enmap.count ⇒ `integer`
 
-Fetches every key from the persistent enmap and loads them into the current enmap value.
+Retrieves the number of rows in the database for this enmap, even if they aren't fetched.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Promise.` - The enmap containing all values, as a promise..  
+**Kind**: instance property of [`Enmap`](api.md#Enmap)  
+**Returns**: `integer` - The number of rows in the database.  
 
 
-### enmap.fetch\(keyOrKeys\) ⇒ `Promise.`
+### enmap.indexes ⇒ `array.`
 
-Force fetch one or more key values from the enmap. If the database has changed, that new value is used.
+Retrieves all the indexes \(keys\) in the database for this enmap, even if they aren't fetched.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Promise.` - A single value if requested, or a non-persistent enmap of keys if an array is requested.
+**Kind**: instance property of [`Enmap`](api.md#Enmap)  
+**Returns**: `array.` - Array of all indexes \(keys\) in the enmap, cached or not.  
 
-| Param | Type | Description |
-| :--- | :--- | :--- |
-| keyOrKeys | `string` \| `number` | A single key or array of keys to force fetch from the enmap database. |
 
-### enmap.evict\(keyOrArrayOfKeys\)
+### enmap.set\(key, val, path\) ⇒ [`Enmap`](api.md#Enmap)
 
-Removes a key from the cache - useful when using the fetchAll feature.
+Sets a value in Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
-
-| Param | Type | Description |
-| :--- | :--- | :--- |
-| keyOrArrayOfKeys | `*` | A single key or array of keys to remove from the cache. |
-
-### enmap.autonum\(\) ⇒ `number`
-
-Generates an automatic numerical key for inserting a new value.
-
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `number` - The generated key number.  
-**Example**
-
-```javascript
-enmap.set(enmap.autonum(), "This is a new value");
-```
-
-### enmap.changed\(cb\)
-
-Function called whenever data changes within Enmap after the initial load. Can be used to detect if another part of your code changed a value in enmap and react on it.
-
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
-
-| Param | Type | Description |
-| :--- | :--- | :--- |
-| cb | `function` | A callback function that will be called whenever data changes in the enmap. |
-
-**Example**
-
-```javascript
-enmap.changed((keyName, oldValue, newValue) => {
-  console.log(`Value of ${key} has changed from: \n${oldValue}\nto\n${newValue});
-});
-```
-
-### enmap.set\(key, val, path\) ⇒ `Map`
-
-Set the value in Enmap.
-
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Map` - The Enmap.
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap.
 
 | Param | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| key | `string` \| `number` |  | Required. The key of the element to add to The Enmap. If the Enmap is persistent this value MUST be a string or number. |
+| key | `string` \| `number` |  | Required. The key of the element to add to The Enmap. |
 | val | `*` |  | Required. The value of the element to add to The Enmap. If the Enmap is persistent this value MUST be stringifiable as JSON. |
 | path | `string` | `null` | Optional. The path to the property to modify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
@@ -137,12 +101,101 @@ enmap.set('IhazObjects', 'color', 'blue'); //modified previous object
 enmap.set('ArraysToo', 2, 'three'); // changes "tree" to "three" in array.
 ```
 
-### enmap.setProp\(key, path, val\) ⇒ `Map`
+### enmap.get\(key, path\) ⇒ `*`
+
+Retrieves a key from the enmap. If fetchAll is false, returns a promise.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `*` - The value for this key.
+
+| Param | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| key | `string` \| `number` |  | The key to retrieve from the enmap. |
+| path | `string` | `null` | Optional. The property to retrieve from the object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
+
+**Example**
+
+```javascript
+const myKeyValue = enmap.get("myKey");
+console.log(myKeyValue);
+
+const someSubValue = enmap.get("anObjectKey", "someprop.someOtherSubProp");
+```
+
+### enmap.fetchEverything\(\) ⇒ [`Enmap`](api.md#Enmap)
+
+Fetches every key from the persistent enmap and loads them into the current enmap value.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap containing all values.  
+
+
+### enmap.fetch\(keyOrKeys\) ⇒ [`Enmap`](api.md#Enmap)
+
+Force fetch one or more key values from the enmap. If the database has changed, that new value is used.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The Enmap, including the new fetched value\(s\).
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| keyOrKeys | `string` \| `number` | A single key or array of keys to force fetch from the enmap database. |
+
+### enmap.evict\(keyOrArrayOfKeys\) ⇒ [`Enmap`](api.md#Enmap)
+
+Removes a key or keys from the cache - useful when disabling autoFetch.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap minus the evicted keys.
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| keyOrArrayOfKeys | `*` | A single key or array of keys to remove from the cache. |
+
+### enmap.autonum\(\) ⇒ `number`
+
+Generates an automatic numerical key for inserting a new value. This is a "weak" method, it ensures the value isn't duplicated, but does not guarantee it's sequential \(if a value is deleted, another can take its place\). Useful for logging, but not much else.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `number` - The generated key number.  
+**Example**
+
+```javascript
+enmap.set(enmap.autonum(), "This is a new value");
+```
+
+### enmap.changed\(cb\)
+
+Function called whenever data changes within Enmap after the initial load. Can be used to detect if another part of your code changed a value in enmap and react on it.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| cb | `function` | A callback function that will be called whenever data changes in the enmap. |
+
+**Example**
+
+```javascript
+enmap.changed((keyName, oldValue, newValue) => {
+  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue});
+});
+```
+
+### enmap.close\(\) ⇒ `Promise.`
+
+Shuts down the database. WARNING: USING THIS MAKES THE ENMAP UNUSEABLE. You should only use this method if you are closing your entire application. Note that honestly I've never had to use this, shutting down the app without a close\(\) is fine.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `Promise.` - The promise of the database closing operation.  
+
+
+### enmap.setProp\(key, path, val\) ⇒ [`Enmap`](api.md#Enmap)
 
 Modify the property of a value inside the enmap, if the value is an object or array. This is a shortcut to loading the key, changing the value, and setting it back.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Map` - The EnMap.
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -150,12 +203,12 @@ Modify the property of a value inside the enmap, if the value is an object or ar
 | path | `*` | Required. The property to modify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
 | val | `*` | Required. The value to apply to the specified property. |
 
-### enmap.push\(key, val, path, allowDupes\) ⇒ `Map`
+### enmap.push\(key, val, path, allowDupes\) ⇒ [`Enmap`](api.md#Enmap)
 
 Push to an array value in Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Map` - The EnMap.
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap.
 
 | Param | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -175,12 +228,12 @@ enmap.push("simpleArray", 5); // adds 5 at the end of the array
 enmap.push("arrayInObject", "five", "sub"); adds "five" at the end of the sub array
 ```
 
-### enmap.pushIn\(key, path, val, allowDupes\) ⇒ `Map`
+### enmap.pushIn\(key, path, val, allowDupes\) ⇒ [`Enmap`](api.md#Enmap)
 
 Push to an array element inside an Object or Array element in Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `Map` - The EnMap.
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap.
 
 | Param | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -193,7 +246,7 @@ Push to an array element inside an Object or Array element in Enmap.
 
 Executes a mathematical operation on a value and saves it in the enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Map` - The EnMap.
 
 | Param | Type | Default | Description |
@@ -220,7 +273,7 @@ points.math("numberInObject", "+", 10, "sub.anInt");
 
 Increments a key's value or property by 1. Value must be a number, or a path to a number.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Map` - The EnMap.
 
 | Param | Type | Default | Description |
@@ -243,7 +296,7 @@ points.inc("numberInObject", "sub.anInt"); // {sub: { anInt: 6 }}
 
 Decrements a key's value or property by 1. Value must be a number, or a path to a number.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Map` - The EnMap.
 
 | Param | Type | Default | Description |
@@ -262,32 +315,11 @@ points.dec("number"); // 41
 points.dec("numberInObject", "sub.anInt"); // {sub: { anInt: 4 }}
 ```
 
-### enmap.get\(key, path\) ⇒ `*`
-
-Retrieves a key from the enmap. If fetchAll is false, returns a promise.
-
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
-**Returns**: `*` - The value for this key.
-
-| Param | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| key | `string` \| `number` |  | The key to retrieve from the enmap. |
-| path | `string` | `null` | Optional. The property to retrieve from the object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-**Example**
-
-```javascript
-const myKeyValue = enmap.get("myKey");
-console.log(myKeyValue);
-
-const someSubValue = enmap.get("anObjectKey", "someprop.someOtherSubProp");
-```
-
 ### enmap.getProp\(key, path\) ⇒ `*`
 
 Returns the specific property within a stored value. If the key does not exist or the value is not an object, throws an error.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `*` - The value of the property obtained.
 
 | Param | Type | Description |
@@ -295,11 +327,36 @@ Returns the specific property within a stored value. If the key does not exist o
 | key | `string` \| `number` | Required. The key of the element to get from The Enmap. |
 | path | `*` | Required. The property to retrieve from the object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
+### enmap.ensure\(key, defaultvalue\) ⇒ `*`
+
+Returns the key's value, or the default given, ensuring that the data is there. This is a shortcut to "if enmap doesn't have key, set it, then get it" which is a very common pattern.
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `*` - The value from the database for the key, or the default value provided for a new key.
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| key | `string` \| `number` | Required. The key you want to make sure exists. |
+| defaultvalue | `*` | Required. The value you want to save in the database and return as default. |
+
+**Example**
+
+```javascript
+// Simply ensure the data exists (for using property methods):
+enmap.ensure("mykey", {some: "value", here: "as an example"});
+enmap.has("mykey"); // always returns true
+enmap.get("mykey", "here") // returns "as an example";
+
+// Get the default value back in a variable:
+const settings = mySettings.ensure("1234567890", defaultSettings);
+console.log(settings) // enmap's value for "1234567890" if it exists, otherwise the defaultSettings value.
+```
+
 ### enmap.has\(key, path\) ⇒ `boolean`
 
 Returns whether or not the key exists in the Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -320,7 +377,7 @@ if(!enmap.has("myOtherKey", "oneProp.otherProp.SubProp")) return false;
 
 Returns whether or not the property exists within an object or array value in enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `boolean` - Whether the property exists.
 
 | Param | Type | Description |
@@ -328,11 +385,12 @@ Returns whether or not the property exists within an object or array value in en
 | key | `string` \| `number` | Required. The key of the element to check in the Enmap or array. |
 | path | `*` | Required. The property to verify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
-### enmap.delete\(key, path\)
+### enmap.delete\(key, path\) ⇒ [`Enmap`](api.md#Enmap)
 
 Deletes a key in the Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: [`Enmap`](api.md#Enmap) - The enmap.
 
 | Param | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -343,28 +401,25 @@ Deletes a key in the Enmap.
 
 Delete a property from an object or array value in Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | key | `string` \| `number` | Required. The key of the element to delete the property from in Enmap. |
 | path | `*` | Required. The name of the property to remove from the object. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
-### enmap.deleteAll\(bulk\)
+### enmap.deleteAll\(\)
 
-Calls the `delete()` method on all items that have it.
+Deletes everything from the enmap. If persistent, clears the database of all its data for this table.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 
-| Param | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| bulk | `boolean` | `true` | Optional. Defaults to True. whether to use the provider's "bulk" delete feature if it has one. |
 
 ### enmap.remove\(key, val, path\) ⇒ `Map`
 
 Remove a value in an Array or Object element in Enmap. Note that this only works for values, not keys. Complex values such as objects and arrays will not be removed this way.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Map` - The EnMap.
 
 | Param | Type | Default | Description |
@@ -377,7 +432,7 @@ Remove a value in an Array or Object element in Enmap. Note that this only works
 
 Remove a value from an Array or Object property inside an Array or Object element in Enmap. Confusing? Sure is.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Map` - The EnMap.
 
 | Param | Type | Description |
@@ -390,21 +445,21 @@ Remove a value from an Array or Object property inside an Array or Object elemen
 
 Creates an ordered array of the values of this Enmap. The array will only be reconstructed if an item is added to or removed from the Enmap, or if you change the length of the array itself. If you don't want this caching behaviour, use `Array.from(enmap.values())` instead.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 
 
 ### enmap.keyArray\(\) ⇒ `Array`
 
 Creates an ordered array of the keys of this Enmap The array will only be reconstructed if an item is added to or removed from the Enmap, or if you change the length of the array itself. If you don't want this caching behaviour, use `Array.from(enmap.keys())` instead.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 
 
 ### enmap.random\(\[count\]\) ⇒ `*` \| `Array.`
 
-Obtains random value\(s\) from this Enmap. This relies on [array](api-documentation.md#Enmap+array).
+Obtains random value\(s\) from this Enmap. This relies on [array](api.md#Enmap+array).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `*` \| `Array.` - The single value if `count` is undefined, or an array of values of `count` length
 
 | Param | Type | Description |
@@ -413,9 +468,9 @@ Obtains random value\(s\) from this Enmap. This relies on [array](api-documentat
 
 ### enmap.randomKey\(\[count\]\) ⇒ `*` \| `Array.`
 
-Obtains random key\(s\) from this Enmap. This relies on [keyArray](api-documentation.md#Enmap+keyArray)
+Obtains random key\(s\) from this Enmap. This relies on [keyArray](api.md#Enmap+keyArray)
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `*` \| `Array.` - The single key if `count` is undefined, or an array of keys of `count` length
 
 | Param | Type | Description |
@@ -426,7 +481,7 @@ Obtains random key\(s\) from this Enmap. This relies on [keyArray](api-documenta
 
 Searches for all items where their specified property's value is identical to the given value \(`item[prop] === value`\).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -445,7 +500,7 @@ Searches for a single item where its specified property's value is identical to 
 
 All Enmap used in Discord.js are mapped using their \`id\` property, and if you want to find by id you should use the \`get\` method. See \[MDN\]\(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Map/get\) for details.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -470,7 +525,7 @@ Searches for the existence of a single item where its specified property's value
 
 Do not use this to check for an item by its ID. Instead, use \`enmap.has\(id\)\`. See \[MDN\]\(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Map/has\) for details.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -485,11 +540,11 @@ if (enmap.exists('username', 'Bob')) {
 }
 ```
 
-### enmap.filter\(fn, \[thisArg\]\) ⇒ [`Enmap`](api-documentation.md#Enmap)
+### enmap.filter\(fn, \[thisArg\]\) ⇒ [`Enmap`](api.md#Enmap)
 
 Identical to [Array.filter\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), but returns a Enmap instead of an Array.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -500,7 +555,7 @@ Identical to [Array.filter\(\)](https://developer.mozilla.org/en-US/docs/Web/Jav
 
 Identical to [Array.filter\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -511,7 +566,7 @@ Identical to [Array.filter\(\)](https://developer.mozilla.org/en-US/docs/Web/Jav
 
 Identical to [Array.map\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -522,7 +577,7 @@ Identical to [Array.map\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaSc
 
 Identical to [Array.some\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -533,7 +588,7 @@ Identical to [Array.some\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaS
 
 Identical to [Array.every\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -544,33 +599,33 @@ Identical to [Array.every\(\)](https://developer.mozilla.org/en-US/docs/Web/Java
 
 Identical to [Array.reduce\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | fn | `function` | Function used to reduce, taking four arguments; `accumulator`, `currentValue`, `currentKey`, and `enmap` |
 | \[initialValue\] | `*` | Starting value for the accumulator |
 
-### enmap.clone\(\) ⇒ [`Enmap`](api-documentation.md#Enmap)
+### enmap.clone\(\) ⇒ [`Enmap`](api.md#Enmap)
 
 Creates an identical shallow copy of this Enmap.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Example**
 
 ```javascript
 const newColl = someColl.clone();
 ```
 
-### enmap.concat\(...enmaps\) ⇒ [`Enmap`](api-documentation.md#Enmap)
+### enmap.concat\(...enmaps\) ⇒ [`Enmap`](api.md#Enmap)
 
 Combines this Enmap with others into a new Enmap. None of the source Enmaps are modified.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| ...enmaps | [`Enmap`](api-documentation.md#Enmap) | Enmaps to merge |
+| ...enmaps | [`Enmap`](api.md#Enmap) | Enmaps to merge |
 
 **Example**
 
@@ -582,24 +637,23 @@ const newColl = someColl.concat(someOtherColl, anotherColl, ohBoyAColl);
 
 Checks if this Enmap shares identical key-value pairings with another. This is different to checking for equality using equal-signs, because the Enmaps may be different objects, but contain the same data.
 
-**Kind**: instance method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
 **Returns**: `boolean` - Whether the Enmaps have identical contents
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| enmap | [`Enmap`](api-documentation.md#Enmap) | Enmap to compare with |
+| enmap | [`Enmap`](api.md#Enmap) | Enmap to compare with |
 
-### Enmap.multi\(names, Provider, options\) ⇒ `Array.`
+### Enmap.multi\(names, options\) ⇒ `Array.`
 
 Initialize multiple Enmaps easily.
 
-**Kind**: static method of [`Enmap`](api-documentation.md#Enmap)  
+**Kind**: static method of [`Enmap`](api.md#Enmap)  
 **Returns**: `Array.` - An array of initialized Enmaps.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | names | `Array.` | Array of strings. Each array entry will create a separate enmap with that name. |
-| Provider | `EnmapProvider` | Valid EnmapProvider object. |
 | options | `Object` | Options object to pass to the provider. See provider documentation for its options. |
 
 **Example**
@@ -607,44 +661,10 @@ Initialize multiple Enmaps easily.
 ```javascript
 // Using local variables and the mongodb provider.
 const Enmap = require('enmap');
-const Provider = require('enmap-mongo');
-const { settings, tags, blacklist } = Enmap.multi(['settings', 'tags', 'blacklist'], Provider, { url: "some connection URL here" });
+const { settings, tags, blacklist } = Enmap.multi(['settings', 'tags', 'blacklist']);
 
 // Attaching to an existing object (for instance some API's client)
 const Enmap = require("enmap");
-const Provider = require("enmap-mongo");
-Object.assign(client, Enmap.multi(["settings", "tags", "blacklist"], Provider, { url: "some connection URL here" }));
-```
-
-### Enmap.migrate\(source, target\)
-
-Migrates an Enmap from version 3 or lower to a Version 4 enmap, which is locked to sqlite backend only. Version 4 uses a different way of storing data, so is not directly compatible with version 3 data. Note that this migration also makes the data unuseable with version 3, so it should only be used to migrate once.
-
-**Kind**: static method of [`Enmap`](api-documentation.md#Enmap)
-
-| Param | Type | Description |
-| :--- | :--- | :--- |
-| source | `Provider` | A valid Enmap provider. Can be any existing provider. |
-| target | `Provider` | An SQLite Enmap Provider. Cannot work without enmap-sqlite as the target. |
-
-**Example**
-
-```javascript
-// This example migrates from enmap-mongo to the new format.
-// Assumes: npm install enmap@3.1.4 enmap-sqlite@latest enmap-mongo@latest
-const Enmap = require("enmap");
-const Provider = require("enmap-mongo");
-const SQLite = require("enmap-sqlite");
-
-let options = {
- name: 'test',
- dbName: 'enmap',
- url: 'mongodb://username:password@localhost:27017/enmap'
-};
-
-const source = new Provider(options);
-const target = new SQLite({"name": "points"});
-
-Enmap.migrate(source, target);
+Object.assign(client, Enmap.multi(["settings", "tags", "blacklist"]));
 ```
 
