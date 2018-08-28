@@ -15,4 +15,5 @@
   * [Per-Server Settings](examples/settings.md)
 * [API Reference](api.md)
 * [Changelog](changelog.md)
+* [Why SQLITE only?](reason.md)
 
