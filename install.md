@@ -4,6 +4,8 @@
 
 In order to install Enmap, you'll need a few things installed on your machine. First off, you need NodeJS \(version 8 or higher required\). For Windows and MacOS, simply[ download and install from the website](https://nodejs.org/en/download/). For Linux, see [this page for installation](https://nodejs.org/en/download/package-manager/).
 
+Enmap v3 is no longer maintained on NPM and is only available on Github. You will need to install a git tool on your computer to install it. 
+
 Next, enmap has a specific pre-requisite which is needed for the sqlite dependency. How to install these depends on your operating system, so see below for instructions:
 
 {% tabs %}
@@ -44,7 +46,7 @@ Once installed, you're ready to continue.
 To install Enmap in your project, all you need to to is run the following command in your project folder: 
 
 ```text
-npm i enmap
+npm i eslachance/enmap#v3
 ```
 
 This may take a few minutes, then you're ready to use it. 
