@@ -5,7 +5,6 @@
 * [Usage Documentation](usage/README.md)
   * [Persistent Enmaps](usage/persistent-enmaps.md)
   * [Using Enmap.multi](usage/using-enmap.multi.md)
-  * [Waiting For Initilalization](usage/init.md)
   * [Basic Data Use](usage/basic.md)
   * [Working with Objects](usage/objects.md)
   * [Array Methods](usage/arrays.md)

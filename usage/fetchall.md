@@ -1,10 +1,3 @@
----
-description: >-
-  By default, Enmap will always fetch the entire data from your database and
-  load it in memory. For larger projects, this might not be ideal. This page
-  describes how to use the fetchAll option
----
-
 # Using the fetchAll option
 
 As described in [the home page](../#advantage-disadvantage), one disadvantage of Enmap is that it loads all your data in memory, so you're sacrificing RAM in order to gain speed. In larger projects, this might become a concern fairly quickly - or when using larger data sets that take more memory.

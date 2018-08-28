@@ -1,9 +1,3 @@
----
-description: >-
-  Enhanced Maps are a cached data structure based on Map() with enhancements
-  from the Array methods, with optional database persistence.
----
-
 # What is Enmap?
 
 Enmap stands for "Enhanced Map", and is a data structure based on the native JavaScript Map\(\) structure with additional helper methods from the native Array\(\) structure. 

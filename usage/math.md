@@ -1,9 +1,3 @@
----
-description: >-
-  Yeah, I hate "Math" too. But sometimes you gotta do watcha gotta do! Let's
-  move some numbers around.
----
-
 # Mathematical Methods
 
 {% hint style="warning" %}
