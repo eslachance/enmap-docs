@@ -15,5 +15,7 @@
   * [Per-Server Settings](examples/settings.md)
 * [API Reference](api.md)
 * [Changelog](changelog.md)
-* [Why SQLITE only?](reason.md)
+* [Blog Posts](blog-posts/README.md)
+  * [Enmap's History](blog-posts/enmaps-history.md)
+  * [Why SQLITE only?](blog-posts/reason.md)
 

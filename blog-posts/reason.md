@@ -20,7 +20,7 @@ But, after a year of updating Enmap, I realized that I'd painted myself in a cor
 
 1. Features were limited to the "lowest common denominator", whatever was available to _all_ providers. For instance, better-sqlite3 is a syncroneous module that's nonblocking \(which is a magical thing, really\). But since all other providers required promises, then I had to use sqlite as a promise module. 
 2. Maintaining multiple providers is hard work. Every new feature would require updating all the providers \(5 at this time\), and there were many requests to create new providers which is an annoying, sometimes complicated task that adds even more work in the future. 
-3. There were features I wanted that simply weren't possible, physically, with the providers \([like the fetchAll/autoFetch options](usage/fetchall.md)\).
+3. There were features I wanted that simply weren't possible, physically, with the providers \([like the fetchAll/autoFetch options](../usage/fetchall.md)\).
 
 In addition, the advantages became lesser with time. I realized most people were using leveldb at first, then most switch to sqlite when I updated guides to use that provider. Essentially, most people use whatever they're told to use. So, just forcing one database wasn't that much of an issue and didn't affect the majority of users. 
 
