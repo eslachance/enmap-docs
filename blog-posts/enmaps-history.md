@@ -1,9 +1,3 @@
----
-description: >-
-  Stay a while, and listen! Let me tell you the story of Enmap, how it came to
-  be, and its "raison d'être"!
----
-
 # Enmap's History
 
 From the first moments where I started using the Discord.js library, one thing in it fascinated me: "Collections". Discord.js Collections are a Map structure from JavaScript on top of which a bunch of useful methods are added, most notably those from JavaScript's Array structure. 

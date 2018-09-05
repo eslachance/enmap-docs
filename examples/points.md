@@ -91,7 +91,7 @@ Have your own way of incrementing points? No problem! Enmap.math\(\) gives you t
 Time to level up! If a user has enough points, they will go up a level. Now we have to do some math here, but don't run off in fear, this one's pretty easy. This is how we calculate the levels:
 
 ```javascript
-const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points"));
+const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
 ```
 
 This line will calculate the square root of `currentPoints` then multiplies that result by 0.1 then floors that result for a round number.
