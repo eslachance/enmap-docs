@@ -31,7 +31,7 @@ On Windows, two things are required to install enmap-sqlite. Python 2.7 and the 
 To install the necessary pre-requisites on Windows, the easiest is to simply run the following command, _under an **administrative** command prompt or powershell:_
 
 ```javascript
-npm -g --add-python-to-path install windows-build-tools node-gyp
+npm i -g --add-python-to-path --production windows-build-tools node-gyp
 ```
 
 > It's _very important_ that this be run in the **administrative** prompt, and not a regular one.

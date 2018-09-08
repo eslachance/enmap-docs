@@ -36,7 +36,7 @@ myEmitter.on("eventName", async (arg) => {
 
 ## Checking for Ready
 
-Enmap also provides a `isRead`  option that tells you if the database is loaded. You can use that however you want, though the preferred method is using `defer`.
+Enmap also provides a `isReady`  option that tells you if the database is loaded. You can use that however you want, though the preferred method is using `defer`.
 
 ```javascript
 if(myEnmap.isReady) { 
