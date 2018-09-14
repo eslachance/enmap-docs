@@ -6,8 +6,9 @@ For this purpose, there are features in Enmap that enable less caching, by sacri
 
 The options are as follow: 
 
-* `fetchAll`: Defaults to `true`, which means fetching all keys on load. Setting it to `false` means that no keys are fetched, so it loads faster and uses less memory. 
-* `autoFetch`: Defaults to `true`. When enabled, will automatically fetch any key that's requested using get, getProp, etc. This is a "syncroneous, non-blocking" operation, which means it doesn't need any of this promise or callback use, but doesn't lock your script \(so it can continue doing other things\). This is _very_ fast, by the way. 
+* `fetchAll`: Defaults to `true`, which means fetching all keys on load. Setting it to `false` means that no keys are fetched, so it loads faster and uses less memory.
+
+  `autoFetch`: Defaults to `true`. When enabled, will automatically fetch any key that's requested using get, getProp, etc. This is a "syncroneous" operation, which means it doesn't need any of this promise or callback use.
 
 ```javascript
 const Enmap = require("enmap");

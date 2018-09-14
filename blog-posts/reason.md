@@ -30,7 +30,7 @@ Also, most people did use enmap with persistence, and those that didn't... well,
 
 The reasoning behind removing all other providers and keeping sqlite was for specific features and capabilities inherent to the module I'm using, better-sqlite3.
 
-* better-sqlite3 is, as I mention, _syncroneous_ and _nonblocking_. The first part means, no callbacks, no promises. Just straight-up "make a request and it does it before the next line". Nonblocking means even though it's sync, it doesn't prevent other code parts from running. It's the best of both worlds and I love it. No more need for "waiting" for things, resolving promises, etc.
+* better-sqlite3 is, as I mention, _syncroneous_ , which means, no callbacks, no promises. Just straight-up "make a request and it does it before the next line". No more need for "waiting" for things, resolving promises, etc.
 * The sync nature of better-sqlite3 means I can add an autoFetch feature. I can simply say "If the key isn't there, try to get the data", without requiring the user to resolve a promise. This is awesome.
 * By the same token, I can also add simple things like "get all keys in the database" using a _getter_. This means you can do `enmap.indexes` and this is actually querying the database seamlessly without the user really knowing it does that. Same for `enmap.count` and other features I'm planning. 
 
