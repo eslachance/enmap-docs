@@ -215,7 +215,7 @@ if(command === "leaderboard") {
 ```javascript
   if(command === "give") {
     // Limited to guild owner - adjust to your own preference!
-    if(!message.author.id === message.guild.ownerID) 
+    if(message.author.id !== message.guild.ownerID) 
       return message.reply("You're not the boss of me, you can't do that!");
 
     const user = message.mentions.users.first() || client.users.get(args[0]);
