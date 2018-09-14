@@ -215,13 +215,15 @@ if(command === "leaderboard") {
 ```javascript
   if(command === "give") {
     // Limited to guild owner - adjust to your own preference!
-    if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
+    if(!message.author.id === message.guild.ownerID) 
+      return message.reply("You're not the boss of me, you can't do that!");
 
     const user = message.mentions.users.first() || client.users.get(args[0]);
     if(!user) return message.reply("You must mention someone or give their ID!");
 
     const pointsToAdd = parseInt(args[1], 10);
-    if(!pointsToAdd) return message.reply("You didn't tell me how many points to give...")
+    if(!pointsToAdd) 
+      return message.reply("You didn't tell me how many points to give...")
 
     // Ensure there is a points entry for this user.
     client.points.ensure(`${message.guild.id}-${user.id}`, {
@@ -243,8 +245,8 @@ if(command === "leaderboard") {
   }
 
   if(command === "cleanup") {
-    // Let's clean up the database of all "old" users, and those who haven't been around for... say a month.
-    // This will require you to add the following in the points code above: client.points.setProp(key, "lastSeen", new Date());
+    // Let's clean up the database of all "old" users, 
+    // and those who haven't been around for... say a month.
 
     // Get a filtered list (for this guild only).
     const filtered = client.points.filter( p => p.guild === message.guild.id );
