@@ -172,6 +172,7 @@ The `points` command would look like this:
 
 ```javascript
   if (command === "points") {
+    const key = `${message.guild.id}-${message.author.id}`;
     return message.channel.send(`You currently have ${client.points.get(key, "points")} points, and are level ${client.points.get(key, "level")}!`);
   }
 ```
@@ -189,10 +190,10 @@ So here's our leaderboard command:
 ```javascript
 if(command === "leaderboard") {
   // Get a filtered list (for this guild only), and convert to an array while we're at it.
-  const filtered = client.points.array().filter( p => p.guild === message.guild.id );
+  const filtered = client.points.filter( p => p.guild === message.guild.id ).array();
 
   // Sort it to get the top results... well... at the top. Y'know.
-  const sorted = filtered.sort((a, b) => a.points < b.points);
+  const sorted = filtered.sort((a, b) => a.points - b.points);
 
   // Slice it, dice it, get the top 10 of it!
   const top10 = sorted.splice(0, 10);
