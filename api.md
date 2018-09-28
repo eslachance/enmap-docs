@@ -13,49 +13,49 @@ A enhanced Map structure with additional utility methods. Can be made persistent
 
 * [Enmap](api.md#Enmap) ⇐ `Map`
   * _instance_
-    * [.count](api.md#Enmap+count) ⇒ `integer`
-    * [.indexes](api.md#Enmap+indexes) ⇒ `array.`
-    * [.set\(key, val, path\)](api.md#Enmap+set) ⇒ [`Enmap`](api.md#Enmap)
-    * [.get\(key, path\)](api.md#Enmap+get) ⇒ `*`
-    * [.fetchEverything\(\)](api.md#Enmap+fetchEverything) ⇒ [`Enmap`](api.md#Enmap)
-    * [.fetch\(keyOrKeys\)](api.md#Enmap+fetch) ⇒ [`Enmap`](api.md#Enmap)
-    * [.evict\(keyOrArrayOfKeys\)](api.md#Enmap+evict) ⇒ [`Enmap`](api.md#Enmap)
-    * [.autonum\(\)](api.md#Enmap+autonum) ⇒ `number`
-    * [.changed\(cb\)](api.md#Enmap+changed)
-    * [.close\(\)](api.md#Enmap+close) ⇒ `Promise.`
-    * [.setProp\(key, path, val\)](api.md#Enmap+setProp) ⇒ [`Enmap`](api.md#Enmap)
-    * [.push\(key, val, path, allowDupes\)](api.md#Enmap+push) ⇒ [`Enmap`](api.md#Enmap)
-    * [.pushIn\(key, path, val, allowDupes\)](api.md#Enmap+pushIn) ⇒ [`Enmap`](api.md#Enmap)
-    * [.math\(key, operation, operand, path\)](api.md#Enmap+math) ⇒ `Map`
-    * [.inc\(key, path\)](api.md#Enmap+inc) ⇒ `Map`
-    * [.dec\(key, path\)](api.md#Enmap+dec) ⇒ `Map`
-    * [.getProp\(key, path\)](api.md#Enmap+getProp) ⇒ `*`
-    * [.ensure\(key, defaultvalue\)](api.md#Enmap+ensure) ⇒ `*`
-    * [.has\(key, path\)](api.md#Enmap+has) ⇒ `boolean`
-    * [.hasProp\(key, path\)](api.md#Enmap+hasProp) ⇒ `boolean`
-    * [.delete\(key, path\)](api.md#Enmap+delete) ⇒ [`Enmap`](api.md#Enmap)
-    * [.deleteProp\(key, path\)](api.md#Enmap+deleteProp)
-    * [.deleteAll\(\)](api.md#Enmap+deleteAll)
-    * [.remove\(key, val, path\)](api.md#Enmap+remove) ⇒ `Map`
-    * [.removeFrom\(key, path, val\)](api.md#Enmap+removeFrom) ⇒ `Map`
-    * [.array\(\)](api.md#Enmap+array) ⇒ `Array`
-    * [.keyArray\(\)](api.md#Enmap+keyArray) ⇒ `Array`
-    * [.random\(\[count\]\)](api.md#Enmap+random) ⇒ `*` \| `Array.`
-    * [.randomKey\(\[count\]\)](api.md#Enmap+randomKey) ⇒ `*` \| `Array.`
-    * [.findAll\(prop, value\)](api.md#Enmap+findAll) ⇒ `Array`
-    * [.find\(propOrFn, \[value\]\)](api.md#Enmap+find) ⇒ `*`
-    * [.exists\(prop, value\)](api.md#Enmap+exists) ⇒ `boolean`
-    * [.filter\(fn, \[thisArg\]\)](api.md#Enmap+filter) ⇒ [`Enmap`](api.md#Enmap)
-    * [.filterArray\(fn, \[thisArg\]\)](api.md#Enmap+filterArray) ⇒ `Array`
-    * [.map\(fn, \[thisArg\]\)](api.md#Enmap+map) ⇒ `Array`
-    * [.some\(fn, \[thisArg\]\)](api.md#Enmap+some) ⇒ `boolean`
-    * [.every\(fn, \[thisArg\]\)](api.md#Enmap+every) ⇒ `boolean`
-    * [.reduce\(fn, \[initialValue\]\)](api.md#Enmap+reduce) ⇒ `*`
-    * [.clone\(\)](api.md#Enmap+clone) ⇒ [`Enmap`](api.md#Enmap)
-    * [.concat\(...enmaps\)](api.md#Enmap+concat) ⇒ [`Enmap`](api.md#Enmap)
-    * [.equals\(enmap\)](api.md#Enmap+equals) ⇒ `boolean`
+    * [.count](api.md#enmap-count-integer) ⇒ `integer`
+    * [.indexes](api.md#enmap-indexes-array) ⇒ `array.`
+    * [.set\(key, val, path\)](api.md#enmap-set-key-val-path-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.get\(key, path\)](api.md#enmap-get-key-path) ⇒ `*`
+    * [.fetchEverything\(\)](api.md#enmap-fetcheverything-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.fetch\(keyOrKeys\)](api.md#enmap-fetch-keyorkeys-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.evict\(keyOrArrayOfKeys\)](api.md#enmap-evict-keyorarrayofkeys-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.autonum\(\)](api.md#enmap-autonum-number) ⇒ `number`
+    * [.changed\(cb\)](api.md#enmap-changed-cb)
+    * [.close\(\)](api.md#enmap-close-promise) ⇒ `Promise.`
+    * [.setProp\(key, path, val\)](api.md#enmap-setprop-key-path-val-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.push\(key, val, path, allowDupes\)](api.md#enmap-push-key-val-path-allowdupes-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.pushIn\(key, path, val, allowDupes\)](api.md#enmap-pushin-key-path-val-allowdupes-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.math\(key, operation, operand, path\)](api.md#enmap-math-key-operation-operand-path-map) ⇒ `Map`
+    * [.inc\(key, path\)](api.md#enmap-inc-key-path-map) ⇒ `Map`
+    * [.dec\(key, path\)](api.md#enmap-dec-key-path-map) ⇒ `Map`
+    * [.getProp\(key, path\)](api.md#enmap-getprop-key-path) ⇒ `*`
+    * [.ensure\(key, defaultvalue\)](api.md#enmap-ensure-key-defaultvalue) ⇒ `*`
+    * [.has\(key, path\)](api.md#enmap-has-key-path-boolean) ⇒ `boolean`
+    * [.hasProp\(key, path\)](api.md#enmap-hasprop-key-path-boolean) ⇒ `boolean`
+    * [.delete\(key, path\)](api.md#enmap-delete-key-path-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.deleteProp\(key, path\)](api.md#enmap-deleteprop-key-path)
+    * [.deleteAll\(\)](api.md#enmap-deleteall)
+    * [.remove\(key, val, path\)](api.md#enmap-remove-key-val-path-map) ⇒ `Map`
+    * [.removeFrom\(key, path, val\)](api.md#enmap-removefrom-key-path-val-map) ⇒ `Map`
+    * [.array\(\)](api.md#enmap-array-array) ⇒ `Array`
+    * [.keyArray\(\)](api.md#enmap-keyarray-array) ⇒ `Array`
+    * [.random\(\[count\]\)](api.md#enmap-random-count-or-array) ⇒ `*` \| `Array.`
+    * [.randomKey\(\[count\]\)](api.md#enmap-randomkey-count-or-array) ⇒ `*` \| `Array.`
+    * [.findAll\(prop, value\)](api.md#enmap-findall-prop-value-array) ⇒ `Array`
+    * [.find\(propOrFn, \[value\]\)](api.md#enmap-find-proporfn-value) ⇒ `*`
+    * [.exists\(prop, value\)](api.md#enmap-exists-prop-value-boolean) ⇒ `boolean`
+    * [.filter\(fn, \[thisArg\]\)](api.md#enmap-filter-fn-thisarg-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.filterArray\(fn, \[thisArg\]\)](api.md#enmap-filterarray-fn-thisarg-array) ⇒ `Array`
+    * [.map\(fn, \[thisArg\]\)](api.md#enmap-map-fn-thisarg-array) ⇒ `Array`
+    * [.some\(fn, \[thisArg\]\)](api.md#enmap-some-fn-thisarg-boolean) ⇒ `boolean`
+    * [.every\(fn, \[thisArg\]\)](api.md#enmap-every-fn-thisarg-boolean) ⇒ `boolean`
+    * [.reduce\(fn, \[initialValue\]\)](api.md#enmap-reduce-fn-initialvalue) ⇒ `*`
+    * [.clone\(\)](api.md#enmap-clone-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.concat\(...enmaps\)](api.md#enmap-concat-enmaps-enmap) ⇒ [`Enmap`](api.md#Enmap)
+    * [.equals\(enmap\)](api.md#enmap-equals-enmap-boolean) ⇒ `boolean`
   * _static_
-    * [.multi\(names, options\)](api.md#Enmap.multi) ⇒ `Array.`
+    * [.multi\(names, options\)](api.md#enmap-multi-names-options-array) ⇒ `Array.`
 
 ### enmap.count ⇒ `integer`
 
