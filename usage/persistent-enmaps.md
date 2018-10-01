@@ -10,7 +10,7 @@ Official Enmap Providers:
 * [Enmap-Mongo](https://www.npmjs.com/package/enmap-mongo): Mongodb database provider. Supports Sharding.
 * [Enmap-Level:](https://www.npmjs.com/package/enmap-level) Sort of not recommended at this point, doesn't support sharding, no longer the most efficient/faster provider.
 
-When using any provider, it's very important to understand that _it takes time to load the data from the database_. Certain providers also take some time to even open the database connection, and that's also something to consider. 
+When using any provider, it's very important to understand that _it takes time to load the data from the database_. Certain providers even take some time to open the database connection, so that's also something to consider. 
 
 ## Using _defer_
 
