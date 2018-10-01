@@ -6,7 +6,7 @@ Now that we have a functional Enmap structure \(which we'll always refer to as `
 
 ## Writing Data
 
-In terms of Enmap, "writing", "adding" and "editing" data is essentially the same thing. When using the basic `set()` method, if the key does not exist it's created, and if it does, it's modified. 
+In terms of Enmap, "writing", "adding" and "editing" data is essentially the same thing when using the basic `set()` method, if the key does not exist it's created, and if it does, it's modified. 
 
 Enmap supports most _native_ JavaScript data types, with a few small exceptions. 
 
