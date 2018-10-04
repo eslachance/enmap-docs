@@ -31,7 +31,7 @@ client.settings = new Enmap({
   autoFetch: true,
   cloneLevel: 'deep'
 });
-// Just setting up a default configuration object here, to have somethign to insert.
+// Just setting up a default configuration object here, to have something to insert.
 const defaultSettings = {
   prefix: "!",
   modLogChannel: "mod-log",
