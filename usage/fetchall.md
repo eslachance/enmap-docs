@@ -14,9 +14,9 @@ The options are as follow:
 const Enmap = require("enmap");
 
 const points = new Enmap({
-  persistent: true
-  name: "points"
-  fetchAll: false
+  persistent: true,
+  name: "points",
+  fetchAll: false,
   autoFetch: true
 });
 ```
