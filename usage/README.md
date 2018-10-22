@@ -40,6 +40,7 @@ The following is a list of all options that are available in Enmap, when initial
   * If an enmap does not have a name, **it is not persistent** and any option related to database interaction is ignored \(fetchAll, autoFetch, polling and pollingInterval\).
 * `fetchAll`: Defaults to `true`, which means fetching all keys on load. Setting it to `false` means that no keys are fetched, so it loads faster and uses less memory. 
 * `autoFetch`: Defaults to `true`. When enabled, will automatically fetch any key that's requested using get, getProp, etc. This is a "syncroneous" operation, which means it doesn't need any of this promise or callback use.
+* `dataDir`: Defaults to `./data`. Determines where the sqlite files will be stored. Can be relative \(to your project root\) or absolute on the disk. Windows users , remember to escape your backslashes!
 * `cloneLevel`: Defaults to `deep`. Determines how objects and arrays are treated when inserting and retrieving from the database.
   * `none`: Data is inserted _by reference_, meaning if you change it in the Enmap it changes outside, and vice versa. **This should only be used in non-persistent enmaps if you know what you're doing!**.
   * `shallow`: Any object or array will be inserted as a shallow copy, meaning the first level is copied but sub-elements are inserted as references. This emulates Enmap 3's behaviour, but is not recommended unless you know what you're doing.

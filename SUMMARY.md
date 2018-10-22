@@ -13,6 +13,7 @@
 * [Complete Examples](examples/README.md)
   * [Points/Currency System](examples/points.md)
   * [Per-Server Settings](examples/settings.md)
+  * [Koa Authentication with Enmap](examples/koa-authentication-with-enmap.md)
 * [API Reference](api.md)
 * [Changelog](changelog.md)
 * [Blog Posts](blog-posts/README.md)
