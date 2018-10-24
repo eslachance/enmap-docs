@@ -1,10 +1,3 @@
----
-description: >-
-  In this example we'll be adding username/password authentication to a simple
-  Koa app. Note that the method is very similar for express.js, though not with
-  the same modules of course!
----
-
 # Koa Authentication with Enmap
 
 In this example we'll be using Enmap to store user data in order to authenticate users on a simple Koa application. In order to make this secure, we'll be using `bcrypt` to encrypt the passwords, so of course they will not be plain text in the database. 

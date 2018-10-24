@@ -4,7 +4,7 @@ As described in [the home page](../#advantage-disadvantage), one disadvantage of
 
 For this purpose, there are features in Enmap that enable less caching, by sacrificing some speed and ease of use. That is to say, with data not being fully loaded, there are some things that can't be done easily - see below for details.
 
-The options are as follow: 
+The options are as follow:
 
 * `fetchAll`: Defaults to `true`, which means fetching all keys on load. Setting it to `false` means that no keys are fetched, so it loads faster and uses less memory.
 
@@ -21,11 +21,11 @@ const points = new Enmap({
 });
 ```
 
-## What does it mean if the data isn't loaded? 
+## What does it mean if the data isn't loaded?
 
-If fetchAll is set to false, no data \(by default\) will be loaded from the database - the Enmap will be completely empty. This means that doing a `.size` check returns 0, looping and filtering doesn't return anything, and get\(\) requests all return null. 
+If fetchAll is set to false, no data \(by default\) will be loaded from the database - the Enmap will be completely empty. This means that doing a `.size` check returns 0, looping and filtering doesn't return anything, and get\(\) requests all return null.
 
-Ok but... how's that useful? It's useful because if you don't need the data, it's not loaded. To load data, there are 2 different methods available. 
+Ok but... how's that useful? It's useful because if you don't need the data, it's not loaded. To load data, there are 2 different methods available.
 
 ## Fetching Data
 
@@ -39,12 +39,10 @@ Ok but... how's that useful? It's useful because if you don't need the data, it'
 
 Yup. Those are the only things you really need to know for the current version of Enmap's fetchAll feature.
 
-### Upcoming Features: 
+### Upcoming Features:
 
-I'm working on the following features in future versions of enmap, related to fetch methods: 
+I'm working on the following features in future versions of enmap, related to fetch methods:
 
 * Add the ability to check if the DB has a key without fetching \(a sort of "uncached has\(\)"\)
 * Add an auto-uncache feature so that "stale" keys are cleaned. This would combine well with autoFetch in that it would ultimately keep memory usage low.
-
-
 
