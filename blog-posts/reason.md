@@ -18,7 +18,7 @@ So one of the major changes from Enmap 3 to 4 is the removal of Providers. Provi
 
 But, after a year of updating Enmap, I realized that I'd painted myself in a corner with Providers. There came to light that there were multiple limitations to providers:
 
-1. Features were limited to the "lowest common denominator", whatever was available to _all_ providers. For instance, better-sqlite3 is a syncroneous module that's nonblocking \(which is a magical thing, really\). But since all other providers required promises, then I had to use sqlite as a promise module. 
+1. Features were limited to the "lowest common denominator", whatever was available to _all_ providers. For instance, better-sqlite3 is a synchronous module that's nonblocking \(which is a magical thing, really\). But since all other providers required promises, then I had to use sqlite as a promise module. 
 2. Maintaining multiple providers is hard work. Every new feature would require updating all the providers \(5 at this time\), and there were many requests to create new providers which is an annoying, sometimes complicated task that adds even more work in the future. 
 3. There were features I wanted that simply weren't possible, physically, with the providers \([like the fetchAll/autoFetch options](../usage/fetchall.md)\).
 
@@ -30,7 +30,7 @@ Also, most people did use enmap with persistence, and those that didn't... well,
 
 The reasoning behind removing all other providers and keeping sqlite was for specific features and capabilities inherent to the module I'm using, better-sqlite3.
 
-* better-sqlite3 is, as I mention, _syncroneous_ , which means, no callbacks, no promises. Just straight-up "make a request and it does it before the next line". No more need for "waiting" for things, resolving promises, etc.
+* better-sqlite3 is, as I mention, _synchronous_ , which means, no callbacks, no promises. Just straight-up "make a request and it does it before the next line". No more need for "waiting" for things, resolving promises, etc.
 * The sync nature of better-sqlite3 means I can add an autoFetch feature. I can simply say "If the key isn't there, try to get the data", without requiring the user to resolve a promise. This is awesome.
 * By the same token, I can also add simple things like "get all keys in the database" using a _getter_. This means you can do `enmap.indexes` and this is actually querying the database seamlessly without the user really knowing it does that. Same for `enmap.count` and other features I'm planning. 
 
