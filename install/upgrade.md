@@ -4,7 +4,7 @@ Upgrading to enmap v4 requires a little bit of migration, as Enmap 4 changed the
 
 * Make a copy of your current app in a new folder.
 * Create a new folder "on the same level" as your bot. Name it something like "migrate"
-* You should now have 3 folders. Something like `mybotss/coolbot` , `mybots/coolbot-copy` , `mybots/migrate/`
+* You should now have 3 folders. Something like `mybots/coolbot` , `mybots/coolbot-copy` , `mybots/migrate/`
 * In the `migrate` folder, run `npm i enmap@3.1.4 enmap-sqlite@latest` , as well as whatever source provider you need if it's not sqlite \(in my example, `npm i enmap-mongo@latest`
 
 You should now have something like the following image.
