@@ -32,7 +32,7 @@ const target = new SQLite({"name": "test", dataDir: '../coolbot-copy/data'});
 Enmap.migrate(source, target).then( () => process.exit(0) );
 ```
 
-Very important: the "target" **must** be enmap-sqlite. enmap v4 only supports an sqlite-backend.
+Very important: the "target" **must** be enmap-sqlite. Enmap v4 only supports an sqlite-backend.
 
 From the `migrate` folder, run `node index.js`, which should correctly migrate your data. 
 
