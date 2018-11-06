@@ -73,7 +73,17 @@ myEnmap.set("someObject", "newThing", "sub.blah");
 myEnmap.set("someArray", "four", 3);
 ```
 
-As you can see, setProp\(\) and getProp\(\) work on the same concept that the path can be as complex as you want. 
+## setProp\(\)
 
-Arrays have additional helper methods, [you can see them here](arrays.md).
+You can also use the setProp\(\) method. This method is made for objects, because the order is different: The normal set\(\) method is `KEY, VALUE, PATH`, but the setProp\(\) method has `KEY, PATH, VALUE`. Example:
+
+```javascript
+myEnmap.setProp("someObject", "sub.blah", "blahhhhhhhh");
+```
+
+## getProp\(\)
+
+The getProp is working the same as the get\(\) method.
+
+> Arrays have additional helper methods, [you can see them here](arrays.md).
 
