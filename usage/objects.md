@@ -2,7 +2,7 @@
 
 Enmap is a great way to store structured data, and offers a few helper features that directly affect both objects and arrays. 
 
-Let's assume for a moment that we want to store the following data structure in  Enmap: 
+Let's assume for a moment that we want to store the following data structure in Enmap: 
 
 ```javascript
 const myStructure = {
@@ -17,7 +17,7 @@ const myStructure = {
 }
 ```
 
-This structure has 5 "properties": `first`, `second`, `changeme`, `isCool`, `sub`. The `sub` property has 2 properties of its own, `yay` and `thing`. 
+This structure has 5 "properties": `first`, `second`, `changeme`, `isCool` and `sub`. The `sub` property has 2 properties of its own, `yay` and `thing`. 
 
 To store this structure in Enmap, you can use a variable, or just straight-up write the object: 
 
@@ -53,7 +53,7 @@ const blah = myEnmap.get("someObject", `sub.${propToGet}`);
 
 ## Checking if a property exists
 
-You can also check if a specific property exists or not. This is done through the `has` method, with a key, and path to the property: 
+You can also check if a specific property exists or not. This is done through the `has()` method, with a key, and path to the property: 
 
 ```javascript
 myEnmap.has("someObject", "sub.thing"); // returns true
@@ -63,7 +63,7 @@ myEnmap.has("someObject", "heck"); // returns false.
 
 ## Modifying Properties
 
-There are a few various ways to modify properties of both Objects and Arrays. The very basic way to set a property on an object or array is through `.set(key, value, path)` like the following examples: 
+There are a few various ways to modify properties of both Objects and Arrays. The very basic way to set a property on an object or array is through `set(key, value, path)` like the following examples: 
 
 ```javascript
 // Set an object property
