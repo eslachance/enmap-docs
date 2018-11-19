@@ -44,6 +44,7 @@ A enhanced Map structure with additional utility methods. Can be made persistent
     * [.randomKey\(\[count\]\)](api.md#Enmap+randomKey) ⇒ `*` \| `Array.`
     * [.findAll\(prop, value\)](api.md#Enmap+findAll) ⇒ `Array`
     * [.find\(propOrFn, \[value\]\)](api.md#Enmap+find) ⇒ `*`
+    * [.findKey\(propOrFn, \[value\]\)](api.md#Enmap+findKey) ⇒ `*`
     * [.exists\(prop, value\)](api.md#Enmap+exists) ⇒ `boolean`
     * [.filter\(fn, \[thisArg\]\)](api.md#Enmap+filter) ⇒ [`Enmap`](api.md#Enmap)
     * [.filterArray\(fn, \[thisArg\]\)](api.md#Enmap+filterArray) ⇒ `Array`
@@ -517,6 +518,29 @@ enmap.find('username', 'Bob');
 
 ```javascript
 enmap.find(val => val.username === 'Bob');
+```
+
+### enmap.findKey\(propOrFn, \[value\]\) ⇒ `*`
+
+Searches for the key of a single item where its specified property's value is identical to the given value (`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to [Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex).
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| propOrFn | `string` \| `function` | The property to test against, or the function to test with |
+| \[value\] | `*` | The expected value - only applicable and required if using a property for the first argument |
+
+**Example**
+
+```javascript
+enmap.findKey('username', 'Bob');
+```
+
+**Example**
+
+```javascript
+enmap.findKey(val => val.username === 'Bob');
 ```
 
 ### enmap.exists\(prop, value\) ⇒ `boolean`
