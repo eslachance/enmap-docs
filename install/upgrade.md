@@ -34,11 +34,11 @@ Enmap.migrate(source, target).then( () => process.exit(0) );
 
 Very important: the "target" **must** be enmap-sqlite. Enmap v4 only supports an sqlite-backend.
 
-From the `migrate` folder, run `node index.js`, which should correctly migrate your data. 
+From the `migrate` folder, run `node index.js`, which should correctly migrate your data.
 
 ### Simpler migration from enmap-sqlite
 
-If you're using enmap-sqlite already, you don't really need to do the entire thing above. Adding a single file called `migrate.js` to your project folder, then running it with `node migrate.js` will convert the format and then all you need is to modify the code for Enmap 4. Stilll, I recommend backing up your bot first. Just in case. 
+If you're using enmap-sqlite already, you don't really need to do the entire thing above. Adding a single file called `migrate.js` to your project folder, then running it with `node migrate.js` will convert the format and then all you need is to modify the code for Enmap 4. Stilll, I recommend backing up your bot first. Just in case.
 
 ```javascript
 const Enmap = require("enmap");
@@ -51,7 +51,7 @@ Enmap.migrate(source, target).then( () => process.exit(0) );
 
 ## Code Changes
 
-There is _very little_ you need to change when moving to Enmap 4. The only changes that are required after migrating is the initialization of your Enmap which is now simpler. 
+There is _very little_ you need to change when moving to Enmap 4. The only changes that are required after migrating is the initialization of your Enmap which is now simpler.
 
 ```javascript
 // Change From: 
@@ -65,7 +65,7 @@ const Enmap = require("enmap");
 client.points = new Enmap({name: "points"});
 ```
 
-If using Enmap.multi\(\), the change is just as simple: 
+If using Enmap.multi\(\), the change is just as simple:
 
 ```javascript
 // Change from V3:  
@@ -79,9 +79,9 @@ const Enmap = require("enmap");
 Object.assign(client, Enmap.multi(["settings", "tags"]));
 ```
 
-The rest of your code \(all interactions with Enmap\) can remain the same - there should be no need to edit any of it. 
+The rest of your code \(all interactions with Enmap\) can remain the same - there should be no need to edit any of it.
 
 ## Installing V4
 
-Once your data is migrating and the code is changed, you can go ahead and install enmap version 4 through `npm i enmap@latest` in your "new" bot folder \(the target of the migration\).  This will take a few minutes \(it needs to rebuild sqlite\) and output that 4.0.x is now installed. Start the bot, and it should be working! If it doesn't, join the support server and we'll help you out ^\_^.
+Once your data is migrating and the code is changed, you can go ahead and install enmap version 4 through `npm i enmap@latest` in your "new" bot folder \(the target of the migration\). This will take a few minutes \(it needs to rebuild sqlite\) and output that 4.0.x is now installed. Start the bot, and it should be working! If it doesn't, join the support server and we'll help you out ^\_^.
 
