@@ -46,10 +46,7 @@ As for the C++ build tools, that's installed using the simple command: `sudo apt
 {% endtab %}
 
 {% tab title="Mac OS" %}
-As of writing this page, MacOS versions seem to all come pre-built with Python 2.7 on the system. You will, however, need the C++ build tools. 
-
-* Install [XCode](https://developer.apple.com/xcode/download/)
-* Once XCode is installed, go to **Preferences**, **Downloads**, and install the **Command Line Tools**.
+As of writing this page, MacOS versions seem to all come pre-built with Python 2.7 on the system. You will, however, need the C++ build tools, which can be installed by running: `xcode-select --install`.
 
 Once installed, you're ready to continue. 
 {% endtab %}
