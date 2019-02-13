@@ -26,7 +26,7 @@ For persistence you need to also install `better-sqlite-pool`, which is necessar
 {% tab title="Windows" %}
 On Windows, two things are required to install enmap-sqlite. Python 2.7 and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite. 
 
-> The Windows Built Tools require over 3GB of space to install and use. Make sure you have enough space before starting this download and install!
+> The Windows Build Tools require over 3GB of space to install and use. Make sure you have enough space before starting this download and install!
 
 To install the necessary pre-requisites on Windows, the easiest is to simply run the following command, _under an **administrative** command prompt or powershell:_
 
