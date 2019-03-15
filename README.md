@@ -1,4 +1,13 @@
+---
+description: >-
+  Enmap stands for "Enhanced Map", and is a data structure based on the native
+  JavaScript Map() structure with additional helper methods from the native
+  Array() structure.
+---
+
 # What is Enmap?
+
+Enmap stands for "Enhanced Map", and is a data structure based on the native JavaScript Map\(\) structure with additional helper methods from the native Array\(\) structure. 
 
 Enmap also offers _persistence_, which means it will automatically save everything to save to it in a database, in the background, without any additional code or delays.
 
