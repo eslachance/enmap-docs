@@ -1,4 +1,14 @@
-# Upgrade from Enmap 3 to 4
+---
+description: >-
+  This guide assists in migrating your data from Enmap 3 using Providers, to the
+  latest version of enmap.
+---
+
+# Migrating data from Enmap 3
+
+{% hint style="warning" %}
+You do not need this page if you're new to Enmap or if you're starting a new project!
+{% endhint %}
 
 Upgrading to enmap v4 requires a little bit of migration, as Enmap 4 changed the internal method by which data is stored, slightly. To use this migration:
 

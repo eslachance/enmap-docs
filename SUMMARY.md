@@ -2,7 +2,8 @@
 
 * [What is Enmap?](README.md)
 * [Enmap Installation](install/README.md)
-  * [Upgrade from Enmap 3 to 4](install/upgrade.md)
+  * [Migrating data from Enmap 3](install/upgrade.md)
+  * [Troubleshooting Guide](install/troubleshooting-guide.md)
 * [Usage Documentation](usage/README.md)
   * [Waiting For Initilalization](usage/init.md)
   * [Basic Data Use](usage/basic.md)
