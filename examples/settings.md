@@ -139,7 +139,7 @@ client.on("message", async (message) => {
 ```javascript
   if(command === "showconf") {
     let configProps = Object.keys(guildConf).map(prop => {
-      return `${prop}  :  ${guildConf[prop]}\n`;
+      return `\n${prop}  :  ${guildConf[prop]}`;
     });
     message.channel.send(`The following are the server's current configuration:
     \`\`\`${configProps}\`\`\``);
