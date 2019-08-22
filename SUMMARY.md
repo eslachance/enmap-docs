@@ -11,6 +11,7 @@
   * [Array Methods](usage/arrays.md)
   * [Mathematical Methods](usage/math.md)
   * [Using the fetchAll option](usage/fetchall.md)
+  * [Using from multiple files](usage/using-from-multiple-files.md)
 * [Complete Examples](examples/README.md)
   * [Points/Currency System](examples/points.md)
   * [Per-Server Settings](examples/settings.md)
