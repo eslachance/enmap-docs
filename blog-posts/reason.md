@@ -26,7 +26,7 @@ In addition, the advantages became lesser with time. I realized most people were
 
 Also, most people did use enmap with persistence, and those that didn't... well, most users have enmap to use with discord.js bots in the first place which gives them Collection - almost the same as a non-persistent enmap.
 
-## What are they advantages of sqlite?
+## What are the advantages of sqlite?
 
 The reasoning behind removing all other providers and keeping sqlite was for specific features and capabilities inherent to the module I'm using, better-sqlite3.
 
