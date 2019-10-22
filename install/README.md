@@ -6,7 +6,7 @@
 In order to install Enmap, you'll need a few things installed on your machine. First off, you need NodeJS \(Node 10 is required. Not 8, not 9, not 12. _**NODE 10 ONLY**_\). For Windows and MacOS, simply[ download and install from the website](https://nodejs.org/en/download/). For Linux, see [this page for installation](https://nodejs.org/en/download/package-manager/).
 {% endhint %}
 
-To install Enmap in your project, all you need to to is run the following command: 
+To install Enmap in your project, all you need to do is run the following command: 
 
 ```javascript
 npm i enmap@latest
