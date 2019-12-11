@@ -198,7 +198,7 @@ Function called whenever data changes within Enmap after the initial load. Can b
 
 ```javascript
 enmap.changed((keyName, oldValue, newValue) => {
-  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue});
+  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue}`);
 });
 ```
 
@@ -245,7 +245,7 @@ enmap.set("simpleArray", [1, 2, 3, 4]);
 enmap.set("arrayInObject", {sub: [1, 2, 3, 4]});
 
 enmap.push("simpleArray", 5); // adds 5 at the end of the array
-enmap.push("arrayInObject", "five", "sub"); adds "five" at the end of the sub array
+enmap.push("arrayInObject", "five", "sub"); // adds "five" at the end of the sub array
 ```
 
 ## enmap.pushIn\(key, path, val, allowDupes\) ⇒ [`Enmap`](api.md#Enmap)
