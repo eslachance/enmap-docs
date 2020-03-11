@@ -2,33 +2,27 @@
 
 ## Installing enmap
 
-{% hint style="warning" %}
-In order to install Enmap, you'll need a few things installed on your machine. First off, you need NodeJS \(Node 10 is required. Not 8, not 9, not 12. _**NODE 10 ONLY**_\). For Windows and MacOS, simply[ download and install from the website](https://nodejs.org/en/download/). For Linux, see [this page for installation](https://nodejs.org/en/download/package-manager/).
-{% endhint %}
-
 To install Enmap in your project, all you need to do is run the following command:
 
 ```javascript
 npm i enmap@latest
 ```
 
-This may take a few minutes, then you're ready to use it.
+This installs enmap which can be used in memory \(as in, doesn't save to the database\), if that's what you need. Otherwise, keep reading!
 
 ### Peer Dependencies
 
-For persistence you need to also install `better-sqlite-pool`, which is necessary for the sqlite database interaction.
+For persistence you need to also install `better-sqlite3`, which is necessary for the sqlite database interaction.
 
 ### Pre-Requisites
 
-`better-sqlite-pool` has a specific pre-requisite which is needed to build it. How to install these depends on your operating system, so see below for instructions:
+`better-sqlite3` has a specific prerequisite which is needed to build it. How to install these depends on your operating system, so see below for instructions:
 
 {% tabs %}
 {% tab title="Windows" %}
-On Windows, two things are required to install enmap-sqlite. Python 2.7 and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite.
+On Windows, two things are required to install better-sqlite3. Python 2.7 and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite.
 
-> The Windows Build Tools require over 3GB of space to install and use. Make sure you have enough space before starting this download and install!
-
-To install the necessary pre-requisites on Windows, the easiest is to simply run the following command, _under an **administrative** command prompt or powershell:_
+To install the necessary prerequisites on Windows, the easiest is to simply run the following command, _under an **administrative** command prompt or powershell:_
 
 ```javascript
 npm i -g --add-python-to-path --vs2015 --production windows-build-tools
@@ -58,7 +52,7 @@ Once installed, you're ready to continue.
 Once those pre-requisites are installed, simply run the following command:
 
 ```text
-npm i better-sqlite-pool
+npm i better-sqlite3
 ```
 
 This will take a few minutes also, as it needs to build the module from source code.
