@@ -27,7 +27,7 @@ myEnmap.push("arrInObj", "Robby", "aliases");
 // now ["Bobby", "Robert", "Robby"]
 ```
 
-> The second parameter in pushIn is the "path" to the array in an object. It works the same as the properties path used in [Working With Objects](objects.md).
+> The third parameter in push is the "path" to the array in an object. It works the same as the properties path used in [Working With Objects](objects.md).
 
 ## Removing from the array
 
