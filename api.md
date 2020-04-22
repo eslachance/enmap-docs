@@ -55,6 +55,8 @@ description: 'The full, boring, unadultered enmap docs.'
     * [.clone\(\)](api.md#Enmap+clone) ⇒ [`Enmap`](api.md#Enmap)
     * [.concat\(...enmaps\)](api.md#Enmap+concat) ⇒ [`Enmap`](api.md#Enmap)
     * [.equals\(enmap\)](api.md#Enmap+equals) ⇒ `boolean`
+    * [.export\(\)](api.md#Enmap+export) ⇒ `string`
+    * [.import\(string\)](api.md#Enmap+import) ⇒ [`Enmap`](api.md#Enmap)
   * _static_
     * [.migrate\(\)](api.md#Enmap.migrate)
     * [.multi\(names, options\)](api.md#Enmap.multi) ⇒ `Array.`
@@ -723,6 +725,26 @@ Checks if this Enmap shares identical key-value pairings with another. This is d
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | enmap | [`Enmap`](api.md#Enmap) | Enmap to compare with |
+
+
+## enmap.export\(\) ⇒ `string`
+
+Creates a stringifed JSON object of the enmap. Can be imported using [enmap.import](api.md#enmap+import).
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `String` - Stringified JSON object of the enmap.
+
+
+## enmap.import\(string\) ⇒ [`Enmap`](api.md#Enmap)
+
+Import a stringified JSON enmap. You can get this with [enmap.export](api.md#enmap+export). 
+
+**Kind**: instance method of [`Enmap`](api.md#Enmap)  
+**Returns**: `boolean` - Whether the Enmaps have identical contents
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| string | String | A stringified JSON enmap |
 
 ## Enmap.migrate\(\)
 
