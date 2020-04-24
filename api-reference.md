@@ -1,4 +1,8 @@
-# index
+---
+description: 'The full, unadultered Enmap docs.'
+---
+
+# Enmap API Documentation
 
 ## Enmap ⇐ `Map`
 
