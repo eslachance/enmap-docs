@@ -16,7 +16,7 @@
   * [Points/Currency System](complete-examples/points.md)
   * [Per-Server Settings](complete-examples/per-server-settings.md)
   * [Koa Authentication with Enmap](complete-examples/koa-authentication-with-enmap.md)
-* [Enmap API Documentation](api-reference.md)
+* [Enmap API Documentation](api.md)
 * [Changelog](changelog.md)
 * [Blog Posts](blog-posts/README.md)
   * [Enmap's History](blog-posts/enmaps-history.md)
