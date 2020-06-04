@@ -11,67 +11,8 @@ Can be made persistent
 **Kind**: global class  
 **Extends**: <code>Map</code>  
 
-* [Enmap](#Enmap) ⇐ <code>Map</code>
-    * [new Enmap(iterable, [options])](#new_Enmap_new)
-    * _instance_
-        * [.count](#Enmap+count) ⇒ <code>integer</code>
-        * [.indexes](#Enmap+indexes) ⇒ <code>array.&lt;string&gt;</code>
-        * [.autonum](#Enmap+autonum) ⇒ <code>number</code>
-        * [.set(key, val, path)](#Enmap+set) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.get(key, path)](#Enmap+get) ⇒ <code>\*</code>
-        * [.fetchEverything()](#Enmap+fetchEverything) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.fetch(keyOrKeys)](#Enmap+fetch) ⇒ [<code>Enmap</code>](#Enmap) \| <code>\*</code>
-        * [.evict(keyOrArrayOfKeys)](#Enmap+evict) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.changed(cb)](#Enmap+changed)
-        * [.close()](#Enmap+close) ⇒ <code>Promise.&lt;\*&gt;</code>
-        * [.setProp(key, path, val)](#Enmap+setProp) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.push(key, val, path, allowDupes)](#Enmap+push) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.pushIn(key, path, val, allowDupes)](#Enmap+pushIn) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.math(key, operation, operand, path)](#Enmap+math) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.inc(key, path)](#Enmap+inc) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.dec(key, path)](#Enmap+dec) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.getProp(key, path)](#Enmap+getProp) ⇒ <code>\*</code>
-        * [.ensure(key, defaultValue, path)](#Enmap+ensure) ⇒ <code>\*</code>
-        * [.has(key, path)](#Enmap+has) ⇒ <code>boolean</code>
-        * [.hasProp(key, path)](#Enmap+hasProp) ⇒ <code>boolean</code>
-        * [.includes(key, val, path)](#Enmap+includes) ⇒ <code>boolean</code>
-        * [.delete(key, path)](#Enmap+delete) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.deleteProp(key, path)](#Enmap+deleteProp)
-        * [.deleteAll()](#Enmap+deleteAll)
-        * [.clear()](#Enmap+clear) ⇒ <code>null</code>
-        * [.destroy()](#Enmap+destroy) ⇒ <code>null</code>
-        * [.remove(key, val, path)](#Enmap+remove) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.removeFrom(key, path, val)](#Enmap+removeFrom) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.export()](#Enmap+export) ⇒ <code>string</code>
-        * [.import(data, overwrite, clear)](#Enmap+import) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.array()](#Enmap+array) ⇒ <code>Array</code>
-        * [.keyArray()](#Enmap+keyArray) ⇒ <code>Array.&lt;(string\|number)&gt;</code>
-        * [.random([count])](#Enmap+random) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-        * [.randomKey([count])](#Enmap+randomKey) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-        * [.findAll(prop, value)](#Enmap+findAll) ⇒ <code>Array</code>
-        * [.find(propOrFn, [value])](#Enmap+find) ⇒ <code>\*</code>
-        * [.findKey(propOrFn, [value])](#Enmap+findKey) ⇒ <code>string</code> \| <code>number</code>
-        * [.exists(prop, value)](#Enmap+exists) ⇒ <code>boolean</code>
-        * [.sweep(fn, [thisArg])](#Enmap+sweep) ⇒ <code>number</code>
-        * [.filter(fn, [thisArg])](#Enmap+filter) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.filterArray(fn, [thisArg])](#Enmap+filterArray) ⇒ <code>Array</code>
-        * [.partition(fn, [thisArg])](#Enmap+partition) ⇒ <code>Array.&lt;Collection&gt;</code>
-        * [.map(fn, [thisArg])](#Enmap+map) ⇒ <code>Array</code>
-        * [.some(fn, [thisArg])](#Enmap+some) ⇒ <code>boolean</code>
-        * [.every(fn, [thisArg])](#Enmap+every) ⇒ <code>boolean</code>
-        * [.reduce(fn, [initialValue])](#Enmap+reduce) ⇒ <code>\*</code>
-        * [.clone()](#Enmap+clone) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.concat(...enmaps)](#Enmap+concat) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.equals(enmap)](#Enmap+equals) ⇒ <code>boolean</code>
-    * _static_
-        * [.migrate()](#Enmap.migrate)
-        * [.multi(names, options)](#Enmap.multi) ⇒ <code>Array.&lt;Map&gt;</code>
-
-<a name="new_Enmap_new"></a>
-
 ### new Enmap(iterable, [options])
 Initializes a new Enmap, with options.
-
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -606,6 +547,9 @@ enmap.findAll('username', 'Bob');
 Searches for a single item where its specified property's value is identical to the given value
 (`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to
 [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
+<warn>All Enmap used in Discord.js are mapped using their `id` property, and if you want to find by id you
+should use the `get` method. See
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get) for details.</warn>
 
 **Kind**: instance method of [<code>Enmap</code>](#Enmap)  
 
