@@ -9,3 +9,4 @@
 * **New method**: `indexes` : This method returns an array of keys for the enmap, even if they aren't cached. Similar to `enmap.keyArray()` , but useful when fetchAll is false. [More Details](api.md#enmap-indexes-array)
 * **New method**: `evict` : This method takes a key name or array of key names, and removes them from the cache. It does not delete the data, only "uncaches" it from Enmap. Useful when fetchAll is false, and you want to reduce memory usage. [More Details](api.md#enmap-evict-keyorarrayofkeys-enmap).
 * **New method**: `ensure` : This method can be used to ensure that a key exists in the enmap, and create it if it doesn't. It's a shortcut to the "if !has\(key\) set\(key, value\) get\(key\)" pattern in code. [More Details](api.md#enmap-ensure-key-defaultvalue). 
+

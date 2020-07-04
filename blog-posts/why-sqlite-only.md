@@ -45,3 +45,4 @@ I'm also keeping the V3 docs in this gitbook so it can be maintained through git
 You can still install any provider as you would before, and install enmap using `npm i eslachance/enmap#v3` for the version 3 branch that will remain.
 
 Want to help out? Join the Discord, fork and PR the Github for enmap, contribute!
+
