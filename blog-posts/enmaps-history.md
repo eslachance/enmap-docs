@@ -22,5 +22,5 @@ At the moment of writing this \(2018-09-02\) Enmap has been downloaded over 32,0
 
 It's been a year now since I last wrote this post. And in case you were wondering, growth hasn't stopped! In fact, it's quite accelerated. One big change that I made was to go back to a single locked-in database provider, which I describe in Why SQLite Only?
 
-Other than that, and adding some new features due to the switch to better-sqlite3, the main event is that just las month I reached a whopping 500,00 downloads for Enmap. Yes, that's a half million downloads for my little useful module that I started making for myself and ended up being useful for so many.
+Other than that, and adding some new features due to the switch to better-sqlite3, the main event is that just las month I reached a whopping 500,000 downloads for Enmap. Yes, that's a half million downloads for my little useful module that I started making for myself and ended up being useful for so many.
 
