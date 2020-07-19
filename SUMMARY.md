@@ -22,5 +22,5 @@
 * [Blog Posts](blog-posts/README.md)
   * [Enmap's History](blog-posts/enmaps-history.md)
   * [Why SQLITE only?](blog-posts/why-sqlite-only.md)
-* [Sponsors & Supporters](sponsors.md)
+* [Supporters and Partners](sponsors.md)
 
