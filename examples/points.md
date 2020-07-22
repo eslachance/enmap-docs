@@ -205,7 +205,7 @@ if(command === "leaderboard") {
     .setDescription("Our top 10 points leaders!")
     .setColor(0x00AE86);
   for(const data of top10) {
-    embed.addField(client.users.get(data.user).tag, `${data.points} points (level ${data.level})`);
+    embed.addField(client.users.cache.get(data.user).tag, `${data.points} points (level ${data.level})`);
   }
   return message.channel.send({embed});
 }
@@ -219,7 +219,7 @@ if(command === "leaderboard") {
     if(message.author.id !== message.guild.ownerID) 
       return message.reply("You're not the boss of me, you can't do that!");
 
-    const user = message.mentions.users.first() || client.users.get(args[0]);
+    const user = message.mentions.users.first() || client.users.cache.get(args[0]);
     if(!user) return message.reply("You must mention someone or give their ID!");
 
     const pointsToAdd = parseInt(args[1], 10);
