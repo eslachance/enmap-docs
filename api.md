@@ -14,59 +14,59 @@ A enhanced Map structure with additional utility methods. Can be made persistent
 * [Enmap](#Enmap) ⇐ <code>Map</code>
     * [new Enmap(iterable, [options])](#new_Enmap_new)
     * _instance_
-        * [.count](#Enmap+count) ⇒ <code>integer</code>
-        * [.indexes](#Enmap+indexes) ⇒ <code>array.&lt;string&gt;</code>
-        * [.autonum](#Enmap+autonum) ⇒ <code>number</code>
-        * [.set(key, val, path)](#Enmap+set) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.get(key, path)](#Enmap+get) ⇒ <code>\*</code>
-        * [.observe(key, path)](#Enmap+observe) ⇒ <code>\*</code>
-        * [.fetchEverything()](#Enmap+fetchEverything) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.fetch(keyOrKeys)](#Enmap+fetch) ⇒ [<code>Enmap</code>](#Enmap) \| <code>\*</code>
-        * [.evict(keyOrArrayOfKeys)](#Enmap+evict) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.changed(cb)](#Enmap+changed)
-        * [.close()](#Enmap+close) ⇒ <code>Promise.&lt;\*&gt;</code>
-        * [.push(key, val, path, allowDupes)](#Enmap+push) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.math(key, operation, operand, path)](#Enmap+math) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.inc(key, path)](#Enmap+inc) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.dec(key, path)](#Enmap+dec) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.ensure(key, defaultValue, path)](#Enmap+ensure) ⇒ <code>\*</code>
-        * [.has(key, path)](#Enmap+has) ⇒ <code>boolean</code>
-        * [.includes(key, val, path)](#Enmap+includes) ⇒ <code>boolean</code>
-        * [.delete(key, path)](#Enmap+delete) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.deleteAll()](#Enmap+deleteAll)
-        * [.clear()](#Enmap+clear) ⇒ <code>null</code>
-        * [.destroy()](#Enmap+destroy) ⇒ <code>null</code>
-        * [.remove(key, val, path)](#Enmap+remove) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.export()](#Enmap+export) ⇒ <code>string</code>
-        * [.import(data, overwrite, clear)](#Enmap+import) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.array()](#Enmap+array) ⇒ <code>Array</code>
-        * [.keyArray()](#Enmap+keyArray) ⇒ <code>Array.&lt;(string\|number)&gt;</code>
-        * [.random([count])](#Enmap+random) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-        * [.randomKey([count])](#Enmap+randomKey) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-        * [.findAll(prop, value)](#Enmap+findAll) ⇒ <code>Array</code>
-        * [.find(propOrFn, [value])](#Enmap+find) ⇒ <code>\*</code>
-        * [.findKey(propOrFn, [value])](#Enmap+findKey) ⇒ <code>string</code> \| <code>number</code>
-        * [.exists(prop, value)](#Enmap+exists) ⇒ <code>boolean</code>
-        * [.sweep(fn, [thisArg])](#Enmap+sweep) ⇒ <code>number</code>
-        * [.filter(fn, [thisArg])](#Enmap+filter) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.filterArray(fn, [thisArg])](#Enmap+filterArray) ⇒ <code>Array</code>
-        * [.partition(fn, [thisArg])](#Enmap+partition) ⇒ [<code>Array.&lt;Enmap&gt;</code>](#Enmap)
-        * [.map(fn, [thisArg])](#Enmap+map) ⇒ <code>Array</code>
-        * [.some(fn, [thisArg])](#Enmap+some) ⇒ <code>boolean</code>
-        * [.every(fn, [thisArg])](#Enmap+every) ⇒ <code>boolean</code>
-        * [.reduce(fn, [initialValue])](#Enmap+reduce) ⇒ <code>\*</code>
-        * [.clone()](#Enmap+clone) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.concat(...enmaps)](#Enmap+concat) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.equals(enmap)](#Enmap+equals) ⇒ <code>boolean</code>
-        * [.setProp(key, path, val)](#Enmap+setProp) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.pushIn(key, path, val, allowDupes)](#Enmap+pushIn) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.getProp(key, path)](#Enmap+getProp) ⇒ <code>\*</code>
-        * [.deleteProp(key, path)](#Enmap+deleteProp)
-        * [.removeFrom(key, path, val)](#Enmap+removeFrom) ⇒ [<code>Enmap</code>](#Enmap)
-        * [.hasProp(key, path)](#Enmap+hasProp) ⇒ <code>boolean</code>
+        * [.count](#enmap-count-integer) ⇒ <code>integer</code>
+        * [.indexes](#enmap-indexes-array-less-than-string-greater-than) ⇒ <code>array.&lt;string&gt;</code>
+        * [.autonum](#enmap-autonum-number) ⇒ <code>number</code>
+        * [.set(key, val, path)](#enmap-set-key-val-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.get(key, path)](#enmap-get-key-path) ⇒ <code>\*</code>
+        * [.observe(key, path)](#enmap-observe-key-path) ⇒ <code>\*</code>
+        * [.fetchEverything()](#enmap-fetcheverything-enmap) ⇒ [<code>Enmap</code>]
+        * [.fetch(keyOrKeys)](#enmap-fetch-keyorkeys-enmap-enmap-or) ⇒ [<code>Enmap</code>](#Enmap) \| <code>\*</code>
+        * [.evict(keyOrArrayOfKeys)](#enmap-evict-keyorarrayofkeys-enmap) ⇒ [<code>Enmap</code>]
+        * [.changed(cb)](#enmap-changed-cb)
+        * [.close()](#enmap-close-promise-less-than-greater-than) ⇒ <code>Promise.&lt;\*&gt;</code>
+        * [.push(key, val, path, allowDupes)](#enmap-push-key-val-path-allowdupes-enmap) ⇒ [<code>Enmap</code>]
+        * [.math(key, operation, operand, path)](#enmap-math-key-operation-operand-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.inc(key, path)](#enmap-inc-key-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.dec(key, path)](#enmap-dec-key-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.ensure(key, defaultValue, path)](#enmap-ensure-key-defaultvalue-path) ⇒ <code>\*</code>
+        * [.has(key, path)](#enmap-has-key-path-boolean) ⇒ <code>boolean</code>
+        * [.includes(key, val, path)](#enmap-includes-key-val-path-boolean) ⇒ <code>boolean</code>
+        * [.delete(key, path)](#enmap-delete-key-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.deleteAll()](#enmap-deleteall)
+        * [.clear()](#enmap-clear-null) ⇒ <code>null</code>
+        * [.destroy()](#enmap-destroy-null) ⇒ <code>null</code>
+        * [.remove(key, val, path)](#enmap-remove-key-val-path-enmap) ⇒ [<code>Enmap</code>]
+        * [.export()](#enmap-export-string) ⇒ <code>string</code>
+        * [.import(data, overwrite, clear)](#enmap-import-data-overwrite-clear-enmap) ⇒ [<code>Enmap</code>]
+        * [.array()](#enmap-array-array) ⇒ <code>Array</code>
+        * [.keyArray()](#enmap-keyarray-array-less-than-string-or-number-greater-than) ⇒ <code>Array.&lt;(string\|number)&gt;</code>
+        * [.random([count])](#enmap-random-count-or-array-less-than-greater-than) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
+        * [.randomKey([count])](#enmap-randomkey-count-or-array-less-than-greater-than) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
+        * [.findAll(prop, value)](#enmap-findall-prop-value-array) ⇒ <code>Array</code>
+        * [.find(propOrFn, [value])](#enmap-find-proporfn-value) ⇒ <code>\*</code>
+        * [.findKey(propOrFn, [value])](#enmap-findkey-proporfn-value-string-or-number) ⇒ <code>string</code> \| <code>number</code>
+        * [.exists(prop, value)](#enmap-exists-prop-value-boolean) ⇒ <code>boolean</code>
+        * [.sweep(fn, [thisArg])](#enmap-sweep-fn-thisarg-number) ⇒ <code>number</code>
+        * [.filter(fn, [thisArg])](#enmap-filter-fn-thisarg-enmap) ⇒ [<code>Enmap</code>]
+        * [.filterArray(fn, [thisArg])](#enmap-filterarray-fn-thisarg-array) ⇒ <code>Array</code>
+        * [.partition(fn, [thisArg])](#enmap-partition-fn-thisarg-array-less-than-enmap-greater-than) ⇒ [<code>Array.&lt;Enmap&gt;</code>]
+        * [.map(fn, [thisArg])](#enmap-map-fn-thisarg-array) ⇒ <code>Array</code>
+        * [.some(fn, [thisArg])](#enmap-some-fn-thisarg-boolean) ⇒ <code>boolean</code>
+        * [.every(fn, [thisArg])](#enmap-every-fn-thisarg-boolean) ⇒ <code>boolean</code>
+        * [.reduce(fn, [initialValue])](#enmap-reduce-fn-initialvalue) ⇒ <code>\*</code>
+        * [.clone()](#enmap-clone-enmap) ⇒ [<code>Enmap</code>]
+        * [.concat(...enmaps)](#enmap-concat-enmaps-enmap) ⇒ [<code>Enmap</code>]
+        * [.equals(enmap)](#enmap-equals-enmap-boolean) ⇒ <code>boolean</code>
+        * [.setProp(key, path, val)](#enmap-setprop-key-path-val-enmap) ⇒ [<code>Enmap</code>]
+        * [.pushIn(key, path, val, allowDupes)](#enmap-pushin-key-path-val-allowdupes-enmap) ⇒ [<code>Enmap</code>]
+        * [.getProp(key, path)](#enmap-getprop-key-path) ⇒ <code>\*</code>
+        * [.deleteProp(key, path)](#enmap-deleteprop-key-path)
+        * [.removeFrom(key, path, val)](#enmap-removefrom-key-path-val-enmap) ⇒ [<code>Enmap</code>]
+        * [.hasProp(key, path)](#enmap-hasprop-key-path-boolean) ⇒ <code>boolean</code>
     * _static_
-        * [.migrate()](#Enmap.migrate)
-        * [.multi(names, options)](#Enmap.multi) ⇒ <code>Array.&lt;Map&gt;</code>
+        * [.migrate()](#enmap-migrate)
+        * [.multi(names, options)](#enmap-multi-names-options-array-less-than-map-greater-than) ⇒ <code>Array.&lt;Map&gt;</code>
 
 <a name="new_Enmap_new"></a>
 
@@ -237,7 +237,7 @@ Can be used to detect if another part of your code changed a value in enmap and 
 **Example**  
 ```js
 enmap.changed((keyName, oldValue, newValue) => {
-  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue});
+  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue}`);
 });
 ```
 <a name="Enmap+close"></a>
@@ -271,7 +271,7 @@ enmap.set("simpleArray", [1, 2, 3, 4]);
 enmap.set("arrayInObject", {sub: [1, 2, 3, 4]});
 
 enmap.push("simpleArray", 5); // adds 5 at the end of the array
-enmap.push("arrayInObject", "five", "sub"); adds "five" at the end of the sub array
+enmap.push("arrayInObject", "five", "sub"); // adds "five" at the end of the sub array
 ```
 <a name="Enmap+math"></a>
 
@@ -473,6 +473,9 @@ Exports the enmap data to a JSON file.
 <a name="Enmap+import"></a>
 
 ### enmap.import(data, overwrite, clear) ⇒ [<code>Enmap</code>](#Enmap)
+Import an existing json export from enmap from a string. This data must have been exported from enmap,
+and must be from a version that's equivalent or lower than where you're importing it.
+
 **Kind**: instance method of [<code>Enmap</code>](#Enmap)  
 **Returns**: [<code>Enmap</code>](#Enmap) - The enmap with the new data.  
 
