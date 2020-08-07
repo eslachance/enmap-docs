@@ -15,7 +15,21 @@ This feature is born from a limitation in Enmap: it cannot store very complex ob
 
 The Serializer function runs every single time data is stored in the enmap, if one is provided. This function receives the data provided to set\(\) as an input, and must return a value to be stored in the database. This function _MUST_ be synchronous, that is to say, cannot be an async function or return a promise. 
 
+```javascript
+// the default serializer
+const serializer = (data, key) => {
+  return data;
+};
+```
+
 The Deserializer function is the reverse, and runs on each value pulled from the database, before it is returned through the get\(\) method. This function receives the data stored in the database and returns the value that you want to use directly. This function _MUST_ be synchronous, that is to say, cannot be an async function or return a promise. 
+
+```javascript
+// the default deserializer
+const deserializer = (data, key) => {
+  return data;
+};
+```
 
 ### Examples
 
