@@ -12,6 +12,7 @@
   * [Mathematical Methods](usage/math.md)
   * [Using the fetchAll option](usage/fetchall.md)
   * [Using from multiple files](usage/using-from-multiple-files.md)
+  * [Serializing and Deserializing](usage/serialize.md)
 * [Complete Examples](complete-examples/README.md)
   * [Points/Currency System](complete-examples/points.md)
   * [Per-Server Settings](complete-examples/per-server-settings.md)
