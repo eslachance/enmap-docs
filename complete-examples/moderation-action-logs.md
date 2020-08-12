@@ -19,7 +19,7 @@ If you've read about databases a bit, you might have heard about "autonum" and "
 The actions enmap will be using autonum to generate new unique numbers that we'll be able to reference later. The setup is very typical, to begin. We'll attach these things to the discord.js client to keep things simple.
 
 ```javascript
-client.actions = new Enmap({
+client.modActions = new Enmap({
     name: 'actions'
 });
 ```
@@ -27,8 +27,8 @@ client.actions = new Enmap({
 When we want to create a new action, it's a simple act of using autonum to get a key automatically. Let's do a simple warning: 
 
 ```javascript
-const newActionId = client.actions.autonum;
-client.actions.set(newActionId, {
+const newActionId = client.modActions.autonum;
+client.modActions.set(newActionId, {
     user: target.id,
     guild: message.guild.id,
     type: 'warning',
@@ -72,8 +72,8 @@ if (command === 'warn') {
     const target = message.mentions.users.first();
     // remove the mention from the message, join for a reason
     const reason = args.slice(1).join(" ");
-    const newActionId = client.actions.autonum;
-    client.actions.set(newActionId, {
+    const newActionId = client.modActions.autonum;
+    client.modActions.set(newActionId, {
         user: target.id,
         guild: message.guild.id,
         type: 'warning',
@@ -94,7 +94,7 @@ So how does this help us in the end? If you look at the warnings, you only get a
 ```javascript
 if (command === 'mywarns') {
     const warnIDs = client.userProfiles.get(message.author.id, 'warnings');
-    const warnData = warnIDs.map(id => client.actions.get(id));
+    const warnData = warnIDs.map(id => client.modActions.get(id));
     // have fun displaying this wooh!
     message.reply(`You have ${warnIDs.length} warns, buddy!`);
 }
