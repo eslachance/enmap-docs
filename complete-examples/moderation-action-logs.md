@@ -67,7 +67,7 @@ client.userProfiles.ensure(message.author.id, {
 So now we have everything ready to create a simple warn command that will use the above setup to create what we need: 
 
 ```javascript
-if (command === 'warn') {
+if (command == 'warn') {
     // get a target user
     const target = message.mentions.users.first();
     // remove the mention from the message, join for a reason
@@ -92,7 +92,7 @@ if (command === 'warn') {
 So how does this help us in the end? If you look at the warnings, you only get a bunch of IDs, right? Well, we can most definitely do some array magic in order to get these proper values... Yeah let's do that. Abracadabra!
 
 ```javascript
-if (command === 'mywarns') {
+if (command == 'mywarns') {
     const warnIDs = client.userProfiles.get(message.author.id, 'warnings');
     const warnData = warnIDs.map(id => client.actions.get(id));
     // have fun displaying this wooh!
