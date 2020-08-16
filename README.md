@@ -1,8 +1,8 @@
 ---
 description: >-
-  Enmap stands for "Enhanced Map", and is a data structure based on the native
-  JavaScript Map() structure with additional helper methods from the native
-  Array() structure.
+  Enmap, the super simple database wrapper with over a million downloads to
+  date. Wrapping around better-sqlite3 with its warm embrace, it's the easiest
+  way to save data in node for your first project!
 ---
 
 # What is Enmap?
