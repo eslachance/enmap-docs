@@ -74,6 +74,7 @@ if (command === 'warn') {
     const reason = args.slice(1).join(" ");
     const newActionId = client.actions.autonum;
     client.actions.set(newActionId, {
+        id: newActionId
         user: target.id,
         guild: message.guild.id,
         type: 'warning',
@@ -94,9 +95,25 @@ So how does this help us in the end? If you look at the warnings, you only get a
 ```javascript
 if (command === 'mywarns') {
     const warnIDs = client.userProfiles.get(message.author.id, 'warnings');
-    const warnData = warnIDs.map(id => client.actions.get(id));
+    const warnData = warnIDs.map(id => client.actions.get(id.toString()));
     // have fun displaying this wooh!
-    message.reply(`You have ${warnIDs.length} warns, buddy!`);
+    
+    let embed = new Discord.MessageEmbed()
+	    .setTitle(member.displayName + " warnings:")
+	    .setColor("RANDOM")
+	  warnData.forEach(function(i) {
+		  if (i.guild != message.guild.id) return
+		  try {
+		  	moderator = client.users.cache.get(i.moderator).id
+		  } catch {
+		  	moderator = i.moderator
+		  }
+		  var t = new Date(i.when).toUTCString()
+  
+		  embed.addField("Warn: " + i.id, "Reason: " + i.reason + "\nTime: " + t + "\nModerator: <@" + moderator + ">", true)
+	  })
+	
+    message.channel.send({embed: embed})
 }
 ```
 
