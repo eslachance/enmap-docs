@@ -199,13 +199,17 @@ if(command === "leaderboard") {
   const top10 = sorted.splice(0, 10);
 
   // Now shake it and show it! (as a nice embed, too!)
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setTitle("Leaderboard")
-    .setAuthor(client.user.username, client.user.avatarURL)
+    .setAuthor(client.user.username, message.guild.iconURL())
     .setDescription("Our top 10 points leaders!")
     .setColor(0x00AE86);
   for(const data of top10) {
-    embed.addField(client.users.get(data.user).tag, `${data.points} points (level ${data.level})`);
+    try {
+      embed.addField(client.users.cache.get(data.user).tag, `${data.points} points (level ${data.level})`);
+    } catch {
+      embed.addField(`<@${data.user}>`, `${data.points} points (level ${data.level})`);
+    }
   }
   return message.channel.send({embed});
 }
@@ -242,7 +246,7 @@ if(command === "leaderboard") {
     // And we save it!
     client.points.set(`${message.guild.id}-${user.id}`, userPoints, "points")
 
-    message.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userPoints} points.`);
+    message.channel.send(`${user.tag} has received **${pointsToAdd}** points and now stands at **${userPoints}** points.`);
   }
 
   if(command === "cleanup") {
