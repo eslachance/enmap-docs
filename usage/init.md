@@ -4,7 +4,7 @@ When using persistent enmaps, it's very important to understand that _it takes t
 
 ## Using _defer_
 
-To make sure that all your data is loaded before you start working, Enmap provides a handy property called `defer` , which is a promise that is resolved once the provider is ready and all the data has been loaded into memory. There are a few ways to use `defer` , since it's a promise. 
+To make sure that all your data is loaded before you start working, Enmap provides a handy property called `defer`, which is a promise that is resolved once SQLite is ready and all the data has been loaded into memory. There are a few ways to use `defer`, since it's a promise. 
 
 ```javascript
 const Enmap = require('enmap');
