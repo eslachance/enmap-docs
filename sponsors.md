@@ -20,3 +20,10 @@ BlueFox supports Enmap fully, it's super easy to install both Enmap and better-s
 
 To nab yourself a great place to host your project for free, head on over to the [Discord Bot Hosting on BlueFox.Tech](https://bluefox.tech/discord.php)!
 
+## Enmap Supporters
+
+### AndrewJWin
+
+The first supporter on GitHub and Patreon, working towards a degree in IT and an occasional idiot on An Idiots Guide.
+
+He's Andrew()#9999 on Discord, and always willing to tell you if your nose looks weird.
