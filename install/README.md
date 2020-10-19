@@ -1,22 +1,16 @@
+---
+description: >-
+  To install Enmap, please read these instructions very carefully, every word is
+  important!
+---
+
 # Enmap Installation
 
-## Installing enmap
+Enmap is a wrapper around better-sqlite3, which requires to be built directly on your system. As such, you need to install pre-requisites first. Please follow these instructions _to the letter_. If it's not written here, you probably shouldn't do it unless you know \*why\* you're doing it.
 
-To install Enmap in your project, all you need to do is run the following command:
+## Pre-Requisites
 
-```javascript
-npm i enmap@latest
-```
-
-This installs enmap which can be used in memory \(as in, doesn't save to the database\), if that's what you need. Otherwise, keep reading!
-
-### Peer Dependencies
-
-For persistence you need to also install `better-sqlite3`, which is necessary for the sqlite database interaction.
-
-### Pre-Requisites
-
-`better-sqlite3` has a specific prerequisite which is needed to build it. How to install these depends on your operating system, so see below for instructions:
+How to install the pre-requisites depends on your operating system, so see below for instructions:
 
 {% tabs %}
 {% tab title="Windows" %}
@@ -49,11 +43,15 @@ Once installed, you're ready to continue.
 {% endtab %}
 {% endtabs %}
 
-Once those pre-requisites are installed, simply run the following command:
+## Installing Enmap
+
+Once those pre-requisites are installed \(if they're not, scroll up, and _follow the instructions_\), simply run the following command:
 
 ```text
-npm i better-sqlite3
+npm i enmap
 ```
 
-This will take a few minutes also, as it needs to build the module from source code.
+This will take a few minutes, as it needs to build better-sqlite3 from source code, and then install enmap itself. Note that "a few minutes" can be 1 or 30 minutes, it really depends on your hardware and configuration.
+
+If you get any errors, please see the [Troubleshooting Guide](troubleshooting-guide.md). If the guide doesn't help, join the Discord \(link at the top of this page\).
 
