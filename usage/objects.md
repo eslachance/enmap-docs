@@ -43,7 +43,7 @@ The exact method is `<Enmap>.get(key, path)`.
 const second = myEnmap.get("someObject", "second");
 // returns "foo"
 
-const thing = myEnmap.get("someObject", "sub.thing");
+const thing = myEnmap.get("someObject", "sub.yay");
 // returns true
 
 // The path can be dynamic, too: 
