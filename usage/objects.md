@@ -67,7 +67,7 @@ There are a few various ways to modify properties of both Objects and Arrays. Th
 
 ```javascript
 // Set an object property
-myEnmap.set("someObject", "newThing", "sub.blah");
+myEnmap.set("someObject", "sub.blah", "newThing");
 
 // Set an array property
 myEnmap.set("someArray", "four", 3);

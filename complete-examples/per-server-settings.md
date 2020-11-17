@@ -63,7 +63,7 @@ client.on("guildMemberAdd", member => {
   welcomeMessage = welcomeMessage.replace("{{user}}", member.user.tag)
 
   // we'll send to the welcome channel.
-  member.guild.channels
+  member.guild.channels.cache
     .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
     .send(welcomeMessage)
     .catch(console.error);
@@ -103,11 +103,11 @@ client.on("message", async (message) => {
   // in the configuration.
   if(command === "setconf") {
     // Command is admin only, let's grab the admin value: 
-    const adminRole = message.guild.roles.find("name", guildConf.adminRole);
+    const adminRole = message.guild.roles.cache.find("name", guildConf.adminRole);
     if(!adminRole) return message.reply("Administrator Role Not Found");
 
     // Then we'll exit if the user is not admin
-    if(!message.member.roles.has(adminRole.id)) {
+    if(!message.member.roles.cache.has(adminRole.id)) {
       return message.reply("You're not an admin, sorry!");
     }
 

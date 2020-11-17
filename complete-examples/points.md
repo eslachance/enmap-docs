@@ -1,6 +1,6 @@
 # Points/Currency System
 
-This points bot is simple, but functional. Make sure you've followed the Installation Instructions before doing the following. 
+This points bot is simple, but functional. Make sure you've followed the Installation Instructions before doing the following.
 
 First, you need to create a new persistent Enmap. Here's how it goes:
 
@@ -116,7 +116,7 @@ So here's the whole thing from top to bottom, with bonus comments!
 client.on("message", message => {
   // As usual, ignore all bots.
   if (message.author.bot) return;
-  
+
   // If this is not in a DM, execute the points code.
   if (message.guild) {
     // We'll use the key often enough that simplifying it is worth the trouble.
@@ -129,12 +129,12 @@ client.on("message", message => {
       points: 0,
       level: 1
     });
-    
+
     client.points.inc(key, "points");
-    
+
     // Calculate the user's current level
     const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
-    
+
     // Act upon level up by sending a message and updating the user's level in enmap.
     if (client.points.get(key, "level") < curLevel) {
       message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
@@ -241,7 +241,7 @@ if(command === "leaderboard") {
     // Get their current points.
     let userPoints = client.points.get(`${message.guild.id}-${user.id}`, "points");
     userPoints += pointsToAdd;
-    
+
 
     // And we save it!
     client.points.set(`${message.guild.id}-${user.id}`, userPoints, "points")
@@ -260,7 +260,7 @@ if(command === "leaderboard") {
     // So we get only users that haven't been online for a month, or are no longer in the guild.
     const rightNow = new Date();
     const toRemove = filtered.filter(data => {
-      return !message.guild.members.has(data.user) || rightNow - 2592000000 > data.lastSeen;
+      return !message.guild.members.cache.has(data.user) || rightNow - 2592000000 > data.lastSeen;
     });
 
     toRemove.forEach(data => {
