@@ -16,10 +16,12 @@ How to install the pre-requisites depends on your operating system, so see below
 {% tab title="Windows" %}
 On Windows, two things are required to install better-sqlite3. Python 2.7 and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite.
 
-To install the necessary prerequisites on Windows, the easiest is to simply run the following command, _under an **administrative** command prompt or powershell:_
+To install the necessary prerequisites on Windows, the easiest is to simply run the following commands, _under an **administrative** command prompt or powershell:_
 
 ```javascript
 npm i -g --add-python-to-path --vs2015 --production windows-build-tools
+
+npm i -g node-gyp@latest
 ```
 
 > It's _very important_ that this be run in the **administrative** prompt, and not a regular one.
@@ -45,13 +47,13 @@ Once installed, you're ready to continue.
 
 ## Installing Enmap
 
-Once those pre-requisites are installed \(if they're not, scroll up, and _follow the instructions_\), simply run the following command:
+Once those pre-requisites are installed \(if they're not, scroll up, and _follow the instructions_\), and you've closed all open command prompts, open a new, _normal_ \(not-admin\) command prompt or terminal in your project, then install Enmap using the following command:
 
 ```text
 npm i enmap
 ```
 
-This will take a few minutes, as it needs to build better-sqlite3 from source code, and then install enmap itself. Note that "a few minutes" can be 1 or 30 minutes, it really depends on your hardware and configuration.
+This will take a few minutes, as it needs to build better-sqlite3 from source code, and then install enmap itself.  Note that "a few minutes" can be 1 or 30 minutes, it really depends on your hardware and configuration.
 
 If you get any errors, please see the [Troubleshooting Guide](troubleshooting-guide.md). If the guide doesn't help, join the Discord \(link at the top of this page\).
 
