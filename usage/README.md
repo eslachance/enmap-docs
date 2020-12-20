@@ -13,9 +13,7 @@ const myEnmap = new Enmap();
 
 ### Persistent Enmaps
 
-Using persistent enmaps require the additional install of the `better-sqlite-pool` module. 
-
-If using a persistent enmap, you need to add options: 
+By default, Enmap saves only in memory and does not save anything to disk. To have persistent storage, you need to add some options. Enmaps with a "name" option will save, and there are additional options you can use to fine-tune the saving and loading features.
 
 ```javascript
 const Enmap = require("enmap");
