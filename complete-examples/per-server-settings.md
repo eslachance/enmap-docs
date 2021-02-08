@@ -29,17 +29,17 @@ client.settings = new Enmap({
   name: "settings",
   fetchAll: false,
   autoFetch: true,
-  cloneLevel: 'deep'
+  cloneLevel: 'deep',
+  autoEnsure: {
+    prefix: "!",
+    modLogChannel: "mod-log",
+    modRole: "Moderator",
+    adminRole: "Administrator",
+    welcomeChannel: "welcome",
+    welcomeMessage: "Say hello to {{user}}, everyone!"
+  }
 });
-// Just setting up a default configuration object here, to have something to insert.
-const defaultSettings = {
-  prefix: "!",
-  modLogChannel: "mod-log",
-  modRole: "Moderator",
-  adminRole: "Administrator",
-  welcomeChannel: "welcome",
-  welcomeMessage: "Say hello to {{user}}, everyone!"
-}
+
 ```
 
 ## Events Setup
@@ -64,7 +64,7 @@ client.on("guildMemberAdd", member => {
 
   // we'll send to the welcome channel.
   member.guild.channels.cache
-    .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
+    .find(channel => channel.name === client.settings.get(member.guild.id, "welcomeChannel"))
     .send(welcomeMessage)
     .catch(console.error);
 });
@@ -80,12 +80,11 @@ client.on("message", async (message) => {
   // Pretty standard for any bot.
   if(!message.guild || message.author.bot) return;
 
-  // We can use ensure() to actually grab the default value for settings,
-  // if the key doesn't already exist. 
-  const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
+  // We get the value, and autoEnsure guarantees we have a value already.
+  const guildConf = client.settings.get(message.guild.id);
 
-  // Now we can use the values! 
-  // We stop processing if the message does not start with our prefix for this guild.
+  // Now we can use the values! We stop processing if the message does not
+  // start with our prefix for this guild.
   if(message.content.indexOf(guildConf.prefix) !== 0) return;
 
   //Then we use the config prefix to get our arguments and command:
@@ -103,7 +102,7 @@ client.on("message", async (message) => {
   // in the configuration.
   if(command === "setconf") {
     // Command is admin only, let's grab the admin value: 
-    const adminRole = message.guild.roles.cache.find("name", guildConf.adminRole);
+    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
     if(!adminRole) return message.reply("Administrator Role Not Found");
 
     // Then we'll exit if the user is not admin

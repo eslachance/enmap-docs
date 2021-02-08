@@ -6,7 +6,7 @@ First, you need to create a new persistent Enmap. Here's how it goes:
 
 ```javascript
 const Enmap = require("enmap");
-client.points = new Enmap({name: "points"});
+client.points = new Enmap("points");
 ```
 
 That will create a new Enmap under the name of points, and attaches it to the client object so it can be used where ever you have access to the client object.
