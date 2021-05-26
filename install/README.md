@@ -6,21 +6,27 @@ description: >-
 
 # Enmap Installation
 
-Enmap is a wrapper around better-sqlite3, which requires to be built directly on your system. As such, you need to install pre-requisites first. Please follow these instructions _to the letter_. If it's not written here, you probably shouldn't do it unless you know \*why\* you're doing it.
+Enmap is a wrapper around better-sqlite3, which requires to be built directly on your system. As such, you need to install pre-requisites first. Please follow these instructions _to the letter_. If it's not written here, you probably shouldn't do it unless you know _why_ you're doing it.
 
 ## Pre-Requisites
+
+{% hint style="warning" %}
+SQLite modules usually only successfully work on LTS versions of node. This means it will work correctly on node 12, 14, and 16. It will _not_ work on node 13, 15, 17. Make sure you have the right version, check this with `node -v`.
+{% endhint %}
 
 How to install the pre-requisites depends on your operating system, so see below for instructions:
 
 {% tabs %}
 {% tab title="Windows" %}
-On Windows, two things are required to install better-sqlite3. Python 2.7 and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite.
+On Windows, two things are required to install better-sqlite3. Python, and the Visual Studio C++ Build Tools. They are required for any module that is _built_ on the system, which includes sqlite.
 
-To install the necessary prerequisites on Windows, the easiest is to simply run the following commands, _under an **administrative** command prompt or powershell:_
+To install the necessary prerequisites on Windows, the easiest is to simply run the following commands separately, _under an **administrative** command prompt or powershell:_
 
 ```javascript
+// First run:
 npm i -g --add-python-to-path --vs2015 --production windows-build-tools
 
+// Then run:
 npm i -g node-gyp@latest
 ```
 

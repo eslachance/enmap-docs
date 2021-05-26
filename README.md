@@ -15,17 +15,17 @@ Enmap stands for "Enhanced Map", and is a data structure based on the native Jav
 Enmap requires filesystem access. It **DOES NOT WORK** on Heroku, or other such systems that do not allow you to save data directly to disk.
 {% endhint %}
 
-### Why Enmap?
+## Why Enmap?
 
-While there are other better-known systems that offer some features of Enmap, especially caching in memory, Enmap is targeted specifically to newer users of JavaScript that might not want to deal with complicated systems or database queries. 
+While there are other better-known systems that offer some features of Enmap, especially caching in memory, Enmap is targeted specifically to newer users of JavaScript that might not want to deal with complicated systems or database queries.
 
-### Advantage/Disadvantage
+## Advantage/Disadvantage
 
-Here are some advantages of using Enmap: 
+Here are some advantages of using Enmap:
 
-* **Simple to Install**: Enmap itself only requires a simple `npm install` command to install and use, and a single line to initialize. When using persistance, some additional pre-requisites are necessary. [See Installation for details](install/). 
-* **Simple to Use**: Basic enmap usage can be completely done with 1-2 lines of initialization, and 3 commands, set\(\), get\(\) and delete\(\). 
-* **Very Fast**: Since Enmap resides in memory, accessing its data is blazing fast \(as fast as Map\(\) is\). Even with persistence, Enmap still only accesses data from memory so you get it almost instantly. 
+* **Simple to Install**: Enmap itself only requires a simple `npm install` command to install and use, and a single line to initialize. [See Installation for details](install/). 
+* **Simple to Use**: Basic enmap usage can be completely done with 1-2 lines of initialization, and 3 commands, set\(\), get\(\) and delete\(\).
+* **Very Fast**: Since Enmap resides in memory, accessing its data is blazing fast \(as fast as Map\(\) is\). Even with persistence, Enmap still accesses data from memory so you get it almost instantly. 
 
 Some disadvantages, compared to using a database connection directly:
 

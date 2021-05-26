@@ -5,7 +5,6 @@
   * [Troubleshooting Guide](install/troubleshooting-guide.md)
   * [Migrating data from Enmap 3](install/upgrade.md)
 * [Usage Documentation](usage/README.md)
-  * [Waiting For Initialization \(Deprecated\)](usage/init.md)
   * [Basic Data Use](usage/basic.md)
   * [Working with Objects](usage/objects.md)
   * [Array Methods](usage/arrays.md)
