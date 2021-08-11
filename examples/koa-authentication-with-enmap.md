@@ -1,4 +1,4 @@
-# Koa Authentication with Enmap
+# Koa Authentication
 
 In this example we'll be using Enmap to store user data in order to authenticate users on a simple Koa application. In order to make this secure, we'll be using `bcrypt` to encrypt the passwords, so of course they will not be plain text in the database. 
 

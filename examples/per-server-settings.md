@@ -1,4 +1,4 @@
-# Per-Server Settings
+# D.js Per-Server Settings
 
 This example uses a very, _very_ simple bot made in discord.js to demonstrate how easily [Enmap](https://www.npmjs.com/package/enmap) can be used to create a per-server configuration system.
 

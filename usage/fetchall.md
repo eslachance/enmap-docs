@@ -14,7 +14,6 @@ The options are as follow:
 const Enmap = require("enmap");
 
 const points = new Enmap({
-  persistent: true,
   name: "points",
   fetchAll: false,
   autoFetch: true
@@ -38,11 +37,4 @@ Ok but... how's that useful? It's useful because if you don't need the data, it'
 ## That's it!
 
 Yup. Those are the only things you really need to know for the current version of Enmap's fetchAll feature.
-
-### Upcoming Features:
-
-I'm working on the following features in future versions of enmap, related to fetch methods:
-
-* Add the ability to check if the DB has a key without fetching \(a sort of "uncached has\(\)"\)
-* Add an auto-uncache feature so that "stale" keys are cleaned. This would combine well with autoFetch in that it would ultimately keep memory usage low.
 

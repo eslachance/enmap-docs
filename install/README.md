@@ -11,7 +11,9 @@ Enmap is a wrapper around better-sqlite3, which requires to be built directly on
 ## Pre-Requisites
 
 {% hint style="warning" %}
-SQLite modules usually only successfully work on LTS versions of node. This means it will work correctly on node 12, 14, and 16. It will _not_ work on node 13, 15, 17. Make sure you have the right version, check this with `node -v`.
+SQLite modules usually only successfully work on LTS versions of node. This means it will work correctly on node 12, and 14. It will _not_ work on node 13, 15, 17. Make sure you have the right version, check this with `node -v`.
+
+Also, better-sqlite3 doesn't compile on unreleased node versions usually. Your mileage may vary, but don't expect it to work on the "Latest" version of node either.
 {% endhint %}
 
 How to install the pre-requisites depends on your operating system, so see below for instructions:

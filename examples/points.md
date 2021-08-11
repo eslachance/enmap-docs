@@ -1,4 +1,4 @@
-# Points/Currency System
+# D.js Points/Currency
 
 This points bot is simple, but functional. Make sure you've followed the Installation Instructions before doing the following.
 

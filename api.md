@@ -1,58 +1,16 @@
 ---
-description: 'The full, boring, unadultered enmap docs.'
+description: >-
+  The complete and unadultered API documentation for every single method and
+  property accessible in Enmap.
 ---
 
-# Enmap API Documentation
+# Full Documentation
 
-**Kind**: global class  
-**Extends**: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+The following is the complete list of methods available in Enmap. As it is auto-generated from the source code and its comments, it's a little more "raw" than the Usage docs. However, it has the benefit of being more complete and usually more up to date than the manually written docs.
 
-* [Enmap](api.md#enmap-map) ⇐ `Map`
-  * [new Enmap\(iterable, \[options\]\)](api.md#new-enmap-iterable-options)
-  * _instance_
-    * [.count](api.md#enmap-count-integer) ⇒ `integer`
-    * [.indexes](api.md#enmap-indexes-array-less-than-string-greater-than) ⇒ `array.<string>`
-    * [.autonum](api.md#enmap-autonum-number) ⇒ `number`
-    * [.set\(key, val, path\)](api.md#enmap-set-key-val-path-enmap) ⇒ \[`Enmap`\]
-    * [.update\(key, valueOrFunction\)](api.md#enmap-update-key-valueorfunction) ⇒ `*`
-    * [.get\(key, path\)](api.md#enmap-get-key-path) ⇒ `*`
-    * [.observe\(key, path\)](api.md#enmap-observe-key-path) ⇒ `*`
-    * [.fetchEverything\(\)](api.md#enmap-fetcheverything-enmap) ⇒ \[`Enmap`\]
-    * [.fetch\(keyOrKeys\)](api.md#enmap-fetch-keyorkeys-enmap-enmap-or) ⇒ [`Enmap`](api.md#enmap-map) \| `*`
-    * [.evict\(keyOrArrayOfKeys\)](api.md#enmap-evict-keyorarrayofkeys-enmap) ⇒ \[`Enmap`\]
-    * [.changed\(cb\)](api.md#enmap-changed-cb)
-    * [.close\(\)](api.md#enmap-close-promise-less-than-greater-than) ⇒ `Promise.<*>`
-    * [.push\(key, val, path, allowDupes\)](api.md#enmap-push-key-val-path-allowdupes-enmap) ⇒ \[`Enmap`\]
-    * [.math\(key, operation, operand, path\)](api.md#enmap-math-key-operation-operand-path-enmap) ⇒ \[`Enmap`\]
-    * [.inc\(key, path\)](api.md#enmap-inc-key-path-enmap) ⇒ \[`Enmap`\]
-    * [.dec\(key, path\)](api.md#enmap-dec-key-path-enmap) ⇒ \[`Enmap`\]
-    * [.ensure\(key, defaultValue, path\)](api.md#enmap-ensure-key-defaultvalue-path) ⇒ `*`
-    * [.has\(key, path\)](api.md#enmap-has-key-path-boolean) ⇒ `boolean`
-    * [.includes\(key, val, path\)](api.md#enmap-includes-key-val-path-boolean) ⇒ `boolean`
-    * [.delete\(key, path\)](api.md#enmap-delete-key-path-enmap) ⇒ \[`Enmap`\]
-    * [.clear\(\)](api.md#enmap-clear)
-    * [.destroy\(\)](api.md#enmap-destroy-null) ⇒ `null`
-    * [.remove\(key, val, path\)](api.md#enmap-remove-key-val-path-enmap) ⇒ \[`Enmap`\]
-    * [.export\(\)](api.md#enmap-export-string) ⇒ `string`
-    * [.import\(data, overwrite, clear\)](api.md#enmap-import-data-overwrite-clear-enmap) ⇒ \[`Enmap`\]
-    * [.array\(\)](api.md#enmap-array-array) ⇒ `Array`
-    * [.keyArray\(\)](api.md#enmap-keyarray-array-less-than-string-or-number-greater-than) ⇒ `Array.<(string|number)>`
-    * [.random\(\[count\]\)](api.md#enmap-random-count-or-array-less-than-greater-than) ⇒ `*` \| `Array.<*>`
-    * [.randomKey\(\[count\]\)](api.md#enmap-randomkey-count-or-array-less-than-greater-than) ⇒ `*` \| `Array.<*>`
-    * [.findAll\(prop, value\)](api.md#enmap-findall-prop-value-array) ⇒ `Array`
-    * [.find\(propOrFn, \[value\]\)](api.md#enmap-find-proporfn-value) ⇒ `*`
-    * [.findKey\(propOrFn, \[value\]\)](api.md#enmap-findkey-proporfn-value-string-or-number) ⇒ `string` \| `number`
-    * [.sweep\(fn, \[thisArg\]\)](api.md#enmap-sweep-fn-thisarg-number) ⇒ `number`
-    * [.filter\(fn, \[thisArg\]\)](api.md#enmap-filter-fn-thisarg-enmap) ⇒ \[`Enmap`\]
-    * [.filterArray\(fn, \[thisArg\]\)](api.md#enmap-filterarray-fn-thisarg-array) ⇒ `Array`
-    * [.map\(fn, \[thisArg\]\)](api.md#enmap-map-fn-thisarg-array) ⇒ `Array`
-    * [.some\(fn, \[thisArg\]\)](api.md#enmap-some-fn-thisarg-boolean) ⇒ `boolean`
-    * [.every\(fn, \[thisArg\]\)](api.md#enmap-every-fn-thisarg-boolean) ⇒ `boolean`
-    * [.reduce\(fn, \[initialValue\]\)](api.md#enmap-reduce-fn-initialvalue) ⇒ `*`
-    * [.clone\(\)](api.md#enmap-clone-enmap) ⇒ \[`Enmap`\]
-    * [.concat\(...enmaps\)](api.md#enmap-concat-enmaps-enmap) ⇒ \[`Enmap`\]
-  * _static_
-    * [.multi\(names, options\)](api.md#enmap-multi-names-options-array-less-than-map-greater-than) ⇒ `Array.<Map>`
+{% hint style="warning" %}
+If you're doing a PR on the docs github, please do not manually edit the below contents, as it will be overwritten. Check the src/index.js source code and change the comments there instead!
+{% endhint %}
 
 ## new Enmap\(iterable, \[options\]\)
 

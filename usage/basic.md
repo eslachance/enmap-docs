@@ -2,7 +2,7 @@
 
 Now that we have a functional Enmap structure \(which we'll always refer to as `myEnmap`\), we're ready to start writing data to it, and getting data from it. 
 
-> The code samples on this page assume that you have correctly initialized `myEnmap`, and [awaited its initialization]() if it's persistent.
+> The code samples on this page assume that you have correctly initialized `myEnmap`
 
 ## Writing Data
 
@@ -47,4 +47,8 @@ if(myEnmap.get('boolean')) {
 ```
 
 That's pretty much it for only retrieving a single data value. There are more complex operations that are available, take a look at [Array Methods](arrays.md) for the more advanced things you can do on Enmap's data!
+
+Deleting Data
+
+Removing data from Enmap 
 

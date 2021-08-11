@@ -4,7 +4,7 @@ description: >-
   reference array.
 ---
 
-# Moderation Action Logs
+# D.js Mod Logs
 
 An interesting problem in javascript is that having an array of objects can be quite the ordeal. A lot of things you want to do require functions and loops, bleh. So, where Enmap is meant to be easier to use, this is an area where it's still a bit hard to handle things. 
 
