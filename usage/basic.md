@@ -48,7 +48,13 @@ if(myEnmap.get('boolean')) {
 
 That's pretty much it for only retrieving a single data value. There are more complex operations that are available, take a look at [Array Methods](arrays.md) for the more advanced things you can do on Enmap's data!
 
-Deleting Data
+### Deleting Data
 
-Removing data from Enmap 
+Removing data from Enmap is as simple as saving or retrieving. You can easily use the delete\(\) method as such:
+
+```javascript
+myEnmap.delete("integer");
+
+myEnmap.delete("boolean");
+```
 
