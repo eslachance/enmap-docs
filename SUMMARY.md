@@ -6,7 +6,7 @@
   * [Migrating data from Enmap 3](install/upgrade.md)
 * [Usage Documentation](usage/README.md)
   * [Basic Data Use](usage/basic.md)
-  * [Understanding Paths](usage/understanding-paths.md)
+  * [Understanding Paths](usage/paths.md)
   * [Working with Objects](usage/objects.md)
   * [Array Methods](usage/arrays.md)
   * [Mathematical Methods](usage/math.md)
