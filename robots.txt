@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enmap.evie.dev/sitemap.xml.gz
