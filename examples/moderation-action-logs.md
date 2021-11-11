@@ -6,9 +6,9 @@ description: >-
 
 # D.js Mod Logs
 
-An interesting problem in javascript is that having an array of objects can be quite the ordeal. A lot of things you want to do require functions and loops, bleh. So, where Enmap is meant to be easier to use, this is an area where it's still a bit hard to handle things. 
+An interesting problem in javascript is that having an array of objects can be quite the ordeal. A lot of things you want to do require functions and loops, bleh. So, where Enmap is meant to be easier to use, this is an area where it's still a bit hard to handle things.&#x20;
 
-But there's a solution. If Enmap isn't enough, how about **TWO**  Enmap???? So yeah, we're going to be using one enmap to store user data, and another to store "warnings", that is to say, moderation actions stored as objects. 
+But there's a solution. If Enmap isn't enough, how about **TWO ** Enmap???? So yeah, we're going to be using one enmap to store user data, and another to store "warnings", that is to say, moderation actions stored as objects.&#x20;
 
 When we add a new element to the _actions_ enmap, we'll be adding a _reference_ to that new entry in the _user_ enmap, via the `autonum` feature.
 
@@ -24,7 +24,7 @@ client.modActions = new Enmap({
 });
 ```
 
-When we want to create a new action, it's a simple act of using autonum to get a key automatically. Let's do a simple warning: 
+When we want to create a new action, it's a simple act of using autonum to get a key automatically. Let's do a simple warning:&#x20;
 
 ```javascript
 const newActionId = client.modActions.autonum;
@@ -38,11 +38,11 @@ client.modActions.set(newActionId, {
 });
 ```
 
-So what this does is twofold: it gives us an ID, as well as save the data for this new warning in the Enmap. 
+So what this does is twofold: it gives us an ID, as well as save the data for this new warning in the Enmap.&#x20;
 
 ### The User Enmap
 
-You might already have one of those enmaps lying around, but if you don't, the deal's pretty much the same \(because enmap is _simple_!\): 
+You might already have one of those enmaps lying around, but if you don't, the deal's pretty much the same (because enmap is _simple_!):&#x20;
 
 ```javascript
 client.userProfiles = new Enmap({
@@ -50,7 +50,7 @@ client.userProfiles = new Enmap({
 });
 ```
 
-We of course need to have some properties in there, and this will be done using ensure\(\). This is very similar to our Points system, and it can be done on user join \(guildMemberAdd\) and/or in the message event. Both would be fine: 
+We of course need to have some properties in there, and this will be done using ensure(). This is very similar to our Points system, and it can be done on user join (guildMemberAdd) and/or in the message event. Both would be fine:&#x20;
 
 ```javascript
 client.userProfiles.ensure(message.author.id, {
@@ -64,7 +64,7 @@ client.userProfiles.ensure(message.author.id, {
 
 ### The Commands
 
-So now we have everything ready to create a simple warn command that will use the above setup to create what we need: 
+So now we have everything ready to create a simple warn command that will use the above setup to create what we need:&#x20;
 
 ```javascript
 if (command === 'warn') {
@@ -101,4 +101,3 @@ if (command === 'mywarns') {
 ```
 
 Now go have fun an explore the endless possibilities of this system :D
-
