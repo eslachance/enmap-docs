@@ -24,12 +24,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.691103619155" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.693712779698" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.691103619155" defer data-turbo-track="reload"></script>
-    <script type="text/javascript" src="/resources/js/retype.js?v=1.11" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.691103619155" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.691103619155" defer></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.693712779698" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.693712779698" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.693712779698" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -222,6 +222,7 @@
     </h2>
 </doc-anchor-target>
 <p>Initializes a new Enmap, with options.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -306,6 +307,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">const Enmap = require(&quot;enmap&quot;);
@@ -361,6 +363,7 @@ const autoEnmap = new Enmap({name: &quot;settings&quot;, autoEnsure: { setting1:
 <p>Sets a value in Enmap.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -391,6 +394,7 @@ const autoEnmap = new Enmap({name: &quot;settings&quot;, autoEnsure: { setting1:
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Direct Value Examples
@@ -413,6 +417,7 @@ enmap.set('ArraysToo', 'three', 2); // changes &quot;tree&quot; to &quot;three&q
 <p>Update an existing object value in Enmap by merging new keys. <strong>This only works on objects</strong>, any other value will throw an error. Heavily inspired by setState from React&#x27;s class components. This is very useful if you have many different values to update and don&#x27;t want to have more than one .set(key, value, prop) lines.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> - The updated, merged value.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -434,6 +439,7 @@ enmap.set('ArraysToo', 'three', 2); // changes &quot;tree&quot; to &quot;three&q
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Define an object we're going to update
@@ -461,6 +467,7 @@ enmap.update(&quot;obj&quot;, (previous) =&gt; ({
 <p>Retrieves a key from the enmap. If fetchAll is false, returns a promise.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> - The value for this key.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -485,6 +492,7 @@ enmap.update(&quot;obj&quot;, (previous) =&gt; ({
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">const myKeyValue = enmap.get(&quot;myKey&quot;);
@@ -501,6 +509,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 <p>Returns an observable object. Modifying this object or any of its properties/indexes/children will automatically save those changes into enmap. This only works on objects and arrays, not &quot;basic&quot; values like strings or integers.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> - The value for this key.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -525,6 +534,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapfetcheverything--enmap">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapfetcheverything--enmap">#</doc-anchor-trigger>
@@ -543,6 +553,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 <p>Force fetch one or more key values from the enmap. If the database has changed, that new value is used.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> | <code v-pre>*</code> - The Enmap, including the new fetched values, or the value in case the function argument is a single key.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -559,6 +570,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapevictkeyorarrayofkeys--enmap">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapevictkeyorarrayofkeys--enmap">#</doc-anchor-trigger>
@@ -568,6 +580,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 <p>Removes a key or keys from the cache - useful when disabling autoFetch.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap minus the evicted keys.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -584,6 +597,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapchangedcb">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapchangedcb">#</doc-anchor-trigger>
@@ -592,6 +606,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </doc-anchor-target>
 <p>Function called whenever data changes within Enmap after the initial load. Can be used to detect if another part of your code changed a value in enmap and react on it.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -608,6 +623,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">enmap.changed((keyName, oldValue, newValue) =&gt; {
@@ -632,6 +648,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 <p>Push to an array value in Enmap.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -668,6 +685,7 @@ const someSubValue = enmap.get(&quot;anObjectKey&quot;, &quot;someprop.someOther
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Assuming
@@ -686,6 +704,7 @@ enmap.push(&quot;arrayInObject&quot;, &quot;five&quot;, &quot;sub&quot;); // add
 <p>Executes a mathematical operation on a value and saves it in the enmap.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -722,6 +741,7 @@ enmap.push(&quot;arrayInObject&quot;, &quot;five&quot;, &quot;sub&quot;); // add
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Assuming
@@ -742,6 +762,7 @@ points.math(&quot;numberInObject&quot;, &quot;+&quot;, 10, &quot;sub.anInt&quot;
 <p>Increments a key&#x27;s value or property by 1. Value must be a number, or a path to a number.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -766,6 +787,7 @@ points.math(&quot;numberInObject&quot;, &quot;+&quot;, 10, &quot;sub.anInt&quot;
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Assuming
@@ -784,6 +806,7 @@ points.inc(&quot;numberInObject&quot;, &quot;sub.anInt&quot;); // {sub: { anInt:
 <p>Decrements a key&#x27;s value or property by 1. Value must be a number, or a path to a number.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -808,6 +831,7 @@ points.inc(&quot;numberInObject&quot;, &quot;sub.anInt&quot;); // {sub: { anInt:
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Assuming
@@ -826,6 +850,7 @@ points.dec(&quot;numberInObject&quot;, &quot;sub.anInt&quot;); // {sub: { anInt:
 <p>Returns the key&#x27;s value, or the default given, ensuring that the data is there. This is a shortcut to &quot;if enmap doesn&#x27;t have key, set it, then get it&quot; which is a very common pattern.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> - The value from the database for the key, or the default value provided for a new key.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -856,6 +881,7 @@ points.dec(&quot;numberInObject&quot;, &quot;sub.anInt&quot;); // {sub: { anInt:
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Simply ensure the data exists (for using property methods):
@@ -875,6 +901,7 @@ console.log(settings) // enmap's value for &quot;1234567890&quot; if it exists, 
 </doc-anchor-target>
 <p>Returns whether or not the key exists in the Enmap.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -899,6 +926,7 @@ console.log(settings) // enmap's value for &quot;1234567890&quot; if it exists, 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">if(enmap.has(&quot;myKey&quot;)) {
@@ -916,6 +944,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 <p>Performs Array.includes() on a certain enmap value. Works similar to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.includes()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>boolean</code> - Whether the array contains the value.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -946,6 +975,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapdeletekey-path--enmap">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapdeletekey-path--enmap">#</doc-anchor-trigger>
@@ -955,6 +985,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 <p>Deletes a key in the Enmap.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -979,6 +1010,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapclear">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapclear">#</doc-anchor-trigger>
@@ -1004,6 +1036,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 <p>Remove a value in an Array or Object element in Enmap. Note that this only works for values, not keys. Note that only one value is removed, no more. Arrays of objects must use a function to remove, as full object matching is not supported.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1034,6 +1067,7 @@ if(!enmap.has(&quot;myOtherKey&quot;, &quot;oneProp.otherProp.SubProp&quot;)) re
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Assuming
@@ -1061,6 +1095,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Import an existing json export from enmap from a string. This data must have been exported from enmap, and must be from a version that&#x27;s equivalent or lower than where you&#x27;re importing it.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger> - The enmap with the new data.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1091,6 +1126,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmaparray--array">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmaparray--array">#</doc-anchor-trigger>
@@ -1116,6 +1152,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Obtains random value(s) from this Enmap. This relies on <doc-anchor-trigger to="#Enmap+array">array</doc-anchor-trigger>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> | <code v-pre>Array.&lt;*&gt;</code> - The single value if <code v-pre>count</code> is undefined, or an array of values of <code v-pre>count</code> length</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1132,6 +1169,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmaprandomkeycount----array">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmaprandomkeycount----array">#</doc-anchor-trigger>
@@ -1141,6 +1179,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Obtains random key(s) from this Enmap. This relies on <doc-anchor-trigger to="#Enmap+keyArray">keyArray</doc-anchor-trigger></p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>*</code> | <code v-pre>Array.&lt;*&gt;</code> - The single key if <code v-pre>count</code> is undefined, or an array of keys of <code v-pre>count</code> length</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1157,6 +1196,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapfindallprop-value--array">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapfindallprop-value--array">#</doc-anchor-trigger>
@@ -1165,6 +1205,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Searches for all items where their specified property&#x27;s value is identical to the given value (<code v-pre>item[prop] === value</code>).</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1186,6 +1227,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">enmap.findAll('username', 'Bob');</code></pre>
@@ -1199,6 +1241,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Searches for a single item where its specified property&#x27;s value is identical to the given value (<code v-pre>item[prop] === value</code>), or the given function returns a truthy value. In the latter case, this is identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Array.find()</a>.</p>
 <p>All Enmap used in Discord.js are mapped using their &#x60;id&#x60; property, and if you want to find by id you should use the &#x60;get&#x60; method. See [MDN](<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5C_Objects/Map/get">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Map/get</a>) for details.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1220,6 +1263,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">enmap.find('username', 'Bob');</code></pre>
@@ -1236,6 +1280,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Searches for the key of a single item where its specified property&#x27;s value is identical to the given value (<code v-pre>item[prop] === value</code>), or the given function returns a truthy value. In the latter case, this is identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">Array.findIndex()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1257,6 +1302,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">enmap.findKey('username', 'Bob');</code></pre>
@@ -1274,6 +1320,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Removes entries that satisfy the provided filter function.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>number</code> - The number of removed entries</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1295,6 +1342,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapfilterfn-thisarg--enmap">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapfilterfn-thisarg--enmap">#</doc-anchor-trigger>
@@ -1303,6 +1351,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.filter()</a>, but returns a Enmap instead of an Array.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1324,6 +1373,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapfilterarrayfn-thisarg--array">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapfilterarrayfn-thisarg--array">#</doc-anchor-trigger>
@@ -1332,6 +1382,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.filter()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1353,6 +1404,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapmapfn-thisarg--array">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapmapfn-thisarg--array">#</doc-anchor-trigger>
@@ -1361,6 +1413,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.map()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1382,6 +1435,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapsomefn-thisarg--boolean">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapsomefn-thisarg--boolean">#</doc-anchor-trigger>
@@ -1390,6 +1444,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Array.some()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1411,6 +1466,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapeveryfn-thisarg--boolean">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapeveryfn-thisarg--boolean">#</doc-anchor-trigger>
@@ -1419,6 +1475,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Array.every()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1440,6 +1497,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapreducefn-initialvalue--">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapreducefn-initialvalue--">#</doc-anchor-trigger>
@@ -1448,6 +1506,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Identical to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">Array.reduce()</a>.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1469,6 +1528,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <doc-anchor-target id="enmapclone--enmap">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enmapclone--enmap">#</doc-anchor-trigger>
@@ -1489,6 +1549,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </doc-anchor-target>
 <p>Combines this Enmap with others into a new Enmap. None of the source Enmaps are modified.</p>
 <p><strong>Kind</strong>: instance method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger></p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1505,6 +1566,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">const newColl = someColl.concat(someOtherColl, anotherColl, ohBoyAColl);</code></pre>
@@ -1518,6 +1580,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 <p>Initialize multiple Enmaps easily.</p>
 <p><strong>Kind</strong>: static method of <doc-anchor-trigger to="#enmap-map"><code v-pre>Enmap</code></doc-anchor-trigger><br />
 <strong>Returns</strong>: <code v-pre>Array.&lt;Map&gt;</code> - An array of initialized Enmaps.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
@@ -1539,6 +1602,7 @@ enmap.remove('objectarray', (value) =&gt; value.e === 5); // value is now [{ a: 
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Example</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// Using local variables.
