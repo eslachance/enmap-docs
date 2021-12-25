@@ -24,4 +24,3 @@
   * [Why SQLITE only?](blog-posts/why-sqlite-only.md)
   * [Enmap and Josh](blog-posts/josh.md)
 * [Supporters and Partners](sponsors.md)
-
