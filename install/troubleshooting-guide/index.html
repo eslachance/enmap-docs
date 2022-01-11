@@ -24,11 +24,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.693712779698" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/assets/favicon.png" rel="icon" />
+    <link href="/resources/css/retype.css?v=1.11.2.695236716597" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.693712779698" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.695236716597" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.693712779698" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.695236716597" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -209,7 +210,7 @@
             </svg>
         </div>
         <div class="pr-5 ml-3">
-<p>Please make sure to read the <a href="https://enmap.evie.dev/install#pre-requisites">install page</a> <strong>VERY CAREFULLY</strong>! This should solve all the issues you face. If not carry on, but don&#x27;t say we didn&#x27;t tell you.</p>
+<p>Please make sure to read the <a href="/install/#pre-requisites">install page</a> <strong>VERY CAREFULLY</strong>! This should solve all the issues you face. If not carry on, but don&#x27;t say we didn&#x27;t tell you.</p>
         </div>
     </div>
 </div>
@@ -220,20 +221,29 @@
     </h2>
 </doc-anchor-target>
 <p>Your computer has to install some programs and then build everything from source. This is going to take a while depending on your computer speed. Patience is key. We can&#x27;t speed it up for you. It may look like its frozen but it is not.</p>
-<doc-anchor-target id="my-question-isnt-answered-here">
+<p>Some tips: Make sure you are doing this install on a fast hard drive (ideally SSD, but HDD will work fine) and <strong>not on a USB Key</strong> or removable media.</p>
+<doc-anchor-target id="command-failed-downloading-python-or-build-tools">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#my-question-isnt-answered-here">#</doc-anchor-trigger>
-        <span>My Question Isn&#x27;t Answered Here!</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#command-failed-downloading-python-or-build-tools">#</doc-anchor-trigger>
+        <span>command failed downloading python or build tools</span>
     </h2>
 </doc-anchor-target>
-<p>Please make sure you read the <a href="https://enmap.evie.dev/install#pre-requisites">install page</a> first. If you can&#x27;t find what your looking for you can join the discord <a href="https://discord.gg/N7ZKH3P">here</a>.</p>
+<p><code v-pre>Please restart this script in an administrative Powershel!</code> means you did not read the <a href="/install/#pre-requisites">install page</a> correctly.</p>
 <doc-anchor-target id="msb3428-could-not-load-the-visual-c-component-vcbuildexe">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#msb3428-could-not-load-the-visual-c-component-vcbuildexe">#</doc-anchor-trigger>
         <span>MSB3428: Could not load the Visual C++ component &quot;VCBuild.exe&quot;</span>
     </h2>
 </doc-anchor-target>
-<p><a href="../#pre-requisites">Looks like someone hasn&#x27;t follows the installation instructions correctly...</a></p>
+<p>Looks like someone hasn&#x27;t follows the <a href="/install/#pre-requisites">installation instructions</a> correctly...</p>
+<p>(are you sensing there&#x27;s a theme yet in this troubleshooting guide?)</p>
+<doc-anchor-target id="my-question-isnt-answered-here">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#my-question-isnt-answered-here">#</doc-anchor-trigger>
+        <span>My Question Isn&#x27;t Answered Here!</span>
+    </h2>
+</doc-anchor-target>
+<p>Please make sure you read the <a href="/install/#pre-requisites">install page</a> first. If you can&#x27;t find what your looking for you can join the discord <a href="https://discord.gg/N7ZKH3P">here</a>.</p>
 
 
 
@@ -283,7 +293,7 @@
 </ul>
 
     </div>
-    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2021. All rights reserved.</p>
+    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2022. All rights reserved.</p>
 </div>
 </footer>
 

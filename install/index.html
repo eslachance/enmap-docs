@@ -24,12 +24,13 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.693712779698" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/assets/favicon.png" rel="icon" />
+    <link href="/resources/css/retype.css?v=1.11.2.695236716597" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.693712779698" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.695236716597" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.693712779698" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.693712779698" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.695236716597" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.695236716597" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -217,8 +218,8 @@
             </svg>
         </div>
         <div class="pr-5 ml-3">
-<p>SQLite modules usually only successfully work on LTS versions of node. This means it will work correctly on node 12, and 14. It will <em>not</em> work on node 13, 15, 17. Make sure you have the right version, check this with <code v-pre>node -v</code>.</p>
-<p>Also, better-sqlite3 doesn&#x27;t compile on unreleased node versions usually. Your mileage may vary, but don&#x27;t expect it to work on the &quot;Latest&quot; version of node either.</p>
+<p>SQLite modules usually only successfully work on LTS versions of node which are even-numbered. This means
+it will work on node 12, 14, 16 but will most likely <em>not</em> work on 13, 15, 17. Make sure you have the right version, check this with <code v-pre>node -v</code>.</p>
         </div>
     </div>
 </div>
@@ -231,6 +232,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">// First run:
 npm i -g --add-python-to-path --vs2015 --production windows-build-tools
+// If you get an error here READ THE TEXT ABOVE AND BELOW THIS CODE BLOCK, IT IS IMPORTANT.
 
 // Then run:
 npm i -g node-gyp@latest</code></pre>
@@ -238,16 +240,16 @@ npm i -g node-gyp@latest</code></pre>
 <blockquote>
 <p>It&#x27;s <em>very important</em> that this be run in the <strong>administrative</strong> prompt, and not a regular one.</p>
 </blockquote>
-<p>Once the windows-build-tools are installed (this might take quite some time, depending on your internet connection), <strong>close all open command prompts, powershell windows, and editors with a built-in console/prompt</strong>. Otherwise, the next command will not work.</p>
+<p>Once the windows-build-tools are installed (this might take quite some time, depending on your internet connection), <strong>close all open command prompts, powershell windows, VSCode, and editors with a built-in console/prompt</strong>. Otherwise, the next command will not work.</p>
 </doc-tab>
 <doc-tab id="linux">
 <template #title>Linux</template>
-<p>On Linux, the pre-requisites are much simpler in a way. A lot of modern systems (such as Ubuntu, since 16.04) already come with python 2.7 pre-installed. For some other systems, you might have to fiddle with it to either get python 2.7 installed, or to install both 2.7 and 3.x simultaneously. Google will be your friend.</p>
-<p>As for the C++ build tools, that&#x27;s installed using the simple command: <code v-pre>sudo apt-get install build-essential</code> for most debian-based systems. For others, look towards your package manager and specificall &quot;GCC build tools&quot;. Your mileage may vary but hey, you&#x27;re using Linux, you should know this stuff.</p>
+<p>On Linux, the pre-requisites are much simpler in a way. A lot of modern systems (such as Ubuntu, since 16.04) already come with python pre-installed. For some other systems, you might have to fiddle with it to install python (2 or 3, whichever is easiest). Google will be your friend as is customary with Linux.</p>
+<p>As for the C++ build tools, that&#x27;s installed using the simple command: <code v-pre>sudo apt-get install build-essential</code> for most debian-based systems. For others, look towards your package manager and specificall &quot;GCC build tools&quot;.</p>
 </doc-tab>
 <doc-tab id="mac-os">
 <template #title>Mac OS</template>
-<p>As of writing this page, MacOS versions seem to all come pre-built with Python 2.7 on the system. You will, however, need the C++ build tools.</p>
+<p>As of writing this page, MacOS versions seem to all come pre-built with Python on the system. You will, however, need the C++ build tools.</p>
 <ul>
 <li>Install <a href="https://developer.apple.com/xcode/download/">XCode</a></li>
 <li>Once XCode is installed, go to <strong>Preferences</strong>, <strong>Downloads</strong>, and install the <strong>Command Line Tools</strong>.</li>
@@ -316,7 +318,7 @@ npm i -g node-gyp@latest</code></pre>
 </ul>
 
     </div>
-    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2021. All rights reserved.</p>
+    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2022. All rights reserved.</p>
 </div>
 </footer>
 
