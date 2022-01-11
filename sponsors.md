@@ -19,4 +19,3 @@ AIG helps users with discord.js support for version 11 and 12, has a channel for
 The first supporter on GitHub and Patreon, working towards a degree in IT and an occasional idiot on An Idiots Guide.
 
 He's Andrew\(\)\#9999 on Discord, and always willing to tell you if your nose looks weird.
-
