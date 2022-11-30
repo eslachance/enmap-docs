@@ -20,7 +20,7 @@ The usage for the `set()` method is simple:
 <Enmap>.set(key, value);
 ```
 
-* `key` must be a string or integer. A key should be unique, otherwise it will be overwritten by new values using the same key. 
+* `key` must be a string. A key should be unique, otherwise it will be overwritten by new values using the same key. 
 * `value` must be a supported native data type as mentioned above.
 
 Here are a few examples of writing simple data values: 
