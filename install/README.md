@@ -22,12 +22,12 @@ On Windows, two things are required to install better-sqlite3. Python, and the V
 
 To install the necessary prerequisites on Windows, the easiest is to simply run the following commands separately, _under an **administrative** command prompt or powershell:_
 
-```javascript
-// First run:
+```batch
+REM First run:
 npm i -g --add-python-to-path --vs2015 --production windows-build-tools
 // If you get an error here READ THE TEXT ABOVE AND BELOW THIS CODE BLOCK, IT IS IMPORTANT.
 
-// Then run:
+REM Then run:
 npm i -g node-gyp@latest
 ```
 
@@ -56,7 +56,7 @@ Once installed, you're ready to continue.
 
 Once those pre-requisites are installed \(if they're not, scroll up, and _follow the instructions_\), and you've closed all open command prompts, open a new, _normal_ \(not-admin\) command prompt or terminal in your project, then install Enmap using the following command:
 
-```text
+```batch
 npm i enmap
 ```
 
