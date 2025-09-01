@@ -38,11 +38,10 @@ So overall, I'm happy with my decision. It gives me more power, it gives users m
 
 ## But what about people that NEED a provider?
 
-I recognize that some people might want to use enmap and can't use sqlite. This is for many valid reasons, for example using it on heroku which doesn't support sqlite and leveldb. For those users, I'm keeping the providers open for maintenance. If someone wants to maintain and update the V3 branch, or even fork the entire system and maintain it under a new name, I have no issue with that \(assuming licenses are properly kept\). I'll accept PRs on all enmap repositories, including backporting some features and adding new ones.
+~~I recognize that some people might want to use enmap and can't use sqlite. This is for many valid reasons, for example using it on heroku which doesn't support sqlite and leveldb. For those users, I'm keeping the providers open for maintenance. If someone wants to maintain and update the V3 branch, or even fork the entire system and maintain it under a new name, I have no issue with that \(assuming licenses are properly kept\). I'll accept PRs on all enmap repositories, including backporting some features and adding new ones.~~
 
-I'm also keeping the V3 docs in this gitbook so it can be maintained through gitbook and PRed on github.
+~~I'm also keeping the V3 docs in this gitbook so it can be maintained through gitbook and PRed on github.~~
 
-You can still install any provider as you would before, and install enmap using `npm i eslachance/enmap#v3` for the version 3 branch that will remain.
+~~You can still install any provider as you would before, and install enmap using `npm i eslachance/enmap#v3` for the version 3 branch that will remain.~~
 
-Want to help out? Join the Discord, fork and PR the Github for enmap, contribute!
-
+Update: Enmap's no longer hosted on gitbook, and Enmap V3 is old enough to be dangerous to use due to potential security vulnerabilities, and providers most likely don't work on recent node versions anyways. All Enmap 3 providers are deprecated and archived.

@@ -9,94 +9,205 @@ description: >-
 The following is the complete list of methods available in Enmap. As it is auto-generated from the source code and its comments, it's a little more "raw" than the Usage docs. However, it has the benefit of being more complete and usually more up to date than the manually written docs.
 
 {% hint style="warning" %}
-If you're doing a PR on the docs github, please do not manually edit the below contents, as it will be overwritten. Check the src/index.js source code and change the comments there instead!
+If you're doing a PR on the docs github, please do not manually edit the below contents, as it will be overwritten. Check the src/index.ts source code and change the comments there instead!
 {% endhint %}
 
-## new Enmap(iterable, [options])
-Initializes a new Enmap, with options.
+<a name="enmap"></a>
 
+## Enmap Class
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| iterable | <code>Iterable</code> \| <code>string</code> \| <code>void</code> |  | If iterable data, only valid in non-persistent enmaps. If this parameter is a string, it is assumed to be the Enmap's name, which is a shorthand for adding a name in the options and making the enmap persistent. |
-| [options] | <code>Object</code> |  | Additional options for the enmap. See https://enmap.evie.codes/usage#enmap-options for details. |
-| [options.name] | <code>string</code> |  | The name of the enmap. Represents its table name in sqlite. If present, the enmap is persistent. If no name is given, the enmap is memory-only and is not saved in the database. As a shorthand, you may use a string for the name instead of the options (see example). |
-| [options.fetchAll] | <code>boolean</code> |  | Defaults to `true`. When enabled, will automatically fetch any key that's requested using get, or other retrieval methods. This is a "synchronous" operation, which means it doesn't need any of this promise or callback use. |
-| [options.dataDir] | <code>string</code> |  | Defaults to `./data`. Determines where the sqlite files will be stored. Can be relative (to your project root) or absolute on the disk. Windows users , remember to escape your backslashes! *Note*: Will not automatically create the folder if set manually, so make sure it exists. |
-| [options.cloneLevel] | <code>string</code> |  | Defaults to deep. Determines how objects and arrays are treated when inserting and retrieving from the database. See https://enmap.evie.codes/usage#enmap-options for more details on this option. |
-| [options.polling] | <code>boolean</code> |  | defaults to `false`. Determines whether Enmap will attempt to retrieve changes from the database on a regular interval. This means that if another Enmap in another process modifies a value, this change will be reflected in ALL enmaps using the polling feature. |
-| [options.pollingInterval] | <code>number</code> |  | defaults to `1000`, polling every second. Delay in milliseconds to poll new data from the database. The shorter the interval, the more CPU is used, so it's best not to lower this. Polling takes about 350-500ms if no data is found, and time will grow with more changes fetched. In my tests, 15 rows took a little more than 1 second, every second. |
-| [options.ensureProps] | <code>boolean</code> |  | defaults to `true`. If enabled and the value in the enmap is an object, using ensure() will also ensure that every property present in the default object will be added to the value, if it's absent. See ensure API reference for more information. |
-| [options.autoEnsure] | <code>\*</code> |  | default is disabled. When provided a value, essentially runs ensure(key, autoEnsure) automatically so you don't have to. This is especially useful on get(), but will also apply on set(), and any array and object methods that interact with the database. |
-| [options.autoFetch] | <code>boolean</code> |  | defaults to `true`. When enabled, attempting to get() a key or do any operation on existing keys (such as array push, etc) will automatically fetch the current key value from the database. Keys that are automatically fetched remain in memory and are not cleared. |
-| [options.serializer] | <code>function</code> |  | Optional. If a function is provided, it will execute on the data when it is written to the database. This is generally used to convert the value into a format that can be saved in the database, such as converting a complete class instance to just its ID. This function may return the value to be saved, or a promise that resolves to that value (in other words, can be an async function). |
-| [options.deserializer] | <code>function</code> |  | Optional. If a function is provided, it will execute on the data when it is read from the database. This is generally used to convert the value from a stored ID into a more complex object. This function may return a value, or a promise that resolves to that value (in other words, can be an async function). |
-| [options.wal] | <code>boolean</code> | <code>false</code> | Check out Write-Ahead Logging: https://www.sqlite.org/wal.html |
-| [options.verbose] | <code>function</code> | <code>(query) &#x3D;&gt; null</code> | A function to call with the direct SQL statement being ran by Enmap internally |
+The Enmap class provides a simple, synchronous, fast key/value storage built around better-sqlite3.
+Contains extra utility methods for managing arrays and objects.
 
-**Example**  
-```js
-const Enmap = require("enmap");
-// Non-persistent enmap:
-const inMemory = new Enmap();
+## Properties
 
-// Named, Persistent enmap with string option
-const myEnmap = new Enmap("testing");
+<dl>
+<dt><a href="#size">size</a> ⇒ <code>number</code></dt>
+<dd><p>Get the number of key/value pairs saved in the enmap.</p>
+</dd>
+<dt><a href="#db">db</a> ⇒ <code>Database</code></dt>
+<dd><p>Get the better-sqlite3 database object. Useful if you want to directly query or interact with the
+underlying SQLite database. Use at your own risk, as errors here might cause loss of data or corruption!</p>
+</dd>
+<dt><a href="#autonum">autonum</a> ⇒ <code>string</code></dt>
+<dd><p>Generates an automatic numerical key for inserting a new value.
+This is a &quot;weak&quot; method, it ensures the value isn&#39;t duplicated, but does not
+guarantee it&#39;s sequential (if a value is deleted, another can take its place).
+Useful for logging, actions, items, etc - anything that doesn&#39;t already have a unique ID.</p>
+</dd>
+</dl>
 
-// Enmap that does not fetch everything, but does so on per-query basis:
-const myEnmap = new Enmap({name: "testing", fetchAll: false});
+## Methods
 
-// Enmap that automatically assigns a default object when getting or setting anything.
-const autoEnmap = new Enmap({name: "settings", autoEnsure: { setting1: false, message: "default message"}})
-```
-<a name="Enmap+count"></a>
+<dl>
+<dt><a href="#set">set(key, value, path)</a></dt>
+<dd><p>Sets a value in Enmap. If the key already has a value, overwrites the data (or the value in a path, if provided).</p>
+</dd>
+<dt><a href="#get">get(key, path)</a> ⇒</dt>
+<dd><p>Retrieves a value from the enmap, using its key.</p>
+</dd>
+<dt><a href="#has">has(key)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Returns whether or not the key exists in the Enmap.</p>
+</dd>
+<dt><a href="#delete">delete(key, path)</a></dt>
+<dd><p>Deletes a key in the Enmap.</p>
+</dd>
+<dt><a href="#clear">clear()</a> ⇒ <code>void</code></dt>
+<dd><p>Deletes everything from the enmap.</p>
+</dd>
+<dt><a href="#keys">keys()</a> ⇒ <code>Array.&lt;string&gt;</code></dt>
+<dd><p>Get all the keys of the enmap as an array.</p>
+</dd>
+<dt><a href="#values">values()</a> ⇒ <code>Array.&lt;*&gt;</code></dt>
+<dd><p>Get all the values of the enmap as an array.</p>
+</dd>
+<dt><a href="#entries">entries()</a> ⇒ <code>Array.&lt;Array.&lt;*, *&gt;&gt;</code></dt>
+<dd><p>Get all entries of the enmap as an array, with each item containing the key and value.</p>
+</dd>
+<dt><a href="#update">update(key, valueOrFunction)</a> ⇒ <code>*</code></dt>
+<dd><p>Update an existing object value in Enmap by merging new keys. <strong>This only works on objects</strong>, any other value will throw an error.
+Heavily inspired by setState from React&#39;s class components.
+This is very useful if you have many different values to update and don&#39;t want to have more than one .set(key, value, prop) lines.</p>
+</dd>
+<dt><a href="#observe">observe(key, path)</a> ⇒ <code>*</code></dt>
+<dd><p>Returns an observable object. Modifying this object or any of its properties/indexes/children
+will automatically save those changes into enmap. This only works on
+objects and arrays, not &quot;basic&quot; values like strings or integers.</p>
+</dd>
+<dt><a href="#push">push(key, value, path, allowDupes)</a></dt>
+<dd><p>Push to an array value in Enmap.</p>
+</dd>
+<dt><a href="#math">math(key, operation, operand, path)</a> ⇒ <code>number</code></dt>
+<dd><p>Executes a mathematical operation on a value and saves it in the enmap.</p>
+</dd>
+<dt><a href="#inc">inc(key, path)</a> ⇒ <code>number</code></dt>
+<dd><p>Increments a key&#39;s value or property by 1. Value must be a number, or a path to a number.</p>
+</dd>
+<dt><a href="#dec">dec(key, path)</a> ⇒ <code>Enmap</code></dt>
+<dd><p>Decrements a key&#39;s value or property by 1. Value must be a number, or a path to a number.</p>
+</dd>
+<dt><a href="#ensure">ensure(key, defaultValue, path)</a> ⇒ <code>*</code></dt>
+<dd><p>Returns the key&#39;s value, or the default given, ensuring that the data is there.
+This is a shortcut to &quot;if enmap doesn&#39;t have key, set it, then get it&quot; which is a very common pattern.</p>
+</dd>
+<dt><a href="#includes">includes(key, value, path)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Performs Array.includes() on a certain enmap value. Works similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.includes()</a>.</p>
+</dd>
+<dt><a href="#remove">remove(key, val, path)</a></dt>
+<dd><p>Remove a value in an Array or Object element in Enmap. Note that this only works for
+values, not keys. Note that only one value is removed, no more. Arrays of objects must use a function to remove,
+as full object matching is not supported.</p>
+</dd>
+<dt><a href="#export">export()</a> ⇒ <code>string</code></dt>
+<dd><p>Exports the enmap data to stringified JSON format.
+<strong><strong>WARNING</strong></strong>: Does not work on memory enmaps containing complex data!</p>
+</dd>
+<dt><a href="#import">import(data, overwrite, clear)</a></dt>
+<dd><p>Import an existing json export from enmap. This data must have been exported from enmap,
+and must be from a version that&#39;s equivalent or lower than where you&#39;re importing it.
+(This means Enmap 5 data is compatible in Enmap 6).</p>
+</dd>
+<dt><a href="#multi">multi(names, options)</a> ⇒ <code>Object</code></dt>
+<dd><p>Initialize multiple Enmaps easily.</p>
+</dd>
+<dt><a href="#random">random([count])</a> ⇒ <code>*</code> | <code>Array.&lt;*&gt;</code></dt>
+<dd><p>Obtains random value(s) from this Enmap. This relies on <a href="Enmap#array">Enmap#array</a>.</p>
+</dd>
+<dt><a href="#randomKey">randomKey([count])</a> ⇒ <code>*</code> | <code>Array.&lt;*&gt;</code></dt>
+<dd><p>Obtains random key(s) from this Enmap. This relies on <a href="Enmap#keyArray">Enmap#keyArray</a></p>
+</dd>
+<dt><a href="#every">every(valueOrFunction, [path])</a> ⇒ <code>boolean</code></dt>
+<dd><p>Similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Array.every()</a>.
+Supports either a predicate function or a value to compare.
+Returns true only if the predicate function returns true for all elements in the array (or the value is strictly equal in all elements).</p>
+</dd>
+<dt><a href="#some">some(valueOrFunction, [path])</a> ⇒ <code>Array</code></dt>
+<dd><p>Similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Array.some()</a>.
+Supports either a predicate function or a value to compare.
+Returns true if the predicate function returns true for at least one element in the array (or the value is equal in at least one element).</p>
+</dd>
+<dt><a href="#map">map(pathOrFn)</a> ⇒ <code>Array</code></dt>
+<dd><p>Similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.map()</a>.
+Returns an array of the results of applying the callback to all elements.</p>
+</dd>
+<dt><a href="#find">find(pathOrFn, [value])</a> ⇒ <code>*</code></dt>
+<dd><p>Searches for a single item where its specified property&#39;s value is identical to the given value
+(<code>item[prop] === value</code>), or the given function returns a truthy value. In the latter case, this is similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Array.find()</a>.</p>
+</dd>
+<dt><a href="#findIndex">findIndex(pathOrFn, [value])</a> ⇒ <code>string</code> | <code>number</code></dt>
+<dd><p>Searches for the key of a single item where its specified property&#39;s value is identical to the given value
+(<code>item[prop] === value</code>), or the given function returns a truthy value. In the latter case, this is similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">Array.findIndex()</a>.</p>
+</dd>
+<dt><a href="#reduce">reduce(predicate, [initialValue])</a> ⇒ <code>*</code></dt>
+<dd><p>Similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">Array.reduce()</a>.</p>
+</dd>
+<dt><a href="#filter">filter(pathOrFn, [value])</a> ⇒ <code>Enmap</code></dt>
+<dd><p>Similar to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.filter()</a>.
+Returns an array of values where the given function returns true for that value.
+Alternatively you can provide a value and path to filter by using exact value matching.</p>
+</dd>
+<dt><a href="#sweep">sweep(pathOrFn, [value])</a> ⇒ <code>number</code></dt>
+<dd><p>Deletes entries that satisfy the provided filter function or value matching.</p>
+</dd>
+<dt><a href="#changed">changed(cb)</a></dt>
+<dd><p>Function called whenever data changes within Enmap after the initial load.
+Can be used to detect if another part of your code changed a value in enmap and react on it.</p>
+</dd>
+<dt><a href="#partition">partition(pathOrFn, value)</a> ⇒ <code>Array.&lt;Array.&lt;*&gt;&gt;</code></dt>
+<dd><p>Separates the Enmap into multiple arrays given a function that separates them.</p>
+</dd>
+</dl>
 
-### enmap.count ⇒ <code>number</code>
-Retrieves the number of rows in the database for this enmap, even if they aren't fetched.
+<a name="size"></a>
 
-**Kind**: instance property of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>number</code> - The number of rows in the database.  
-<a name="Enmap+indexes"></a>
+## size ⇒ <code>number</code>
+Get the number of key/value pairs saved in the enmap.
 
-### enmap.indexes ⇒ <code>Array.&lt;string&gt;</code>
-Retrieves all the indexes (keys) in the database for this enmap, even if they aren't fetched.
+**Kind**: instance property of <code>Enmap</code>  
+**Returns**: <code>number</code> - The number of elements in the enmap.  
+**Read only**: true  
+<a name="db"></a>
 
-**Kind**: instance property of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>Array.&lt;string&gt;</code> - Array of all indexes (keys) in the enmap, cached or not.  
-<a name="Enmap+db"></a>
-
-### enmap.db ⇒ <code>Database</code>
+## db ⇒ <code>Database</code>
 Get the better-sqlite3 database object. Useful if you want to directly query or interact with the
 underlying SQLite database. Use at your own risk, as errors here might cause loss of data or corruption!
 
-**Kind**: instance property of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+autonum"></a>
+**Kind**: instance property of <code>Enmap</code>  
+<a name="autonum"></a>
 
-### enmap.autonum ⇒ <code>string</code>
+## autonum ⇒ <code>string</code>
 Generates an automatic numerical key for inserting a new value.
 This is a "weak" method, it ensures the value isn't duplicated, but does not
 guarantee it's sequential (if a value is deleted, another can take its place).
 Useful for logging, actions, items, etc - anything that doesn't already have a unique ID.
 
-**Kind**: instance property of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance property of <code>Enmap</code>  
 **Returns**: <code>string</code> - The generated key number.  
+**Read only**: true  
 **Example**  
 ```js
 enmap.set(enmap.autonum, "This is a new value");
 ```
-<a name="Enmap+set"></a>
+<a name="set"></a>
 
-### enmap.set(key, val, path) ⇒ [<code>Enmap</code>](#enmap-map)
-Sets a value in Enmap.
+## set(key, value, path)
+Sets a value in Enmap. If the key already has a value, overwrites the data (or the value in a path, if provided).
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the element to add to The Enmap. |
-| val | <code>\*</code> |  | Required. The value of the element to add to The Enmap. If the Enmap is persistent this value MUST be stringifiable as JSON. |
-| path | <code>string</code> | <code>null</code> | Optional. The path to the property to modify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
+| Param | Description |
+| --- | --- |
+| key | Required. The location in which the data should be saved. |
+| value | Required. The value to write. Values must be serializable, which is done through (better-serialize)[https://github.com/RealShadowNova/better-serialize] If the value is not directly serializable, please use a custom serializer/deserializer. |
+| path | Optional. The path to the property to modify inside the value object or array. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
 **Example**  
 ```js
@@ -111,14 +222,91 @@ enmap.set('ArraysToo', [1, "two", "tree", "foor"])
 enmap.set('IhazObjects', 'blue', 'color'); //modified previous object
 enmap.set('ArraysToo', 'three', 2); // changes "tree" to "three" in array.
 ```
-<a name="Enmap+update"></a>
+<a name="get"></a>
 
-### enmap.update(key, valueOrFunction)
+## get(key, path) ⇒
+Retrieves a value from the enmap, using its key.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: The parsed value for this key.  
+
+| Param | Description |
+| --- | --- |
+| key | The key to retrieve from the enmap. |
+| path | Optional. The property to retrieve from the object or array. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
+
+**Example**  
+```js
+const myKeyValue = enmap.get("myKey");
+console.log(myKeyValue);
+
+const someSubValue = enmap.get("anObjectKey", "someprop.someOtherSubProp");
+```
+<a name="has"></a>
+
+## has(key) ⇒ <code>boolean</code>
+Returns whether or not the key exists in the Enmap.
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Description |
+| --- | --- |
+| key | Required. The key of the element to add to The Enmap or array. |
+
+**Example**  
+```js
+if(enmap.has("myKey")) {
+  // key is there
+}
+```
+<a name="delete"></a>
+
+## delete(key, path)
+Deletes a key in the Enmap.
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Description |
+| --- | --- |
+| key | Required. The key of the element to delete from The Enmap. |
+| path | Optional. The name of the property to remove from the object. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
+
+<a name="clear"></a>
+
+## clear() ⇒ <code>void</code>
+Deletes everything from the enmap.
+
+**Kind**: instance method of <code>Enmap</code>  
+<a name="keys"></a>
+
+## keys() ⇒ <code>Array.&lt;string&gt;</code>
+Get all the keys of the enmap as an array.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - An array of all the keys in the enmap.  
+<a name="values"></a>
+
+## values() ⇒ <code>Array.&lt;\*&gt;</code>
+Get all the values of the enmap as an array.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>Array.&lt;\*&gt;</code> - An array of all the values in the enmap.  
+<a name="entries"></a>
+
+## entries() ⇒ <code>Array.&lt;Array.&lt;\*, \*&gt;&gt;</code>
+Get all entries of the enmap as an array, with each item containing the key and value.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>Array.&lt;Array.&lt;\*, \*&gt;&gt;</code> - An array of arrays, with each sub-array containing two items, the key and the value.  
+<a name="update"></a>
+
+## update(key, valueOrFunction) ⇒ <code>\*</code>
 Update an existing object value in Enmap by merging new keys. **This only works on objects**, any other value will throw an error.
 Heavily inspired by setState from React's class components.
 This is very useful if you have many different values to update and don't want to have more than one .set(key, value, prop) lines.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>\*</code> - The modified (merged) value.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -143,112 +331,33 @@ enmap.update("obj", (previous) => ({
 // this example takes heavy advantage of the spread operators.
 // More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 ```
-<a name="Enmap+get"></a>
+<a name="observe"></a>
 
-### enmap.get(key, path) ⇒ <code>\*</code>
-Retrieves a key from the enmap.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>\*</code> - The value for this key.  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | The key to retrieve from the enmap. |
-| path | <code>string</code> | <code>null</code> | Optional. The property to retrieve from the object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-**Example**  
-```js
-const myKeyValue = enmap.get("myKey");
-console.log(myKeyValue);
-
-const someSubValue = enmap.get("anObjectKey", "someprop.someOtherSubProp");
-```
-<a name="Enmap+observe"></a>
-
-### enmap.observe(key, path) ⇒ <code>\*</code>
+## observe(key, path) ⇒ <code>\*</code>
 Returns an observable object. Modifying this object or any of its properties/indexes/children
 will automatically save those changes into enmap. This only works on
 objects and arrays, not "basic" values like strings or integers.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
 **Returns**: <code>\*</code> - The value for this key.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | The key to retrieve from the enmap. |
-| path | <code>string</code> | <code>null</code> | Optional. The property to retrieve from the object or array. |
-
-<a name="Enmap+fetchEverything"></a>
-
-### enmap.fetchEverything() ⇒ [<code>Enmap</code>](#enmap-map)
-Fetches every key from the persistent enmap and loads them into the current enmap value.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap containing all values.  
-<a name="Enmap+fetch"></a>
-
-### enmap.fetch(keyOrArrayOfKeys) ⇒ [<code>Enmap</code>](#enmap-map) \| <code>\*</code>
-Force fetch one or more key values from the enmap. If the database has changed, that new value is used.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) \| <code>\*</code> - The Enmap, including the new fetched values, or the value in case the function argument is a single key.  
-
 | Param | Type | Description |
 | --- | --- | --- |
-| keyOrArrayOfKeys | <code>string</code> \| <code>Array.&lt;string&gt;</code> | A single key or array of keys to force fetch from the enmap database. |
+| key | <code>\*</code> | The key to retrieve from the enmap. |
+| path | <code>string</code> | Optional. The property to retrieve from the object or array. |
 
-<a name="Enmap+evict"></a>
+<a name="push"></a>
 
-### enmap.evict(keyOrArrayOfKeys) ⇒ [<code>Enmap</code>](#enmap-map)
-Removes a key or keys from the cache - useful when disabling autoFetch.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap minus the evicted keys.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| keyOrArrayOfKeys | <code>string</code> \| <code>Array.&lt;string&gt;</code> | A single key or array of keys to remove from the cache. |
-
-<a name="Enmap+changed"></a>
-
-### enmap.changed(cb)
-Function called whenever data changes within Enmap after the initial load.
-Can be used to detect if another part of your code changed a value in enmap and react on it.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| cb | <code>function</code> | A callback function that will be called whenever data changes in the enmap. |
-
-**Example**  
-```js
-enmap.changed((keyName, oldValue, newValue) => {
-  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue}`);
-});
-```
-<a name="Enmap+close"></a>
-
-### enmap.close() ⇒ [<code>Enmap</code>](#enmap-map)
-Shuts down the database. USING THIS MAKES THE ENMAP UNUSABLE. You should
-only use this method if you are closing your entire application.
-This is already done by Enmap automatically on shutdown unless you disabled it.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
-<a name="Enmap+push"></a>
-
-### enmap.push(key, val, path, allowDupes) ⇒ [<code>Enmap</code>](#enmap-map)
+## push(key, value, path, allowDupes)
 Push to an array value in Enmap.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | key | <code>string</code> |  | Required. The key of the array element to push to in Enmap. |
-| val | <code>\*</code> |  | Required. The value to push to the array. |
-| path | <code>string</code> | <code>null</code> | Optional. The path to the property to modify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
+| value | <code>\*</code> |  | Required. The value to push to the array. |
+| path | <code>string</code> |  | Optional. The path to the property to modify inside the value object or array. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
 | allowDupes | <code>boolean</code> | <code>false</code> | Optional. Allow duplicate values in the array (default: false). |
 
 **Example**  
@@ -260,20 +369,20 @@ enmap.set("arrayInObject", {sub: [1, 2, 3, 4]});
 enmap.push("simpleArray", 5); // adds 5 at the end of the array
 enmap.push("arrayInObject", "five", "sub"); // adds "five" at the end of the sub array
 ```
-<a name="Enmap+math"></a>
+<a name="math"></a>
 
-### enmap.math(key, operation, operand, path) ⇒ [<code>Enmap</code>](#enmap-map)
+## math(key, operation, operand, path) ⇒ <code>number</code>
 Executes a mathematical operation on a value and saves it in the enmap.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>number</code> - The updated value after the operation  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | The enmap key on which to execute the math operation. |
-| operation | <code>string</code> |  | Which mathematical operation to execute. Supports most math ops: =, -, *, /, %, ^, and english spelling of those operations. |
-| operand | <code>number</code> |  | The right operand of the operation. |
-| path | <code>string</code> | <code>null</code> | Optional. The property path to execute the operation on, if the value is an object or array. |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | The enmap key on which to execute the math operation. |
+| operation | <code>string</code> | Which mathematical operation to execute. Supports most math ops: =, -, *, /, %, ^, and english spelling of those operations. |
+| operand | <code>number</code> | The right operand of the operation. |
+| path | <code>string</code> | Optional. The property path to execute the operation on, if the value is an object or array. |
 
 **Example**  
 ```js
@@ -286,18 +395,18 @@ points.math("number", "add", 5); // 26
 points.math("number", "modulo", 3); // 2
 points.math("numberInObject", "+", 10, "sub.anInt");
 ```
-<a name="Enmap+inc"></a>
+<a name="inc"></a>
 
-### enmap.inc(key, path) ⇒ [<code>Enmap</code>](#enmap-map)
+## inc(key, path) ⇒ <code>number</code>
 Increments a key's value or property by 1. Value must be a number, or a path to a number.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>number</code> - The udpated value after incrementing.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | The enmap key where the value to increment is stored. |
-| path | <code>string</code> | <code>null</code> | Optional. The property path to increment, if the value is an object or array. |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | The enmap key where the value to increment is stored. |
+| path | <code>string</code> | Optional. The property path to increment, if the value is an object or array. |
 
 **Example**  
 ```js
@@ -308,18 +417,18 @@ points.set("numberInObject", {sub: { anInt: 5 }});
 points.inc("number"); // 43
 points.inc("numberInObject", "sub.anInt"); // {sub: { anInt: 6 }}
 ```
-<a name="Enmap+dec"></a>
+<a name="dec"></a>
 
-### enmap.dec(key, path) ⇒ [<code>Enmap</code>](#enmap-map)
+## dec(key, path) ⇒ <code>Enmap</code>
 Decrements a key's value or property by 1. Value must be a number, or a path to a number.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>Enmap</code> - The enmap.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | The enmap key where the value to decrement is stored. |
-| path | <code>string</code> | <code>null</code> | Optional. The property path to decrement, if the value is an object or array. |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | The enmap key where the value to decrement is stored. |
+| path | <code>string</code> | Optional. The property path to decrement, if the value is an object or array. |
 
 **Example**  
 ```js
@@ -330,20 +439,20 @@ points.set("numberInObject", {sub: { anInt: 5 }});
 points.dec("number"); // 41
 points.dec("numberInObject", "sub.anInt"); // {sub: { anInt: 4 }}
 ```
-<a name="Enmap+ensure"></a>
+<a name="ensure"></a>
 
-### enmap.ensure(key, defaultValue, path) ⇒ <code>\*</code>
+## ensure(key, defaultValue, path) ⇒ <code>\*</code>
 Returns the key's value, or the default given, ensuring that the data is there.
 This is a shortcut to "if enmap doesn't have key, set it, then get it" which is a very common pattern.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
 **Returns**: <code>\*</code> - The value from the database for the key, or the default value provided for a new key.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key you want to make sure exists. |
-| defaultValue | <code>\*</code> |  | Required. The value you want to save in the database and return as default. |
-| path | <code>string</code> | <code>null</code> | Optional. If presents, ensures both the key exists as an object, and the full path exists. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Required. The key you want to make sure exists. |
+| defaultValue | <code>\*</code> | Required. The value you want to save in the database and return as default. |
+| path | <code>string</code> | Optional. If presents, ensures both the key exists as an object, and the full path exists. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
 **Example**  
 ```js
@@ -356,89 +465,35 @@ enmap.get("mykey", "here") // returns "as an example";
 const settings = mySettings.ensure("1234567890", defaultSettings);
 console.log(settings) // enmap's value for "1234567890" if it exists, otherwise the defaultSettings value.
 ```
-<a name="Enmap+has"></a>
+<a name="includes"></a>
 
-### enmap.has(key, path) ⇒ <code>boolean</code>
-Returns whether or not the key exists in the Enmap.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the element to add to The Enmap or array. |
-| path | <code>string</code> | <code>null</code> | Optional. The property to verify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-**Example**  
-```js
-if(enmap.has("myKey")) {
-  // key is there
-}
-
-if(!enmap.has("myOtherKey", "oneProp.otherProp.SubProp")) return false;
-```
-<a name="Enmap+includes"></a>
-
-### enmap.includes(key, val, path) ⇒ <code>boolean</code>
+## includes(key, value, path) ⇒ <code>boolean</code>
 Performs Array.includes() on a certain enmap value. Works similar to
 [Array.includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes).
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
 **Returns**: <code>boolean</code> - Whether the array contains the value.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the array to check the value of. |
-| val | <code>string</code> \| <code>number</code> |  | Required. The value to check whether it's in the array. |
-| path | <code>string</code> | <code>null</code> | Optional. The property to access the array inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Required. The key of the array to check the value of. |
+| value | <code>string</code> \| <code>number</code> | Required. The value to check whether it's in the array. |
+| path | <code>string</code> | Optional. The property to access the array inside the value object or array. Should be a path with dot notation, such as "prop1.subprop2.subprop3" |
 
-<a name="Enmap+delete"></a>
+<a name="remove"></a>
 
-### enmap.delete(key, path) ⇒ [<code>Enmap</code>](#enmap-map)
-Deletes a key in the Enmap.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the element to delete from The Enmap. |
-| path | <code>string</code> | <code>null</code> | Optional. The name of the property to remove from the object. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-<a name="Enmap+deleteAll"></a>
-
-### enmap.deleteAll()
-Deletes everything from the enmap. If persistent, clears the database of all its data for this table.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+clear"></a>
-
-### enmap.clear() ⇒ <code>void</code>
-Deletes everything from the enmap. If persistent, clears the database of all its data for this table.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+destroy"></a>
-
-### enmap.destroy() ⇒ <code>null</code>
-Completely destroys the entire enmap. This deletes the database tables entirely.
-It will not affect other enmap data in the same database, however.
-THIS ACTION WILL DESTROY YOUR DATA AND CANNOT BE UNDONE.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+remove"></a>
-
-### enmap.remove(key, val, path) ⇒ [<code>Enmap</code>](#enmap-map)
+## remove(key, val, path)
 Remove a value in an Array or Object element in Enmap. Note that this only works for
 values, not keys. Note that only one value is removed, no more. Arrays of objects must use a function to remove,
 as full object matching is not supported.
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
+**Kind**: instance method of <code>Enmap</code>  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the element to remove from in Enmap. |
-| val | <code>\*</code> \| <code>function</code> |  | Required. The value to remove from the array or object. OR a function to match an object. If using a function, the function provides the object value and must return a boolean that's true for the object you want to remove. |
-| path | <code>string</code> | <code>null</code> | Optional. The name of the array property to remove from. Can be a path with dot notation, such as "prop1.subprop2.subprop3". If not presents, removes directly from the value. |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | Required. The key of the element to remove from in Enmap. |
+| val | <code>\*</code> \| <code>function</code> | Required. The value to remove from the array or object. OR a function to match an object. If using a function, the function provides the object value and must return a boolean that's true for the object you want to remove. |
+| path | <code>string</code> | Optional. The name of the array property to remove from. Should be a path with dot notation, such as "prop1.subprop2.subprop3". If not presents, removes directly from the value. |
 
 **Example**  
 ```js
@@ -449,416 +504,35 @@ enmap.set('objectarray', [{ a: 1, b: 2, c: 3 }, { d: 4, e: 5, f: 6 }])
 enmap.remove('array', 1); // value is now [2, 3]
 enmap.remove('objectarray', (value) => value.e === 5); // value is now [{ a: 1, b: 2, c: 3 }]
 ```
-<a name="Enmap+export"></a>
+<a name="export"></a>
 
-### enmap.export() ⇒ <code>string</code>
+## export() ⇒ <code>string</code>
 Exports the enmap data to stringified JSON format.
 **__WARNING__**: Does not work on memory enmaps containing complex data!
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
 **Returns**: <code>string</code> - The enmap data in a stringified JSON format.  
-<a name="Enmap+import"></a>
+<a name="import"></a>
 
-### enmap.import(data, overwrite, clear) ⇒ [<code>Enmap</code>](#enmap-map)
-Import an existing json export from enmap from a string. This data must have been exported from enmap,
+## import(data, overwrite, clear)
+Import an existing json export from enmap. This data must have been exported from enmap,
 and must be from a version that's equivalent or lower than where you're importing it.
+(This means Enmap 5 data is compatible in Enmap 6).
 
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap with the new data.  
+**Kind**: instance method of <code>Enmap</code>  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| data | <code>string</code> |  | The data to import to Enmap. Must contain all the required fields provided by export() |
+| data | <code>string</code> |  | The data to import to Enmap. Must contain all the required fields provided by an enmap export(). |
 | overwrite | <code>boolean</code> | <code>true</code> | Defaults to `true`. Whether to overwrite existing key/value data with incoming imported data |
 | clear | <code>boolean</code> | <code>false</code> | Defaults to `false`. Whether to clear the enmap of all data before importing (**__WARNING__**: Any existing data will be lost! This cannot be undone.) |
 
-<a name="Enmap+array"></a>
+<a name="multi"></a>
 
-### enmap.array() ⇒ <code>Array</code>
-Creates an ordered array of the values of this Enmap.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+keyArray"></a>
-
-### enmap.keyArray() ⇒ <code>Array.&lt;string&gt;</code>
-Creates an ordered array of the keys of this Enmap
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-<a name="Enmap+random"></a>
-
-### enmap.random([count]) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-Obtains random value(s) from this Enmap. This relies on [array](#Enmap+array).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>\*</code> \| <code>Array.&lt;\*&gt;</code> - The single value if `count` is undefined,
-or an array of values of `count` length  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [count] | <code>number</code> | Number of values to obtain randomly |
-
-<a name="Enmap+randomKey"></a>
-
-### enmap.randomKey([count]) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
-Obtains random key(s) from this Enmap. This relies on [keyArray](#Enmap+keyArray)
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>\*</code> \| <code>Array.&lt;\*&gt;</code> - The single key if `count` is undefined,
-or an array of keys of `count` length  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [count] | <code>number</code> | Number of keys to obtain randomly |
-
-<a name="Enmap+findAll"></a>
-
-### enmap.findAll(prop, value) ⇒ <code>Array</code>
-Searches for all items where their specified property's value is identical to the given value
-(`item[prop] === value`).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| prop | <code>string</code> | The property to test against |
-| value | <code>\*</code> | The expected value |
-
-**Example**  
-```js
-enmap.findAll('username', 'Bob');
-```
-<a name="Enmap+find"></a>
-
-### enmap.find(propOrFn, [value]) ⇒ <code>\*</code>
-Searches for a single item where its specified property's value is identical to the given value
-(`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to
-[Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
-<warn>All Enmap used in Discord.js are mapped using their `id` property, and if you want to find by id you
-should use the `get` method. See
-[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get) for details.</warn>
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| propOrFn | <code>string</code> \| <code>function</code> | The property to test against, or the function to test with |
-| [value] | <code>\*</code> | The expected value - only applicable and required if using a property for the first argument. Can't be nil. |
-
-**Example**  
-```js
-enmap.find('username', 'Bob');
-```
-**Example**  
-```js
-enmap.find(val => val.username === 'Bob');
-```
-<a name="Enmap+findKey"></a>
-
-### enmap.findKey(propOrFn, [value]) ⇒ <code>string</code> \| <code>number</code>
-Searches for the key of a single item where its specified property's value is identical to the given value
-(`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to
-[Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| propOrFn | <code>string</code> \| <code>function</code> | The property to test against, or the function to test with |
-| [value] | <code>\*</code> | The expected value - only applicable and required if using a property for the first argument |
-
-**Example**  
-```js
-enmap.findKey('username', 'Bob');
-```
-**Example**  
-```js
-enmap.findKey(val => val.username === 'Bob');
-```
-<a name="Enmap+sweep"></a>
-
-### enmap.sweep(fn, [thisArg]) ⇒ <code>number</code>
-Removes entries that satisfy the provided filter function.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>number</code> - The number of removed entries  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>Object</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+filter"></a>
-
-### enmap.filter(fn, [thisArg]) ⇒ [<code>Enmap</code>](#enmap-map)
-Identical to
-[Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
-but returns a Enmap instead of an Array.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>Object</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+filterArray"></a>
-
-### enmap.filterArray(fn, [thisArg]) ⇒ <code>Array</code>
-Identical to
-[Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>Object</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+map"></a>
-
-### enmap.map(fn, [thisArg]) ⇒ <code>Array</code>
-Identical to
-[Array.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function that produces an element of the new array, taking three arguments |
-| [thisArg] | <code>\*</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+some"></a>
-
-### enmap.some(fn, [thisArg]) ⇒ <code>boolean</code>
-Identical to
-[Array.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>Object</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+every"></a>
-
-### enmap.every(fn, [thisArg]) ⇒ <code>boolean</code>
-Identical to
-[Array.every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>Object</code> | Value to use as `this` when executing function |
-
-<a name="Enmap+reduce"></a>
-
-### enmap.reduce(fn, [initialValue]) ⇒ <code>\*</code>
-Identical to
-[Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to reduce, taking four arguments; `accumulator`, `currentValue`, `currentKey`, and `enmap` |
-| [initialValue] | <code>\*</code> | Starting value for the accumulator |
-
-<a name="Enmap+clone"></a>
-
-### enmap.clone() ⇒ [<code>Enmap</code>](#enmap-map)
-Creates an identical shallow copy of this Enmap.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Example**  
-```js
-const newColl = someColl.clone();
-```
-<a name="Enmap+concat"></a>
-
-### enmap.concat(...enmaps) ⇒ [<code>Enmap</code>](#enmap-map)
-Combines this Enmap with others into a new Enmap. None of the source Enmaps are modified.
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| ...enmaps | [<code>Enmap</code>](#enmap-map) | Enmaps to merge |
-
-**Example**  
-```js
-const newColl = someColl.concat(someOtherColl, anotherColl, ohBoyAColl);
-```
-<a name="Enmap+partition"></a>
-
-### ~~enmap.partition(fn, [thisArg]) ⇒ [<code>Array.&lt;Enmap&gt;</code>](#Enmap)~~
-***Deprecated***
-
-Partitions the enmap into two enmaps where the first enmap
-contains the items that passed and the second contains the items that failed.
-DEPRECATION WILL BE REMOVED IN ENMAP 6!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function used to test (should return a boolean) |
-| [thisArg] | <code>\*</code> | Value to use as `this` when executing function |
-
-**Example**  
-```js
-const [big, small] = enmap.partition(guild => guild.memberCount > 250);
-```
-<a name="Enmap+equals"></a>
-
-### ~~enmap.equals(enmap) ⇒ <code>boolean</code>~~
-***Deprecated***
-
-Checks if this Enmap shares identical key-value pairings with another.
-This is different to checking for equality using equal-signs, because
-the Enmaps may be different objects, but contain the same data.
-DEPRECATION WILL BE REMOVED IN ENMAP 6!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>boolean</code> - Whether the Enmaps have identical contents  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| enmap | [<code>Enmap</code>](#enmap-map) | Enmap to compare with |
-
-<a name="Enmap+setProp"></a>
-
-### ~~enmap.setProp(key, path, val) ⇒ [<code>Enmap</code>](#enmap-map)~~
-***Deprecated***
-
-Modify the property of a value inside the enmap, if the value is an object or array.
-This is a shortcut to loading the key, changing the value, and setting it back.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use set() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>string</code> | Required. The key of the element to add to The Enmap or array. |
-| path | <code>string</code> | Required. The property to modify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-| val | <code>\*</code> | Required. The value to apply to the specified property. |
-
-<a name="Enmap+pushIn"></a>
-
-### ~~enmap.pushIn(key, path, val, allowDupes) ⇒ [<code>Enmap</code>](#enmap-map)~~
-***Deprecated***
-
-Push to an array element inside an Object or Array element in Enmap.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use push() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| key | <code>string</code> |  | Required. The key of the element. |
-| path | <code>string</code> |  | Required. The name of the array property to push to. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-| val | <code>\*</code> |  | Required. The value push to the array property. |
-| allowDupes | <code>boolean</code> | <code>false</code> | Allow duplicate values in the array (default: false). |
-
-<a name="Enmap+getProp"></a>
-
-### ~~enmap.getProp(key, path) ⇒ <code>\*</code>~~
-***Deprecated***
-
-Returns the specific property within a stored value. If the key does not exist or the value is not an object, throws an error.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use get() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>\*</code> - The value of the property obtained.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>string</code> | Required. The key of the element to get from The Enmap. |
-| path | <code>string</code> | Required. The property to retrieve from the object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-<a name="Enmap+deleteProp"></a>
-
-### ~~enmap.deleteProp(key, path)~~
-***Deprecated***
-
-Delete a property from an object or array value in Enmap.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use delete() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>string</code> | Required. The key of the element to delete the property from in Enmap. |
-| path | <code>string</code> | Required. The name of the property to remove from the object. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-<a name="Enmap+removeFrom"></a>
-
-### ~~enmap.removeFrom(key, path, val) ⇒ [<code>Enmap</code>](#enmap-map)~~
-***Deprecated***
-
-Remove a value from an Array or Object property inside an Array or Object element in Enmap.
-Confusing? Sure is.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use remove() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: [<code>Enmap</code>](#enmap-map) - The enmap.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>string</code> | Required. The key of the element. |
-| path | <code>string</code> | Required. The name of the array property to remove from. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-| val | <code>\*</code> | Required. The value to remove from the array property. |
-
-<a name="Enmap+hasProp"></a>
-
-### ~~enmap.hasProp(key, path) ⇒ <code>boolean</code>~~
-***Deprecated***
-
-Returns whether or not the property exists within an object or array value in enmap.
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use has() instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-**Returns**: <code>boolean</code> - Whether the property exists.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>string</code> | Required. The key of the element to check in the Enmap or array. |
-| path | <code>\*</code> | Required. The property to verify inside the value object or array. Can be a path with dot notation, such as "prop1.subprop2.subprop3" |
-
-<a name="Enmap+exists"></a>
-
-### ~~enmap.exists(prop, value) ⇒ <code>boolean</code>~~
-***Deprecated***
-
-Searches for the existence of a single item where its specified property's value is identical to the given value
-(`item[prop] === value`).
-<warn>Do not use this to check for an item by its ID. Instead, use `enmap.has(id)`. See
-[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has) for details.</warn>
-DEPRECATION WILL BE REMOVED IN ENMAP 6! Use has("key", "path") instead!
-
-**Kind**: instance method of [<code>Enmap</code>](#enmap-map)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| prop | <code>string</code> | The property to test against |
-| value | <code>\*</code> | The expected value |
-
-**Example**  
-```js
-if (enmap.exists('username', 'Bob')) {
- console.log('user here!');
-}
-```
-<a name="Enmap.multi"></a>
-
-### Enmap.multi(names, options) ⇒ <code>Object</code>
+## multi(names, options) ⇒ <code>Object</code>
 Initialize multiple Enmaps easily.
 
-**Kind**: static method of [<code>Enmap</code>](#enmap-map)  
+**Kind**: instance method of <code>Enmap</code>  
 **Returns**: <code>Object</code> - An array of initialized Enmaps.  
 
 | Param | Type | Description |
@@ -873,6 +547,191 @@ const Enmap = require('enmap');
 const { settings, tags, blacklist } = Enmap.multi(['settings', 'tags', 'blacklist']);
 
 // Attaching to an existing object (for instance some API's client)
-const Enmap = require("enmap");
+import Enmap from 'enmap';
 Object.assign(client, Enmap.multi(["settings", "tags", "blacklist"]));
 ```
+<a name="random"></a>
+
+## random([count]) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
+Obtains random value(s) from this Enmap. This relies on [Enmap#array](Enmap#array).
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>\*</code> \| <code>Array.&lt;\*&gt;</code> - The single value if `count` is undefined,
+or an array of values of `count` length  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [count] | <code>number</code> | <code>1</code> | Number of values to obtain randomly |
+
+<a name="randomKey"></a>
+
+## randomKey([count]) ⇒ <code>\*</code> \| <code>Array.&lt;\*&gt;</code>
+Obtains random key(s) from this Enmap. This relies on [Enmap#keyArray](Enmap#keyArray)
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>\*</code> \| <code>Array.&lt;\*&gt;</code> - The single key if `count` is undefined,
+or an array of keys of `count` length  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [count] | <code>number</code> | <code>1</code> | Number of keys to obtain randomly |
+
+<a name="every"></a>
+
+## every(valueOrFunction, [path]) ⇒ <code>boolean</code>
+Similar to
+[Array.every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every).
+Supports either a predicate function or a value to compare.
+Returns true only if the predicate function returns true for all elements in the array (or the value is strictly equal in all elements).
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valueOrFunction | <code>function</code> \| <code>string</code> | Function used to test (should return a boolean), or a value to compare. |
+| [path] | <code>string</code> | Required if the value is an object. The path to the property to compare with. |
+
+<a name="some"></a>
+
+## some(valueOrFunction, [path]) ⇒ <code>Array</code>
+Similar to
+[Array.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some).
+Supports either a predicate function or a value to compare.
+Returns true if the predicate function returns true for at least one element in the array (or the value is equal in at least one element).
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valueOrFunction | <code>function</code> \| <code>string</code> | Function used to test (should return a boolean), or a value to compare. |
+| [path] | <code>string</code> | Required if the value is an object. The path to the property to compare with. |
+
+<a name="map"></a>
+
+## map(pathOrFn) ⇒ <code>Array</code>
+Similar to
+[Array.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+Returns an array of the results of applying the callback to all elements.
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>function</code> \| <code>string</code> | A function that produces an element of the new Array, or a path to the property to map. |
+
+<a name="find"></a>
+
+## find(pathOrFn, [value]) ⇒ <code>\*</code>
+Searches for a single item where its specified property's value is identical to the given value
+(`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is similar to
+[Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>string</code> \| <code>function</code> | The path to the value to test against, or the function to test with |
+| [value] | <code>\*</code> | The expected value - only applicable and required if using a property for the first argument |
+
+**Example**  
+```js
+enmap.find('username', 'Bob');
+```
+**Example**  
+```js
+enmap.find(val => val.username === 'Bob');
+```
+<a name="findIndex"></a>
+
+## findIndex(pathOrFn, [value]) ⇒ <code>string</code> \| <code>number</code>
+Searches for the key of a single item where its specified property's value is identical to the given value
+(`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is similar to
+[Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex).
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>string</code> \| <code>function</code> | The path to the value to test against, or the function to test with |
+| [value] | <code>\*</code> | The expected value - only applicable and required if using a property for the first argument |
+
+**Example**  
+```js
+enmap.findIndex('username', 'Bob');
+```
+**Example**  
+```js
+enmap.findIndex(val => val.username === 'Bob');
+```
+<a name="reduce"></a>
+
+## reduce(predicate, [initialValue]) ⇒ <code>\*</code>
+Similar to
+[Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predicate | <code>function</code> | Function used to reduce, taking three arguments; `accumulator`, `currentValue`, `currentKey`. |
+| [initialValue] | <code>\*</code> | Starting value for the accumulator |
+
+<a name="filter"></a>
+
+## filter(pathOrFn, [value]) ⇒ <code>Enmap</code>
+Similar to
+[Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Returns an array of values where the given function returns true for that value.
+Alternatively you can provide a value and path to filter by using exact value matching.
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>function</code> | The path to the value to test against, or the function to test with. If using a function, this function should return a boolean. |
+| [value] | <code>string</code> | Value to use as `this` when executing function |
+
+<a name="sweep"></a>
+
+## sweep(pathOrFn, [value]) ⇒ <code>number</code>
+Deletes entries that satisfy the provided filter function or value matching.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>number</code> - The number of removed entries.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>function</code> \| <code>string</code> | The path to the value to test against, or the function to test with. |
+| [value] | <code>\*</code> | The expected value - only applicable and required if using a property for the first argument. |
+
+<a name="changed"></a>
+
+## changed(cb)
+Function called whenever data changes within Enmap after the initial load.
+Can be used to detect if another part of your code changed a value in enmap and react on it.
+
+**Kind**: instance method of <code>Enmap</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| cb | <code>function</code> | A callback function that will be called whenever data changes in the enmap. |
+
+**Example**  
+```js
+enmap.changed((keyName, oldValue, newValue) => {
+  console.log(`Value of ${keyName} has changed from: \n${oldValue}\nto\n${newValue}`);
+});
+```
+<a name="partition"></a>
+
+## partition(pathOrFn, value) ⇒ <code>Array.&lt;Array.&lt;\*&gt;&gt;</code>
+Separates the Enmap into multiple arrays given a function that separates them.
+
+**Kind**: instance method of <code>Enmap</code>  
+**Returns**: <code>Array.&lt;Array.&lt;\*&gt;&gt;</code> - An array of arrays with the partitioned data.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pathOrFn | <code>\*</code> | the path to the value to test against, or the function to test with. |
+| value | <code>\*</code> | the value to use as a condition for partitioning. |
+
