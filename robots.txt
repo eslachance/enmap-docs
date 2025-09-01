@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://enmap.evie.dev/sitemap.xml.gz
+Sitemap: https://enmap.alterion.dev/sitemap.xml.gz

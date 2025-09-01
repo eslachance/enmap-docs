@@ -9,34 +9,33 @@
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Usage Documentation</title>
-    <meta name="title" content="Usage Documentation">
-    <meta name="description" content="Mostly, this documentation will be concentrating on the \"persistent\" version of enmap - the one where data is saved automatically.">
+    <title>EnmapOptions (V, SV)</title>
+    <meta name="title" content="EnmapOptions (V, SV)">
+    <meta name="description" content="Enmap API Reference v6.1.3">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://enmap.alterion.dev/usage/">
+    <link rel="canonical" href="https://enmap.alterion.dev/typedoc/interfaces/enmapoptions/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://enmap.alterion.dev/usage/">
-    <meta property="og:title" content="Usage Documentation">
-    <meta property="og:description" content="Mostly, this documentation will be concentrating on the \"persistent\" version of enmap - the one where data is saved automatically.">
+    <meta property="og:url" content="https://enmap.alterion.dev/typedoc/interfaces/enmapoptions/">
+    <meta property="og:title" content="EnmapOptions (V, SV)">
+    <meta property="og:description" content="Enmap API Reference v6.1.3">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://enmap.alterion.dev/usage/">
-    <meta property="twitter:title" content="Usage Documentation">
-    <meta property="twitter:description" content="Mostly, this documentation will be concentrating on the \"persistent\" version of enmap - the one where data is saved automatically.">
+    <meta property="twitter:url" content="https://enmap.alterion.dev/typedoc/interfaces/enmapoptions/">
+    <meta property="twitter:title" content="EnmapOptions (V, SV)">
+    <meta property="twitter:description" content="Enmap API Reference v6.1.3">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../assets/favicon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.11.0.810012551785" rel="stylesheet">
+    <link href="../../../assets/favicon.png" rel="icon">
+    <link href="../../../resources/css/retype.css?v=3.11.0.810012551785" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.810012551785" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.810012551785" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.11.0.810012551785" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.11.0.810012551785" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.11.0.810012551785" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -51,10 +50,10 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="retype-branding-logo" href="../" class="flex items-center leading-snug text-2xl">
+                        <a id="retype-branding-logo" href="../../../" class="flex items-center leading-snug text-2xl">
                             <span class="grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../assets/enmap-logo.svg">
-                                <img class="max-h-10 hidden dark:inline-block" src="../assets/enmap-logo.svg">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../assets/enmap-logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../../assets/enmap-logo.svg">
                             </span>
                         </a>
                     </div>
@@ -180,54 +179,101 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="usage-documentation" class="break-words">
+<p><a href="../../"><strong>Enmap API Reference v6.1.3</strong></a></p>
+<hr>
+<p><a href="../../">Enmap API Reference</a> / EnmapOptions</p>
+<doc-anchor-target id="enmapoptions-v-sv" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#usage-documentation">#</doc-anchor-trigger>
-        <span>Usage Documentation</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enmapoptions-v-sv">#</doc-anchor-trigger>
+        <span>EnmapOptions (V, SV)</span>
     </h1>
 </doc-anchor-target>
-<p>Mostly, this documentation will be concentrating on the &quot;persistent&quot; version of enmap - the one where data is saved automatically.</p>
-<p>If you don&#x27;t want persistence, the only difference is how you initialize the enmap:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-javascript"><code v-pre class="language-javascript">import Enmap from 'enmap';
-const myEnmap = new Enmap();
-
-// you can now use your enmap directly</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="persistent-enmaps">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#persistent-enmaps">#</doc-anchor-trigger>
-        <span>Persistent Enmaps</span>
-    </h3>
+<p>Defined in: <a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L29">index.ts:29</a></p>
+<doc-anchor-target id="type-parameters">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#type-parameters">#</doc-anchor-trigger>
+        <span>Type Parameters</span>
+    </h2>
 </doc-anchor-target>
-<p>By default, Enmap saves only in memory and does not save anything to disk. To have persistent storage, you need to add some options. Enmaps with a &quot;name&quot; option will save, and there are additional options you can use to fine-tune the saving and loading features.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-javascript"><code v-pre class="language-javascript">import Enmap from 'enmap';
-
-// Normal enmap with default options
-const myEnmap = new Enmap({ name: &quot;points&quot; });
-const otherEnmap = new Enmap({ name: &quot;settings&quot; });
-
-// In-memory enmap, lost when the app reboots
-const ephemeral = new Enmap({ inMemory: true });</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="enmap-options">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#enmap-options">#</doc-anchor-trigger>
-        <span>Enmap Options</span>
-    </h3>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>V</code></td>
+<td><code v-pre>unknown</code></td>
+</tr>
+<tr>
+<td><code v-pre>SV</code></td>
+<td><code v-pre>unknown</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="properties">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#properties">#</doc-anchor-trigger>
+        <span>Properties</span>
+    </h2>
 </doc-anchor-target>
-<p>The following is a list of all options that are available in Enmap, when initializing it:</p>
-<ul>
-<li><code v-pre>name</code>: A name for the enmap. Defines the table name in SQLite (the name is &quot;cleansed&quot; before use).</li>
-<li><code v-pre>inMemory</code>: Defaults to <code v-pre>false</code>. If set to <code v-pre>true</code>, no data is saved to disk. Methods will work the same but restarting your app will lose all data. This can be set separately in each enmap.</li>
-<li><code v-pre>dataDir</code>: Defaults to <code v-pre>./data</code>. Determines where the sqlite files will be stored. Can be relative (to your project root) or absolute on the disk. Windows users , remember to escape your backslashes!</li>
-<li><code v-pre>ensureProps</code>: Defaults to <code v-pre>true</code>. When adding values to an object using a <code v-pre>path</code>, ensureProps will automatically create any level of object necessary for the value to be written.</li>
-<li><code v-pre>autoEnsure</code>: default is disabled. When provided a value, essentially runs ensure(key, autoEnsure) automatically so you don&#x27;t have to. This is especially useful on get(), but will also apply on set(), and any array and object methods that interact with the database.</li>
-<li><code v-pre>serializer</code> Optional. If a function is provided, it will execute on the data when it is written to the database. This is generally used to convert the value into a format that can be saved in the database, such as converting a complete class instance to just its ID. This function may return the value to be saved, or a promise that resolves to that value (in other words, can be an async function).</li>
-<li><code v-pre>deserializer</code> Optional. If a function is provided, it will execute on the data when it is read from the database. This is generally used to convert the value from a stored ID into a more complex object. This function may return a value, or a promise that resolves to that value (in other words, can be an async function).</li>
-<li><code v-pre>sqliteOptions</code> Optional. An object of <a href="https://github.com/WiseLibs/better-sqlite3/blob/HEAD/docs/api.md#new-databasepath-options">options</a> to pass to the better-sqlite3 Database constructor.</li>
-</ul>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="name"></a> <code v-pre>name?</code></td>
+<td><code v-pre>string</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L30">index.ts:30</a></td>
+</tr>
+<tr>
+<td><a id="datadir"></a> <code v-pre>dataDir?</code></td>
+<td><code v-pre>string</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L31">index.ts:31</a></td>
+</tr>
+<tr>
+<td><a id="ensureprops"></a> <code v-pre>ensureProps?</code></td>
+<td><code v-pre>boolean</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L32">index.ts:32</a></td>
+</tr>
+<tr>
+<td><a id="autoensure"></a> <code v-pre>autoEnsure?</code></td>
+<td><code v-pre>V</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L33">index.ts:33</a></td>
+</tr>
+<tr>
+<td><a id="serializer"></a> <code v-pre>serializer?</code></td>
+<td>(<code v-pre>value</code>, <code v-pre>key</code>) =&gt; <code v-pre>SV</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L34">index.ts:34</a></td>
+</tr>
+<tr>
+<td><a id="deserializer"></a> <code v-pre>deserializer?</code></td>
+<td>(<code v-pre>value</code>, <code v-pre>key</code>) =&gt; <code v-pre>V</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L35">index.ts:35</a></td>
+</tr>
+<tr>
+<td><a id="inmemory"></a> <code v-pre>inMemory?</code></td>
+<td><code v-pre>boolean</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L36">index.ts:36</a></td>
+</tr>
+<tr>
+<td><a id="sqliteoptions"></a> <code v-pre>sqliteOptions?</code></td>
+<td><code v-pre>Options</code></td>
+<td><a href="https://github.com/eslachance/enmap/blob/main/src/index.ts#L37">index.ts:37</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -235,7 +281,7 @@ const ephemeral = new Enmap({ inMemory: true });</code></pre>
                             </div>
                             <footer id="retype-content-footer" class="clear-both">
                                 <div class="flex flex-wrap items-center justify-between mt-14">
-                                    <a id="retype-edit-this-page" class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-body-link font-body-link-weight hover:text-body-link-hover hover:underline" href="https://github.com/eslachance/enmap/edit/main/usage/README.md" target="_blank" rel="noopener">
+                                    <a id="retype-edit-this-page" class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-body-link font-body-link-weight hover:text-body-link-hover hover:underline" href="https://github.com/eslachance/enmap/edit/main/typedoc/interfaces/EnmapOptions.md" target="_blank" rel="noopener">
                                         <svg class="mr-1.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M20 12c-.55 0-1 .45-1 1v7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h7c.55 0 1-.45 1-1s-.45-1-1-1H4C2.35 3 1 4.35 1 6v14c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-7c0-.55-.45-1-1-1z" /><path d="M22.21 1.79c-1.18-1.18-3.24-1.18-4.41 0l-9.5 9.5c-.13.13-.22.29-.26.46l-1 4c-.08.34.01.7.26.95.18.2.44.3.7.3.08 0 .16-.01.24-.03l4-1c.18-.04.34-.13.46-.26l9.5-9.5c1.22-1.22 1.22-3.2.01-4.42zm-1.42 3l-9.3 9.3-2.11.53.53-2.11 9.3-9.3c.42-.42 1.16-.42 1.59 0 .43.43.43 1.15-.01 1.58z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         <span>Edit this page</span>
                                     </a>
@@ -243,20 +289,20 @@ const ephemeral = new Enmap({ inMemory: true });</code></pre>
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../install/upgradev6/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../typedoc/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">Upgrading Enmap to Version 6</span>
+                                                <span class="block mt-1">API Reference</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../usage/basic/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../typedoc/classes/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">Basic Data Use</span>
+                                                <span class="block mt-1">default (V, SV)</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -300,6 +346,6 @@ const ephemeral = new Enmap({ inMemory: true });</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Usage Documentation", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "EnmapOptions (V, SV)", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
