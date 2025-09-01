@@ -15,6 +15,7 @@
   * [Serializing and Deserializing](usage/serialize.md)
 * [Full Documentation](api.md)
 * [TypeScript Documentation](typedoc/README.md)
+  * [Usage](typedoc/usage.md)
   * [Options](typedoc/interfaces/EnmapOptions.md)
   * [Class Instance](typedoc/classes/default.md)
 * [Blog Posts](blog-posts/README.md)
